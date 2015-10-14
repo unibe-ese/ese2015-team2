@@ -4,7 +4,7 @@ Dear Team members, ESE Staff and strangers,
 
 This is a project for the course "Einführung in Software Engineering" at the University of Berne, Fall Semester 2015. 
 The team members are:
-* Eve Welsh
+* Eve Mendoza Quiros
 * Mischa Wenger
 * Cyrill Portmann
 * Marc Jost
