@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="loginAction" required="true" method-signature="java.lang.String action()"/>
+        <cc:attribute name="namedBean" required="true"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:form styleClass="navbar-form navbar-right">
+            <div class="form-group">
+                <b:inputText id="email" placeholder="Email" fieldSize="sm" value="#{cc.attrs.namedBean.username}" required="true">
+                    <f:facet name="append">
+                        <h:outputText value="@students.unibe.ch" />
+                    </f:facet>
+                </b:inputText>
+            </div>
+            <div class="form-group">
+                <b:inputText id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.namedBean.password}" required="true"/>
+            </div>
+            #{' '}
+            <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right"/>
+        </h:form>
+    </cc:implementation>
+</html>
