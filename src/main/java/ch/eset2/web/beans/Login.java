@@ -3,8 +3,9 @@ package ch.eset2.web.beans;
 import ch.eset2.web.util.Navigation;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 
 /**
  * {Insert description here}
@@ -12,15 +13,13 @@ import javax.inject.Named;
  */
 @RequestScoped
 @Named
-public class LogInOutBean implements Serializable {
+public class Login implements Serializable {
     
     private String username;
     private String password;
     
     public String login(){
-        System.out.println("FUCKING LOGIN");
-        System.out.println(username);
-        System.out.println(password);
+        SecurityUtils.getSubject().login(new UsernamePasswordToken(username, password));
         return Navigation.REGSUCCESS;
     }
 

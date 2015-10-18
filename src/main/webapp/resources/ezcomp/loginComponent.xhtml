@@ -4,6 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
+      xmlns:shiro="http://shiro.apache.org/tags"
       xmlns:cc="http://xmlns.jcp.org/jsf/composite">
 
     <!-- INTERFACE -->
@@ -14,9 +15,10 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <h:form styleClass="navbar-form navbar-right">
+        <shiro:guest>
+        <h:form id="login" styleClass="navbar-form navbar-right">
             <div class="form-group">
-                <b:inputText id="email" placeholder="Email" fieldSize="sm" value="#{cc.attrs.namedBean.username}" required="true">
+                <b:inputText id="username" placeholder="Email" fieldSize="sm" value="#{cc.attrs.namedBean.username}" required="true">
                     <f:facet name="append">
                         <h:outputText value="@students.unibe.ch" />
                     </f:facet>
@@ -26,7 +28,13 @@
                 <b:inputText id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.namedBean.password}" required="true"/>
             </div>
             #{' '}
-            <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right"/>
+            <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right">
+                <f:ajax execute="@form" render="@form" />
+            </b:commandButton>
         </h:form>
+        </shiro:guest>
+        <shiro:user>
+            <b:label text="User is logged in"/>
+        </shiro:user>
     </cc:implementation>
 </html>

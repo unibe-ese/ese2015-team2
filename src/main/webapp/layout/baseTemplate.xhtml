@@ -33,7 +33,7 @@
                             
                             <b:commandButton action="a" value="Login" look="success" icon="log-in" iconAlign="right"/>
                         </h:form>-->
-            <ezcomp:loginComponent loginAction="#{logInOutBean.login}" namedBean="#{logInOutBean}"/>
+            <ezcomp:loginComponent loginAction="#{login.login}" namedBean="#{login}"/>
         </b:navBar>
         <ui:insert name="content">Content</ui:insert>
         <b:navBar inverse="true" fixed="bottom">
