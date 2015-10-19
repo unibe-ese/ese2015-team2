@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Facelets Template</ui:insert></title>
+    </h:head>
+
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <b:navBar brand="ESET2" brandHref="index.xhtml" inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:navLink value="My Profile" href="#"></b:navLink>
+                <b:navLink value="Mailbox" href="#"></b:navLink>
+            </b:navbarLinks>
+            <!--            <h:form styleClass="navbar-form navbar-right">
+                            <div class="form-group">
+                                <b:inputText placeholder="Email" fieldSize="sm">
+                                    <f:facet name="append">
+                                        <h:outputText value="@students.unibe.ch" />
+                                    </f:facet>
+                                </b:inputText>
+                                input type="text" class="form-control" placeholder="Search"/
+                            </div>
+                            <div class="form-group">
+                                <b:inputText placeholder="Password" fieldSize="sm"/>
+                            </div>
+                            
+                            <b:commandButton action="a" value="Login" look="success" icon="log-in" iconAlign="right"/>
+                        </h:form>-->
+            <ezcomp:loginComponent loginAction="#{login.login}" namedBean="#{login}"/>
+        </b:navBar>
+        <ui:insert name="content">Content</ui:insert>
+        <b:navBar inverse="true" fixed="bottom">
+            <b:navbarLinks>
+                <b:navLink value="Home" href="#"></b:navLink>
+                <b:navLink value="Kontakt" href="#"></b:navLink>
+                <b:navLink value="Über uns" href="#"></b:navLink>
+                <b:navLink value="AGB" href="#"></b:navLink>
+                <b:navLink value="FAQ" href="#"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+    </h:body>
+
+</html>
