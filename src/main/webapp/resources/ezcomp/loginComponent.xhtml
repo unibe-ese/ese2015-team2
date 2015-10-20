@@ -15,26 +15,26 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <shiro:guest>
-        <h:form id="login" styleClass="navbar-form navbar-right">
-            <div class="form-group">
-                <b:inputText id="username" placeholder="Email" fieldSize="sm" value="#{cc.attrs.namedBean.username}" required="true">
-                    <f:facet name="append">
-                        <h:outputText value="@students.unibe.ch" />
-                    </f:facet>
-                </b:inputText>
-            </div>
-            <div class="form-group">
-                <b:inputText id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.namedBean.password}" required="true"/>
-            </div>
-            #{' '}
-            <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right">
-                <f:ajax execute="@form" render="@form" />
-            </b:commandButton>
-        </h:form>
-        </shiro:guest>
-        <shiro:user>
-            <b:label text="User is logged in"/>
-        </shiro:user>
+            <shiro:guest>
+                <h:form id="login" styleClass="navbar-form navbar-right">
+                    <div class="form-group">
+                        <b:inputText id="username" placeholder="Email" fieldSize="sm" value="#{cc.attrs.namedBean.username}" required="true">
+                            <f:facet name="append">
+                                <h:outputText value="@students.unibe.ch" />
+                            </f:facet>
+                        </b:inputText>
+                    </div>
+                    <div class="form-group">
+                        <b:inputText id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.namedBean.password}" required="true"/>
+                    </div>
+                    #{' '}
+                    <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right">
+                        <f:ajax execute="@form" render="@form" />
+                    </b:commandButton>
+                </h:form>
+            </shiro:guest>
+            <shiro:user>
+                <b:label text="User is logged in"/>
+            </shiro:user>
     </cc:implementation>
 </html>
