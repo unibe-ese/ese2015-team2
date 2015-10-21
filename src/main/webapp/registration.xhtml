@@ -45,6 +45,11 @@
                                     <h:message id="m_confirm" for="confirm" />
                                 </b:column>
                             </b:row>
+                            <h:outputText value="Kontotyp:"/>
+                            <b:selectOneMenu value="#{registrationBean.newCustomer.accountType}" id="brandID" >
+                                <f:selectItem itemLabel="Student" itemValue="1"/>
+                                <f:selectItem itemLabel="Tutor" itemValue="2"/>
+                            </b:selectOneMenu>
                         </b:panelGrid>
                         <h3>Zu Ihrer Person</h3>
                         <br/>
@@ -55,14 +60,14 @@
                             <b:inputText value="#{registrationBean.newCustomer.firstName}"/>
                             <h:outputText value="Matrikelnummer:"/>
                             <b:inputText value="#{registrationBean.newCustomer.matnr}"/>
-                            <h:outputText value="Kontotyp:"/>
-                            <b:inputText/>
                             <h:outputText value="Strasse:"/>
                             <b:inputText value="#{registrationBean.newCustomer.street}"/>
                             <h:outputText value="PLZ:"/>
                             <b:inputText value="#{registrationBean.newCustomer.zip}"/>
                             <h:outputText value="Stadt/Ort:"/>
                             <b:inputText value="#{registrationBean.newCustomer.city}"/>
+                            <h:outputText value="Phone:"/>
+                            <b:inputText value="#{registrationBean.newCustomer.phone}"/>
                         </b:panelGrid>
                         <b:row>
                             <b:column span="2" offset="5">
