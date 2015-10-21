@@ -7,30 +7,34 @@
                 template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
-        title
+        Login
     </ui:define>
 
     <ui:define name="content">
         <b:container>
             <b:row>
-                <b:column span="12">
-                    <h:form>
-                        <b:panelGrid colSpans="4,8">
-                            <h:outputText value="Email:"/>
-                            <b:inputText value="#{login.username}">
+                <b:column span="6" offset="3">
+                    <h1>Bitte loggen Sie sich ein:</h1>
+                    <br/>
+                    <h:form id="login">
+                        <b:panelGrid colSpans="6,6">
+                            <h:outputLabel value="Username:"/>
+                            <b:inputText id="username" placeholder="Email" fieldSize="sm" value="#{login.username}" required="true">
                                 <f:facet name="append">
                                     <h:outputText value="@students.unibe.ch" />
                                 </f:facet>
                             </b:inputText>
-                            <h:outputText value="Passwort:"/>
-                            <b:inputText value="#{login.password}"/>
+                            <h:outputLabel value="Passwort:"/>
+                            <b:inputSecret id="password" placeholder="Password" fieldSize="sm" value="#{login.password}" required="true"/>
+                            <b:commandButton action="#{login.login()}" value="Login" look="success" icon="log-in" iconAlign="right">
+                                <f:ajax execute="@form" render="@form" />
+                            </b:commandButton>
                         </b:panelGrid>
-                        <b:commandButton action="#{login.login}" value="Login" look="success" icon="log-in" iconAlign="right"/>
                     </h:form>
                 </b:column>
             </b:row>
         </b:container>
-        
+
     </ui:define>
 
 </ui:composition>

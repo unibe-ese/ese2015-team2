@@ -1,10 +1,12 @@
 package ch.eset2.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * {Insert description here}
@@ -20,7 +22,12 @@ public class Customer implements Serializable {
 
     protected String firstName;
     protected String lastName;
-    protected String email;
+    
+    @NotNull
+    @Column(unique = true)
+    protected String username;
+    
+    @NotNull
     protected String password;
     protected String matnr;
     protected String street;
@@ -53,12 +60,12 @@ public class Customer implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
