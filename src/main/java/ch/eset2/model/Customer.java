@@ -20,7 +20,7 @@ public class Customer implements Serializable {
 
     protected String firstName;
     protected String lastName;
-    protected String email;
+    protected String username;
     protected String password;
     protected String matnr;
     protected String street;
@@ -53,12 +53,12 @@ public class Customer implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

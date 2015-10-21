@@ -19,16 +19,32 @@
                     <br/>
                     <h:form>
                         <b:panelGrid colSpans="4,8">
-                            <h:outputText value="Email:"/>
-                            <b:inputText value="#{registrationBean.newCustomer.email}">
+                            <h:outputLabel value="Email:"/>
+                            <b:inputText value="#{registrationBean.newCustomer.username}">
                                 <f:facet name="append">
                                     <h:outputText value="@students.unibe.ch" />
                                 </f:facet>
                             </b:inputText>
-                            <h:outputText value="Passwort:"/>
-                            <b:inputText value="#{registrationBean.newCustomer.password}"/>
-                            <h:outputText value="Passwort bestätigen:"/>
-                            <b:inputText/>
+                            <h:outputLabel for="password" value="Passwort:"/>
+                            <b:row>
+                                <b:column span="12">
+                                    <b:inputSecret id="password" value="#{registrationBean.newCustomer.password}" required="true">
+                                        <f:validator validatorId="confirmPasswordValidator" />
+                                        <f:attribute name="confirm" value="#{confirmPassword.submittedValue}" />
+                                        <f:ajax event="blur" execute="password confirm" render="m_password" />
+                                    </b:inputSecret>
+                                    <h:message id="m_password" for="password" />
+                                </b:column>
+                            </b:row>
+                            <h:outputLabel for="confirm" value="Passwort bestätigen:"/>
+                            <b:row>
+                                <b:column span="12">
+                                    <b:inputSecret id="confirm" binding="#{confirmPassword}" required="true">
+                                        <f:ajax event="blur" execute="password confirm" render="m_password m_confirm" />
+                                    </b:inputSecret>
+                                    <h:message id="m_confirm" for="confirm" />
+                                </b:column>
+                            </b:row>
                         </b:panelGrid>
                         <h3>Zu Ihrer Person</h3>
                         <br/>

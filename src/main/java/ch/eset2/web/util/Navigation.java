@@ -10,7 +10,7 @@ package ch.eset2.web.util;
  * @author Marc Jost
  */
 public class Navigation {
-    public static final String INDEX = "/ESET2/index.xhtml";
-    public static final String REGISTRATION = "/ESET2/registration.xhtml";
-    public static final String REGSUCCESS = "/ESET2/regSuccess.xhtml";
+    public static final String INDEX = "index.xhtml";
+    public static final String REGISTRATION = "registration.xhtml";
+    public static final String REGSUCCESS = "regSuccess.xhtml";
 }
