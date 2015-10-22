@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                template="./layout/baseTemplate.xhtml">
+
+    <ui:define name="title">
+        Welcome to ESET2
+    </ui:define>
+
+    <ui:define name="content">    
+        <b:jumbotron>
+            <b:container>
+                <b:row style="display: flex; align-items: left; min-height: 50%; min-height: 50vh; height: 200px;">
+                    <b:column col-md="8">
+                        <b:panel look="primary">
+                            <f:facet name="heading"><h3 style="color: black">Hans Muster</h3></f:facet>
+                               Willkommen bei ESE Team2! Jetzt auch mit Panels.
+                        </b:panel>
+                    </b:column>
+                    <b:column offset-sm="2" col-md="6">
+                        <b:panel look="primary">
+                            <f:facet name="heading"><h3 style="color: black">Kontaktinformation</h3></f:facet>
+                            <b:row style="display: flex; align-items: left;"> <b:column col-md="4">Email:</b:column>
+                                <b:column>hans.muster@irgendwas.com</b:column>
+                            </b:row>
+                            <b:row style="display: flex; text-align: left">
+                                <b:column col-md="4">Telefon:</b:column>
+                                <b:column>033 336 33 66</b:column>
+                            </b:row>
+                            <b:row style="display: flex; text-align: left;">
+                                <b:column col-md="4">Adresse:</b:column>
+                                <b:column>Strasse</b:column>
+                            </b:row>    
+                            <b:row style="display: flex; align-content: left;">
+                                <b:column col-md="4"></b:column>
+                                <b:column>Postleitzahl Stadt</b:column>
+                            </b:row>
+                                                          
+                        </b:panel>
+                    </b:column>
+                </b:row>
+            </b:container>
+        </b:jumbotron>
+    </ui:define>
+
+</ui:composition>
