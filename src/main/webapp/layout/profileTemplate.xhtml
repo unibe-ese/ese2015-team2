@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ezcomp="http://xmlns.jcp.org/jsf/composite/ezcomp">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Facelets Template</ui:insert></title>
+    </h:head>
+
+    <h:body style="padding-top: 50px; padding-bottom: 20px;">
+        <b:navBar brand="ESET2"  brandHref="#{request.contextPath}/index.xhtml" inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:navLink value="Vorlesungen" href="#"></b:navLink>
+                <b:navLink value="Mein Profil" href="#"></b:navLink>
+                <b:navLink value="Posteingang" href="#"></b:navLink>
+            </b:navbarLinks>
+            <ezcomp:loginComponent loginAction="#{login.login}" namedBean="#{login}"/>
+        </b:navBar>
+
+        <b:jumbotron>
+            <b:container>
+                <b:row style="display: flex; align-items: left; min-height: 50%; min-height: 50vh; height: 200px;">
+                    <b:column col-md="8">
+                        <b:panel look="primary">
+                            <f:facet name="heading"><h3 style="color: black;"><ui:insert name="leftBoxHeading"></ui:insert></h3></f:facet>
+                            <ui:insert name="leftBoxContent"></ui:insert>
+                        </b:panel>
+                    </b:column>
+                    <b:column offset-sm="1" col-md="6">
+                        <b:panel look="primary">
+                            <f:facet name="heading">
+                                <h4 style="color: black">Kontaktinformationen</h4>
+                            </f:facet>
+
+                            <b:row style="display: flex; align-items: left;">
+                                <b:column col-md="4">Email:</b:column>
+                                <b:column>hans.muster@irgendwas.com</b:column>
+                            </b:row>
+                            <b:row style="display: flex; text-align: left">
+                                <b:column col-md="4">Telefon:</b:column>
+                                <b:column>033 336 33 66</b:column>
+                            </b:row>
+                            <b:row style="display: flex; text-align: left;">
+                                <b:column col-md="4">Adresse:</b:column>
+                                <b:column>Strasse</b:column>
+                            </b:row>    
+                            <b:row style="display: flex; align-content: left;">
+                                <b:column col-md="4"></b:column>
+                                <b:column>Postleitzahl Stadt</b:column>
+                            </b:row>
+
+                        </b:panel>
+                    </b:column>
+                </b:row>
+            </b:container>
+            
+            <b:container>
+                <b:row style="display: flex; align-items: left; min-height: 50%; min-height: 50vh; height: 200px;">
+                    <b:column col-md="8">
+                        <b:panel look="primary">
+                            <f:facet name="heading">
+                                <h4 style="color: black">Meine Studienfächer</h4>
+                            </f:facet>
+                            <ui:insert name="courseBoxContent">
+                            </ui:insert>
+                        </b:panel>
+                    </b:column>
+                    <b:column offset-sm="1" col-md="6">
+                        <b:panel look="primary">
+                            <f:facet name="heading">
+                                <h4 style="color: black">Freunde</h4>
+                            </f:facet>
+                            <ui:insert name="friendBoxContent">
+                            </ui:insert>
+                        </b:panel>
+                    </b:column>
+                </b:row>
+            </b:container>
+        </b:jumbotron>
+
+        <b:navBar inverse="true" fixed="bottom">
+            <b:navbarLinks>
+                <b:navLink outcome="index" value="Home"></b:navLink>
+                <b:navLink outcome="contact" value="Kontakt"></b:navLink>
+                <b:navLink outcome="about" value="Über uns"></b:navLink>
+                <b:navLink outcome="agb" value="AGB"></b:navLink>
+                <b:navLink outcome="faq" value="FAQ"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+    </h:body>
+</html>
