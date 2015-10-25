@@ -22,15 +22,19 @@ import javax.persistence.Temporal;
 public abstract class Profile implements Serializable {
 
     protected static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
     
     @OneToOne()
     protected Customer customer;
+    
     protected String gender;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     protected Date birthday;
+    
     protected String description;
 
     public Customer getCustomer() {
