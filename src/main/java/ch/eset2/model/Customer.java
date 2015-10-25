@@ -3,11 +3,13 @@ package ch.eset2.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -42,6 +44,9 @@ public class Customer implements Serializable {
     protected String city;
     protected String phone;
     protected int accountType;
+
+    @OneToOne(mappedBy = "customer", fetch = FetchType.EAGER)
+    protected Profile profile;
 
     public Long getId() {
         return id;
@@ -129,6 +134,14 @@ public class Customer implements Serializable {
 
     public void setAccountType(int accountType) {
         this.accountType = accountType;
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
     
     @Override

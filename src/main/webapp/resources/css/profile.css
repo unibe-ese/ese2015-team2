@@ -1,0 +1,36 @@
+.profile-image-initials {
+    display: block;
+    font-size: 54px;
+    font-weight: 700;
+    text-align: center;
+    left: 0px;
+    line-height: 135px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    height: 135px;
+    width: 180px;
+    z-index: 1;
+    color: #444;
+}
+
+.profile-image {
+    float:left;
+    background-image: linear-gradient(to bottom, #F5F5F5 0px, #E8E8E8 100%);
+    background-repeat: repeat-x;
+    cursor: default;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
+    height: 135px;
+    width: 180px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-color: #DDD;
+}
+
+.panel-default > .panel-heading {
+
+}
