@@ -19,14 +19,14 @@
                     <h:form id="login">
                         <b:panelGrid colSpans="6,6">
                             <h:outputLabel value="Username:"/>
-                            <b:inputText id="username" placeholder="Email" fieldSize="sm" value="#{login.username}" required="true">
+                            <b:inputText id="username" placeholder="Email" fieldSize="sm" value="#{loginComponent.username}" required="true">
                                 <f:facet name="append">
                                     <h:outputText value="@students.unibe.ch" />
                                 </f:facet>
                             </b:inputText>
                             <h:outputLabel value="Passwort:"/>
-                            <b:inputSecret id="password" placeholder="Password" fieldSize="sm" value="#{login.password}" required="true"/>
-                            <b:commandButton action="#{login.login()}" value="Login" look="success" icon="log-in" iconAlign="right">
+                            <b:inputSecret id="password" placeholder="Password" fieldSize="sm" value="#{loginComponent.password}" required="true"/>
+                            <b:commandButton action="#{loginComponent.login()}" value="Login" look="success" icon="log-in" iconAlign="right">
                                 <f:ajax execute="@form" render="@form" />
                             </b:commandButton>
                         </b:panelGrid>

@@ -19,7 +19,7 @@
                 <b:navLink value="Mein Profil" href="#"></b:navLink>
                 <b:navLink value="Posteingang" href="#"></b:navLink>
             </b:navbarLinks>
-            <ezcomp:loginComponent loginAction="#{login.login}" namedBean="#{login}"/>
+            <ezcomp:loginComponent loginAction="#{loginComponent.login}" logoutAction="#{loginComponent.logout}"namedBean="#{loginComponent}"/>
         </b:navBar>
 
         <b:jumbotron>

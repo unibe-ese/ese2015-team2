@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -19,9 +20,9 @@ import org.omnifaces.util.Faces;
  *
  * @author Marc Jost, 17.10.2015
  */
-@RequestScoped
+@SessionScoped
 @Named
-public class Login implements Serializable {
+public class LoginComponent implements Serializable {
 
     private String username;
     private String password;
@@ -31,10 +32,15 @@ public class Login implements Serializable {
             SecurityUtils.getSubject().login(new UsernamePasswordToken(username, password));
             SavedRequest savedRequest = WebUtils.getAndClearSavedRequest(Faces.getRequest());
             Faces.redirect(savedRequest != null ? savedRequest.getRequestUrl() : Navigation.INDEX);
-            //return Navigation.REGSUCCESS;
         } catch (AuthenticationException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginComponent.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+     public void logout() throws IOException {
+        SecurityUtils.getSubject().logout();
+        Faces.invalidateSession();
+        Faces.redirect(Navigation.INDEX);
     }
 
     public String getUsername() {

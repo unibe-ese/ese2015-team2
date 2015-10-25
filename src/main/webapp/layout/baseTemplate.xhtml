@@ -19,7 +19,7 @@
                 <b:navLink value="Mein Profil" href="#"></b:navLink>
                 <b:navLink value="Posteingang" href="#"></b:navLink>
             </b:navbarLinks>
-            <ezcomp:loginComponent loginAction="#{login.login}" namedBean="#{login}"/>
+            <ezcomp:loginComponent loginAction="#{loginComponent.login}" logoutAction="#{loginComponent.logout}" usernameField="#{loginComponent.username}" passwordField="#{loginComponent.password}"/>
         </b:navBar>
         <ui:insert name="content">Content</ui:insert>
         <b:navBar inverse="true" fixed="bottom">
@@ -32,5 +32,4 @@
             </b:navbarLinks>
         </b:navBar>
     </h:body>
-
 </html>

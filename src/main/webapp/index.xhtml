@@ -4,6 +4,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:b="http://bootsfaces.net/ui"
+                xmlns:shiro="http://shiro.apache.org/tags"
                 template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
@@ -15,14 +16,23 @@
             <b:container>
                 <b:row style="display: flex; align-items: center; min-height: 50%; min-height: 50vh; height: 200px;">
                     <b:column col-md="8">
-                        <h1>Willkommen bei ESE Team 2!</h1>
-                        <p>
-                            Das wird eine tolle Plattform, wo sich Studenten und Tutoren finden können! Jetzt kostenlos registrieren.
-                        </p>
+                        <shiro:guest>
+                            <h1>Willkommen bei ESE Team 2!</h1>
+                            <p>
+                                Das wird eine tolle Plattform, wo sich Studenten und Tutoren finden können! Jetzt kostenlos registrieren.
+                            </p>
+                        </shiro:guest>
+                        <shiro:user>
+                            <h1>Erstellen Sie ein Profil!</h1>
+                            <p>
+                                Wir haben gemerkt, dass Sie noch kein Profil erstellt haben. Um die Plattform nutzen und mit Studenten und Tutoren in Verbindung zu treten, benötigen Sie ein Profil. Legen sie am Besten gleich los!
+                            </p>
+                        </shiro:user>
                     </b:column>
                     <b:column col-md="4" >
                         <p>
-                            <a href="registration.xhtml" class="btn btn-lg btn-info">Jetzt registrieren »</a>
+                            <shiro:guest><a href="registration.xhtml" class="btn btn-lg btn-info">Jetzt registrieren »</a></shiro:guest>
+                            <shiro:user><a href="registration.xhtml" class="btn btn-lg btn-success">Profil erstellen »</a></shiro:user>
                         </p>
                     </b:column>
                 </b:row>

@@ -10,39 +10,38 @@
     <!-- INTERFACE -->
     <cc:interface>
         <cc:attribute name="loginAction" required="true" method-signature="java.lang.String action()"/>
-        <cc:attribute name="namedBean" required="true"/>
+        <cc:attribute name="logoutAction" required="true" method-signature="java.lang.String action()"/>
+        <cc:attribute name="usernameField" required="true"/>
+        <cc:attribute name="passwordField" required="true"/>
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
         <shiro:guest>
-        <h:form id="login" styleClass="navbar-form navbar-right">
-            <div class="form-group">
-                <b:inputText id="username" placeholder="Email" fieldSize="sm" value="#{cc.attrs.namedBean.username}" required="true">
-                    <f:facet name="append">
-                        <h:outputText value="@students.unibe.ch" />
-                    </f:facet>
-                </b:inputText>
-            </div>
-            <div class="form-group">
-                <b:inputText id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.namedBean.password}" required="true"/>
-            </div>
-            #{' '}
-            <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right">
-                <f:ajax execute="@form" render="@form" />
-            </b:commandButton>
-        </h:form>
-        </shiro:guest>
-        <shiro:user>
-            
-            <h:form id="logout" styleClass="navbar-form navbar-right">
-                
+            <h:form id="login" styleClass="navbar-form navbar-right">
                 <div class="form-group">
-                    <b:commandButton action="#{logout.logout()}" value="Logout" look="warning">
-                    </b:commandButton>
+                    <b:inputText id="username" placeholder="Email" fieldSize="sm" value="#{cc.attrs.usernameField}" required="true">
+                        <f:facet name="append">
+                            <h:outputText value="@students.unibe.ch" />
+                        </f:facet>
+                    </b:inputText>
                 </div>
                 <div class="form-group">
-                    <b:label text="You are logged in as #{login.username}."/>
+                    <b:inputText id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.passwordField}" required="true"/>
+                </div>
+                #{' '}
+                <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right">
+                    <f:ajax execute="@form" render="@form" />
+                </b:commandButton>
+            </h:form>
+        </shiro:guest>
+        <shiro:user>
+            <h:form id="logout" styleClass="navbar-form navbar-right">
+                <div class="form-group">
+                    <b:label text="You are logged in as #{cc.attrs.usernameField}"/>
+                </div>
+                <div class="form-group">
+                    <b:commandButton action="#{cc.attrs.logoutAction}" value="Logout" look="warning"/>
                 </div>
             </h:form>
         </shiro:user>
