@@ -17,8 +17,11 @@ import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
 /**
- * {Insert description here}
- *
+ * The loginComponent provides the login and logout process.
+ * It holds and validates username and passwort from given userinput.
+ * LoginComponent establishes a session with {@link LoginComponent#login()}.
+ * The caller must ensure that session is destroyed with the
+ * {@link LoginComponent#logout()} method.
  * @author Marc Jost, 17.10.2015
  */
 @SessionScoped
@@ -28,6 +31,12 @@ public class LoginComponent implements Serializable {
     private String username;
     private String password;
 
+    
+    /**
+     * Establishes userSession due to given userinput.
+     * @throws IOException if given userinput does not match username
+     * or password in the database.
+     */
     public void login() throws IOException {
         try {
             SecurityUtils.getSubject().login(new UsernamePasswordToken(username, password));
@@ -39,6 +48,10 @@ public class LoginComponent implements Serializable {
         }
     }
     
+    /**
+     * Destroys userSession and navigates the user back to the indexpage.
+     * @throws IOException 
+     */
      public void logout() throws IOException {
         SecurityUtils.getSubject().logout();
         Faces.invalidateSession();

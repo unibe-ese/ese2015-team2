@@ -12,7 +12,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
- * {Insert description here}
+ * Represents a client of our application and holds all its account information.
+ * All clients are represented as instances of this class. 
+ * Special fields:
+ * id: Every customer has an unique id.
+ * username: Every customer has an unique username that is used to log in.
+ * accountType: Customers can either be a Student or a Tutor.
  * @author Marc Jost, 17.10.2015
  */
 @Entity
@@ -138,6 +143,12 @@ public class Customer implements Serializable {
         return hash;
     }
 
+    /**
+     * Compares an object to this customer, customers are identical when they
+     * have the same id.
+     * @param object to be compared with this customer.
+     * @return true when the given object is a customer with the same id.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
