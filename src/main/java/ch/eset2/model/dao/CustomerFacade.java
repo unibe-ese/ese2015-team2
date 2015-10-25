@@ -1,6 +1,7 @@
 package ch.eset2.model.dao;
 
 import ch.eset2.model.Customer;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +22,10 @@ public class CustomerFacade extends AbstractFacade<Customer> {
 
     public CustomerFacade() {
         super(Customer.class);
+    }
+    
+    public List<Customer> findCustomerByUsername(String username){
+        return em.createNamedQuery("Customer.findByUsername").setParameter("username", username).getResultList();
     }
 
 }

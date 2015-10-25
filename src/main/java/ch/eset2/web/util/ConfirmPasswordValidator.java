@@ -25,7 +25,7 @@ public class ConfirmPasswordValidator implements Validator {
         }
 
         if (!password.equals(confirm)) {
-            throw new ValidatorException(new FacesMessage("Passwords are not equal."));
+            throw new ValidatorException(new FacesMessage("Passwörter sind nicht identisch."));
         }
     }
 

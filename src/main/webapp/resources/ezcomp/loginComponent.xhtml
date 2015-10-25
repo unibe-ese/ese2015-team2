@@ -27,7 +27,7 @@
                     </b:inputText>
                 </div>
                 <div class="form-group">
-                    <b:inputText id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.passwordField}" required="true"/>
+                    <b:inputSecret id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.passwordField}" required="true"/>
                 </div>
                 #{' '}
                 <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right">

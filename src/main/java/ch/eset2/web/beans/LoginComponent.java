@@ -14,6 +14,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.omnifaces.util.Faces;
+import org.omnifaces.util.Messages;
 
 /**
  * {Insert description here}
@@ -33,6 +34,7 @@ public class LoginComponent implements Serializable {
             SavedRequest savedRequest = WebUtils.getAndClearSavedRequest(Faces.getRequest());
             Faces.redirect(savedRequest != null ? savedRequest.getRequestUrl() : Navigation.INDEX);
         } catch (AuthenticationException ex) {
+            Messages.addGlobalError("Unbekannter Benutzer, bitte versuchen Sie es nochmals.");
             Logger.getLogger(LoginComponent.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

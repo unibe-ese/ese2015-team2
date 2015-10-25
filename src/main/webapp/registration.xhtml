@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:b="http://bootsfaces.net/ui"
@@ -16,15 +17,22 @@
                 <b:column span="6" offset="3">
                     <h1>Registration für ESET2</h1>
                     <p>Bitte geben Sie Ihre Daten vollständig und korrekt ein.</p>
-                    <br/>
+                    <br />
                     <h:form>
                         <b:panelGrid colSpans="4,8">
                             <h:outputLabel value="Email:"/>
-                            <b:inputText value="#{registrationBean.newCustomer.username}">
-                                <f:facet name="append">
-                                    <h:outputText value="@students.unibe.ch" />
-                                </f:facet>
-                            </b:inputText>
+                            <b:row>
+                                <b:column span="12">
+                                    <b:inputText id="username" value="#{registrationBean.newCustomer.username}" required="true">
+                                        <f:facet name="append">
+                                            <h:outputText value="@students.unibe.ch" />
+                                        </f:facet>
+                                        <f:validator validatorId="uniqueUsernameValidator" />
+                                        <f:ajax event="blur" execute="username" render="m_username" />
+                                    </b:inputText>
+                                    <h:message id="m_username" for="username" style="color:red"/>
+                                </b:column>
+                            </b:row>
                             <h:outputLabel for="password" value="Passwort:"/>
                             <b:row>
                                 <b:column span="12">
@@ -33,7 +41,7 @@
                                         <f:attribute name="confirm" value="#{confirmPassword.submittedValue}" />
                                         <f:ajax event="blur" execute="password confirm" render="m_password" />
                                     </b:inputSecret>
-                                    <h:message id="m_password" for="password" />
+                                    <h:message id="m_password" for="password" style="color:red"/>
                                 </b:column>
                             </b:row>
                             <h:outputLabel for="confirm" value="Passwort bestätigen:"/>
@@ -42,7 +50,7 @@
                                     <b:inputSecret id="confirm" binding="#{confirmPassword}" required="true">
                                         <f:ajax event="blur" execute="password confirm" render="m_password m_confirm" />
                                     </b:inputSecret>
-                                    <h:message id="m_confirm" for="confirm" />
+                                    <h:message id="m_confirm" for="confirm" style="color:red"/>
                                 </b:column>
                             </b:row>
                             <h:outputText value="Kontotyp:"/>
@@ -55,17 +63,17 @@
                         <br/>
                         <b:panelGrid colSpans="4,8">
                             <h:outputText value="Name:"/>
-                            <b:inputText value="#{registrationBean.newCustomer.lastName}"/>
+                            <b:inputText value="#{registrationBean.newCustomer.lastName}" required="true"/>
                             <h:outputText value="Vorname"/>
-                            <b:inputText value="#{registrationBean.newCustomer.firstName}"/>
+                            <b:inputText value="#{registrationBean.newCustomer.firstName}" required="true"/>
                             <h:outputText value="Matrikelnummer:"/>
-                            <b:inputText value="#{registrationBean.newCustomer.matnr}"/>
+                            <b:inputText value="#{registrationBean.newCustomer.matnr}" required="true"/>
                             <h:outputText value="Strasse:"/>
-                            <b:inputText value="#{registrationBean.newCustomer.street}"/>
+                            <b:inputText value="#{registrationBean.newCustomer.street}" required="true"/>
                             <h:outputText value="PLZ:"/>
-                            <b:inputText value="#{registrationBean.newCustomer.zip}"/>
+                            <b:inputText value="#{registrationBean.newCustomer.zip}" required="true"/>
                             <h:outputText value="Stadt/Ort:"/>
-                            <b:inputText value="#{registrationBean.newCustomer.city}"/>
+                            <b:inputText value="#{registrationBean.newCustomer.city}" required="true"/>
                             <h:outputText value="Phone:"/>
                             <b:inputText value="#{registrationBean.newCustomer.phone}"/>
                         </b:panelGrid>

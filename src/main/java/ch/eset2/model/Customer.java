@@ -6,13 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  * {Insert description here}
  * @author Marc Jost, 17.10.2015
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Customer.findByUsername", query = "SELECT f FROM Customer f WHERE f.username = :username")
+})
 public class Customer implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -29,6 +35,7 @@ public class Customer implements Serializable {
     
     @NotNull
     protected String password;
+    @Pattern(regexp = "\\d{2}-\\d{3}-\\d{3}", message = "Ungültige Matrikelnummer. Format: xx-xxx-xxx")
     protected String matnr;
     protected String street;
     protected String zip;
