@@ -27,7 +27,7 @@ public abstract class Profile implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
     
-    @OneToOne()
+    @OneToOne(mappedBy = "profile")
     protected Customer customer;
     
     protected String gender;
