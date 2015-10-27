@@ -13,6 +13,7 @@ import ch.eset2.web.util.Navigation;
 import ch.eset2.web.util.ProfileFactory;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -23,7 +24,7 @@ import org.apache.shiro.SecurityUtils;
  * @author foxhound
  */
 @Named
-@ViewScoped
+@RequestScoped
 public class EditProfileBean implements Serializable {
     
     // TODO: make it so that a user cannot change an other users profile
@@ -50,6 +51,8 @@ public class EditProfileBean implements Serializable {
             profileFacade.create(profile);
             customer.setProfile(profile);
             customerFacade.edit(customer);
+        } else {
+            profile = customer.getProfile();
         }
         
     }
@@ -58,7 +61,7 @@ public class EditProfileBean implements Serializable {
         try {
             profileFacade.edit(profile);
             customerFacade.edit(customer);
-            return Navigation.INDEX;
+            return Navigation.VIEWPROFILE;
         } catch (Exception e){ // TODO
             System.out.println("ch.eset2.web.beans.EditProfileBean.saveProfile()");
             e.printStackTrace();

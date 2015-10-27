@@ -16,8 +16,8 @@
         <b:messages/>
         <b:navBar brand="ESET2"  brandHref="#{request.contextPath}/index.xhtml" inverse="true" fixed="top">
             <b:navbarLinks>
-                <b:navLink value="Vorlesungen" href="#"></b:navLink>
-                <b:navLink value="Mein Profil" href="studentprofile.xhtml"></b:navLink>
+                <b:navLink value="Vorlesungen" href="viewcourses.xhtml"></b:navLink>
+                <b:navLink value="Mein Profil" href="viewprofile.xhtml"></b:navLink>
                 <b:navLink value="Posteingang" href="#"></b:navLink>
             </b:navbarLinks>
             <ezcomp:loginComponent loginAction="#{loginComponent.login}" logoutAction="#{loginComponent.logout}" usernameField="#{loginComponent.username}" passwordField="#{loginComponent.password}"/>

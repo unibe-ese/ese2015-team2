@@ -13,4 +13,6 @@ public class Navigation {
     public static final String INDEX = "index.xhtml";
     public static final String REGISTRATION = "registration.xhtml";
     public static final String REGSUCCESS = "regSuccess.xhtml";
+    public static final String EDITPROFILE = "editprofile.xhtml";
+    public static final String VIEWPROFILE = "viewprofile.xhtml";
 }

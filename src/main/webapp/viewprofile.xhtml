@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
-<!DOCTYPE html>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:b="http://bootsfaces.net/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                template="baseTemplate.xhtml">
+                template="./layout/baseTemplate.xhtml">
 
     <ui:define name="content">
         <h:outputStylesheet library="css" name="profile.css"  />
@@ -13,23 +13,23 @@
             <br />
             <b:row>
                 <b:column span="7">
-                    <h1><ui:insert name="FirstNameLastName">Hans Muster</ui:insert></h1>
+                    <h1>#{viewProfileBean.customer.firstName} #{viewProfileBean.customer.lastName}</h1>
                     <br />
                     <b:row>
                         <b:column span="4">
                             <a class="profile-image" href="#">
-                                <span class="profile-image-initials"><ui:insert name="initials"/>HM</span>
+                                <span class="profile-image-initials">:(</span>
                             </a>
                         </b:column>
                         <b:column span="8">
-                            <ui:insert name="profileDescription">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </ui:insert>
+                            #{viewProfileBean.profile.description}
                         </b:column>
                     </b:row>
                     <hr />
                     <b:row>
                         <b:column span="12">
                             <h3>Meine Studienfächer</h3>
-                            <ui:insert name="courseBoxContent"/>
+                            hier kommt was hin
                         </b:column>
                     </b:row>
                 </b:column>
@@ -37,17 +37,21 @@
                     <h3>Kontakt</h3>
                     <b:panelGrid colSpans="4,8">
                         <h:outputLabel value="Email"/>
-                        <h:outputText value="hans.muster@irgendwas.com"/>
+                        <h:outputText value="#{viewProfileBean.customer.username}@students.unibe.ch"/>
                         <h:outputLabel value="Telefon"/>
-                        <h:outputText value="033 336 33 66"/>
+                        <h:outputText value="#{viewProfileBean.customer.phone}"/>
                         <h:outputLabel value="Adresse"/>
-                        <h:outputText value="Strasse"/>
+                        <h:outputText value="#{viewProfileBean.customer.street}"/>
                         #{''}
-                        <h:outputText value="PLZ Stadt"/>
+                        <h:outputText value="#{viewProfileBean.customer.zip}, #{viewProfileBean.customer.city}"/>
                     </b:panelGrid>
+                    <br />
+                    <b:button rendered="#{viewProfileBean.belongsToMe()}" outcome="/editprofile.xhtml" value="Profil editieren" look="info"/>
                     <hr />
                     <h4>Freunde</h4>
-                    <ui:insert name="friendBoxContent"></ui:insert>
+                    Noch keine Freunde :(
+                    <hr />
+                    <b:button rendered="#{viewProfileBean.belongsToMe()}" outcome="" value="Profil löschen" look="danger" size="xs"/>
                 </b:column>
             </b:row>
         </b:container>
