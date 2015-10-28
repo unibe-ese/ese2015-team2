@@ -29,7 +29,14 @@
                     <b:row>
                         <b:column span="12">
                             <h3>Meine Studienfächer</h3>
-                            hier kommt was hin
+                            <b:row rendered="false"> <!--TODO-->
+                                <b:column span="8">
+                                    Noch keine Kurse gewählt, fügen Sie doch einige hinzu.
+                                </b:column>
+                                <b:column span="3" offset="1">
+                                    <b:button value="Kurse suchen" outcome="/viewcourses.xhtml" look="primary"/>
+                                </b:column>
+                            </b:row>
                         </b:column>
                     </b:row>
                 </b:column>

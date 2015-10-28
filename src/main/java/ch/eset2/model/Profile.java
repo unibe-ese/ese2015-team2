@@ -7,10 +7,13 @@ package ch.eset2.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -29,6 +32,25 @@ public abstract class Profile implements Serializable {
     
     @OneToOne(mappedBy = "profile")
     protected Customer customer;
+    
+    @OneToMany(mappedBy ="profile")
+    protected List<CourseProfile> courseProfiles;
+
+    public void addCourseProfile(CourseProfile cp){
+        courseProfiles.add(cp);
+    }
+    
+    public void removeCourseProfile(CourseProfile cp){
+        courseProfiles.remove(cp);
+    }
+    
+    public List<CourseProfile> getCourseProfiles() {
+        return courseProfiles;
+    }
+
+    public void setCourseProfiles(List<CourseProfile> courseProfiles) {
+        this.courseProfiles = courseProfiles;
+    }
     
     protected String gender;
     

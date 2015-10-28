@@ -6,11 +6,13 @@
 package ch.eset2.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -32,6 +34,25 @@ public class Course implements Serializable {
     
     private String ECTS;
     private String semester;
+    
+    @OneToMany(mappedBy = "course")
+    private List<CourseProfile> courseProfiles;
+
+    public void addCourseProfile(CourseProfile cp){
+        courseProfiles.add(cp);
+    }
+    
+    public void removeCourseProfile(CourseProfile cp){
+        courseProfiles.remove(cp);
+    }
+    
+    public List<CourseProfile> getCourseProfiles() {
+        return courseProfiles;
+    }
+
+    public void setCourseProfiles(List<CourseProfile> courseProfiles) {
+        this.courseProfiles = courseProfiles;
+    }
 
     public String getECTS() {
         return ECTS;

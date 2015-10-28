@@ -5,8 +5,9 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:b="http://bootsfaces.net/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                template="./layout/baseTemplate.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:shiro="http://shiro.apache.org/tags"
+                xmlns:p="http://primefaces.org/ui"
+                template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
         title
@@ -46,6 +47,12 @@
                             <p:column headerText="Stufe">
                                 <h:outputText value="#{course.level}"/>
                             </p:column>
+                            
+                            <shiro:authenticated>
+                                <p:column headerText="">
+                                    <b:commandButton value="Hinzufügen" action="#{addCourseToProfileBean.addCourse(course)}" look="success"/>
+                                </p:column>
+                            </shiro:authenticated>
                         </p:dataTable>
                     </h:form>
                 </b:column>
