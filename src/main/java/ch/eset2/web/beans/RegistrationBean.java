@@ -6,8 +6,11 @@
 package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
+import ch.eset2.model.Profile;
 import ch.eset2.model.dao.CustomerFacade;
+import ch.eset2.model.dao.ProfileFacade;
 import ch.eset2.web.util.Navigation;
+import ch.eset2.web.util.ProfileFactory;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -24,6 +27,9 @@ public class RegistrationBean implements Serializable {
     
     @Inject
     private CustomerFacade customerFacade;
+    
+    @Inject
+    private ProfileFacade profileFacade;
 
     private Customer newCustomer;
     
@@ -39,7 +45,11 @@ public class RegistrationBean implements Serializable {
     }
     
     public String registerNewCustomer(){
+        Profile profile = ProfileFactory.getProfile(newCustomer.getAccountType());
+        profile.setCustomer(newCustomer);
+        newCustomer.setProfile(profile);
         customerFacade.create(newCustomer);
+        profileFacade.create(profile);
         return Navigation.REGSUCCESS;
     }
 

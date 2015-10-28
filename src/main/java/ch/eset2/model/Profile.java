@@ -57,7 +57,7 @@ public abstract class Profile implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     protected Date birthday;
     
-    protected String description;
+    protected String description = "Noch keine Profilbeschreibung";
 
     public Customer getCustomer() {
         return customer;

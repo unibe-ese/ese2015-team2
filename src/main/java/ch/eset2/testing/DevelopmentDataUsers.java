@@ -5,8 +5,13 @@
  */
 package ch.eset2.testing;
 
+import static ch.eset2.model.CourseProfile_.profile;
 import ch.eset2.model.Customer;
+import ch.eset2.model.Profile;
+import static ch.eset2.model.Profile_.customer;
+import ch.eset2.model.StudentProfile;
 import ch.eset2.model.dao.CustomerFacade;
+import ch.eset2.model.dao.ProfileFacade;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -23,6 +28,9 @@ public class DevelopmentDataUsers {
 
     @Inject
     private CustomerFacade customerFacade;
+    
+    @Inject
+    private ProfileFacade profileFacade;
 
     public DevelopmentDataUsers() {
 
@@ -34,6 +42,8 @@ public class DevelopmentDataUsers {
     }
 
     private void createTestUsers() {
+        
+        
         Customer customer = new Customer();
         customer.setAccountType(1);
         customer.setCity("Bern");
@@ -45,6 +55,11 @@ public class DevelopmentDataUsers {
         customer.setStreet("Stöckackerstrasse 98");
         customer.setUsername("marc.jost");
         customer.setZip("3018");
+        
+        Profile profile = new StudentProfile();
+        profile.setCustomer(customer);
+        customer.setProfile(profile);
         customerFacade.create(customer);
+        profileFacade.create(profile);
     }
 }

@@ -45,9 +45,16 @@ public class AddCourseToProfileBean implements Serializable {
     }
     
     public void addCourse(Course course){
+
         CourseProfile cp = new CourseProfile();
+        
+        profile.addCourseProfile(cp);
+        course.addCourseProfile(cp);
+        
         cp.setProfile(profile);
         cp.setCourse(course);
         courseProfileFacade.create(cp);
+        profileFacade.edit(profile);
+        courseFacade.edit(course);
     }
 }

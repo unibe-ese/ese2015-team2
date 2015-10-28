@@ -5,6 +5,7 @@
  */
 package ch.eset2.web.beans;
 
+import ch.eset2.model.CourseProfile;
 import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
 import javax.annotation.PostConstruct;
@@ -28,6 +29,19 @@ public class ViewProfileBean {
         // Only works for my profile for now
         customer = (Customer) SecurityUtils.getSubject().getPrincipal();
         profile = customer.getProfile();
+    }
+    
+    public boolean hasCourses(){
+        if(profile==null){
+            System.err.println("PROFILE IS FUCKING NULL");
+            return false;
+        }
+        System.err.println("COURSES of this user: " );
+        for(CourseProfile cp : profile.getCourseProfiles()){
+            System.err.println(cp.getCourse().getTitle());
+        }
+        System.err.println("RETURNING: " + !profile.getCourseProfiles().isEmpty());
+        return !profile.getCourseProfiles().isEmpty();
     }
     
     public boolean belongsToMe(){

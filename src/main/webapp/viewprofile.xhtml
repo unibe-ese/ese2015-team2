@@ -5,7 +5,8 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:b="http://bootsfaces.net/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                template="./layout/baseTemplate.xhtml">
+                template="./layout/baseTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
         <h:outputStylesheet library="css" name="profile.css"  />
@@ -18,7 +19,7 @@
                     <b:row>
                         <b:column span="4">
                             <a class="profile-image" href="#">
-                                <span class="profile-image-initials">:(</span>
+                                <span class="profile-image-initials">MJ</span>
                             </a>
                         </b:column>
                         <b:column span="8">
@@ -28,14 +29,45 @@
                     <hr />
                     <b:row>
                         <b:column span="12">
-                            <h3>Meine Studienfächer</h3>
-                            <b:row rendered="false"> <!--TODO-->
+                            <b:row>
                                 <b:column span="8">
+                                    <h2>Meine Studienfächer</h2>
+                                </b:column>
+                                <b:column span="3" offset="1" style="padding-top: 20px;">
+                                    <b:button value="Kurse suchen" outcome="/viewcourses.xhtml" look="primary" />
+                                </b:column>
+                            </b:row>
+                            <hr />
+                            <b:row >
+                                <b:column span="12" rendered="#{!viewProfileBean.hasCourses()}">  <!--TODO-->
                                     Noch keine Kurse gewählt, fügen Sie doch einige hinzu.
                                 </b:column>
-                                <b:column span="3" offset="1">
-                                    <b:button value="Kurse suchen" outcome="/viewcourses.xhtml" look="primary"/>
+                                <b:column span="12" rendered="#{viewProfileBean.hasCourses()}">
+                                    <h:form id="table">
+                                        <p:dataTable var="courseProfile" value="#{viewProfileBean.profile.courseProfiles}">
+                                            <p:column headerText="Titel">
+                                                <h:outputText value="#{courseProfile.course.title}"/>
+                                            </p:column>
+
+                                            <p:column headerText="ECTS">
+                                                <h:outputText value="#{courseProfile.course.ECTS}"/>
+                                            </p:column>
+
+                                            <p:column headerText="Semester">
+                                                <h:outputText value="#{courseProfile.course.semester}"/>
+                                            </p:column>
+
+                                            <p:column headerText="Stufe">
+                                                <h:outputText value="#{courseProfile.course.level}"/>
+                                            </p:column>
+
+                                            <p:column headerText="Note">
+                                                <h:outputText value="#{courseProfile.grade}"/>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </h:form>
                                 </b:column>
+                                
                             </b:row>
                         </b:column>
                     </b:row>

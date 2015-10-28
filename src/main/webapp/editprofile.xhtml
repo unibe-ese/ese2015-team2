@@ -5,7 +5,8 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:b="http://bootsfaces.net/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                template="./layout/baseTemplate.xhtml">
+                template="./layout/baseTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="title">
         title
@@ -23,14 +24,18 @@
                         <h3>Profilinformationen</h3>
                         <b:panelGrid colSpans="4,8">
                             <h:outputLabel value="Profilbeschreibung:"/>
-                            <h:inputTextarea rows="10" cols="63" id="description" value="#{editProfileBean.profile.description}"/>
+                            <p:inputTextarea rows="8" cols="50" value="#{editProfileBean.profile.description}" counter="display" maxlength="250" counterTemplate="{0} verbleibende Zeichen." autoResize="false" />
+                            #{' '}
+                            <h:outputText id="display" />
                         </b:panelGrid>
                         <h3>Kontakt:</h3>
                         <b:panelGrid colSpans="4,8">
                             <h:outputText value="Name:"/>
                             <b:inputText value="#{editProfileBean.customer.lastName}"/>
-                            <h:outputText value="Vorname"/>
+                            <h:outputText value="Vorname:"/>
                             <b:inputText value="#{editProfileBean.customer.firstName}"/>
+                            <h:outputText value="Geburtstag:"/>
+                            <b:datepicker value="#{editProfileBean.profile.birthday}"/>
                             <h:outputText value="Matrikelnummer:"/>
                             <b:inputText value="#{editProfileBean.customer.matnr}"/>
                             <h:outputText value="Strasse:"/>
@@ -49,7 +54,7 @@
                             <b:column span="3" offset="2">
                                 <br/>
                                 <a class="profile-image" href="#">
-                                    <span class="profile-image-initials">:(</span>
+                                    <span class="profile-image-initials">MJ</span>
                                 </a>
                                 <br />
                                 <b:panelGrid colSpans="6,6">
