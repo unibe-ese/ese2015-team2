@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 
 /**
  *
@@ -36,6 +38,7 @@ public class CourseProfile implements Serializable {
     
     private double grade;
     private int rate;
+    @Temporal(DATE)
     private Date passedAt;
 
     public Profile getProfile() {
