@@ -6,6 +6,7 @@
 package ch.eset2.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -103,6 +104,10 @@ public class Course implements Serializable {
         this.id = id;
     }
 
+    public void testInit(){
+    courseProfiles = new ArrayList<CourseProfile>(); 
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
