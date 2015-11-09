@@ -61,6 +61,9 @@
                                     <b:commandButton action="#" value="X"  size="xs" look="danger"/>
                                     <b:commandButton action="#" value="Durchsuchen"  size="xs"/>
                                 </b:panelGrid>
+                                <hr/>
+                                <hr/>
+                                <b:button rendered="#{viewProfileBean.belongsToMe()}" outcome="deleteprofile" value="Profil löschen" look="danger" size="xs"/>
                             </b:column>
                         </b:row>
                     </b:column>
