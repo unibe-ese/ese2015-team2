@@ -18,22 +18,19 @@
             <br />
             <b:row>
                 <b:column span="12">
-                    <h1>Vorlesungen suchen</h1>
-                    <h:form id="search">
-                        <b:inputText>
-                            <f:facet name="prepend">
-                                <b:icon name="search"/>
-                            </f:facet>
-                            <f:facet name="append">
-                                <b:button value="Suchen" look="primary" outcome=""/>
-                            </f:facet>
-                        </b:inputText>
-                    </h:form>
+                    <h1>Ihr Posteingang:</h1>
+                    
                     <hr />
-                    <h:form id="table">
+                    
+                    
+                    <b:column span="12" rendered="#{!viewMessagesBean.hasMessages()}">  <!--TODO-->
+                        <h2>Es befinden sich keine Nachrichten in ihrem Posteingang.</h2>
+                    </b:column>
+                    
+                    <h:form id="table" rendered="#{viewMessagesBean.hasMessages()}">
                         <p:dataTable var="message" value="#{viewMessagesBean.messages}">
                             <p:column headerText="Betreff">
-                                <h:outputText value="#{message.subject}"/>
+                                <b:navLink value="#{message.subject}" href="viewMessage#{message.id}.xhtml"></b:navLink>
                             </p:column>
 
                             <p:column headerText="Absender">
