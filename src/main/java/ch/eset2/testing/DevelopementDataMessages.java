@@ -39,12 +39,39 @@ public class DevelopementDataMessages {
             
            
             Message firstMessage = new Message();
-            firstMessage.setSubject("Testbetreff");
+            firstMessage.setSubject("Testbetreff1");
             firstMessage.setReciever("marc.jost");
             firstMessage.setSender("mischa.wenger");
-            firstMessage.setMessageText("Hier steht die Testnachricht.");
+            firstMessage.setMessageText("Hier steht die Testnachricht von Mischa an Marc.");
             messageFacade.create(firstMessage);
 
+            Message secondMessage = new Message();
+            secondMessage.setSubject("TestBetreff2");
+            secondMessage.setReciever("mischa.wenger");
+            secondMessage.setSender("marc.jost");
+            secondMessage.setMessageText("Hier steht die Testnachricht2 von Marc an Mischa.");
+            messageFacade.create(secondMessage);
+            
+            Message thirdMessage = new Message();
+            thirdMessage.setSubject("Testbetreff3");
+            thirdMessage.setReciever("eve.mendoza");
+            thirdMessage.setSender("eve.mendoza");
+            thirdMessage.setMessageText("Hier steht die Testnachricht3 von Eve an Eve.");
+            messageFacade.create(thirdMessage);
+            
+            Message fourthMessage = new Message();
+            fourthMessage.setSubject("Testbetreff4");
+            fourthMessage.setReciever("mischa.wenger");
+            fourthMessage.setSender("eve.mendoza");
+            fourthMessage.setMessageText("Hier steht die Testnachricht4 von Eve an Mischa .");
+            messageFacade.create(fourthMessage);
+            
+            Message fifthMessage = new Message();
+            fifthMessage.setSubject("Testbetreff5");
+            fifthMessage.setReciever("eve.mendoza");
+            fifthMessage.setSender("mischa.wenger");
+            fifthMessage.setMessageText("Hier steht die Testnachricht5 vom Mischa an Eve.");
+            messageFacade.create(fifthMessage);
             
             /*
             Course ei = new Course();

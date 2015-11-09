@@ -19,7 +19,10 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- *
+ * EditeProfileBean manages changes of the profile.
+ * It allows to persist edited profile variables to the database.
+ * {@link EditProfileBean#retrieveCustomer() } should be called from the server before
+ * using any service of this class.
  * @author foxhound
  */
 @Named
@@ -40,6 +43,10 @@ public class EditProfileBean implements Serializable {
 
     }
 
+    /**
+     * Finds and loads customer of active session. 
+     * Loads the profile of the customer.
+     */
     @PostConstruct
     private void retrieveCustomer() {
         customer = (Customer) SecurityUtils.getSubject().getPrincipal();
@@ -55,6 +62,10 @@ public class EditProfileBean implements Serializable {
 
     }
 
+    /**
+     * Persists the profileChanges to the database.
+     * @return Viewprofile page when successful changed the profile.
+     */
     public String saveProfile() {
         try {
             profileFacade.edit(profile);
@@ -67,6 +78,8 @@ public class EditProfileBean implements Serializable {
         }
     }
 
+    
+    //getters and setters
     public Customer getCustomer() {
         return customer;
     }
@@ -83,6 +96,11 @@ public class EditProfileBean implements Serializable {
         this.profile = profile;
     }
 
+    
+    /**
+     * Removes the profile of the logged in customer from the databas
+     * @return the Index page when deleted successfully.
+     */
     public String removeProfile() {
         if (profile != null) {
             customer.setProfile(null);

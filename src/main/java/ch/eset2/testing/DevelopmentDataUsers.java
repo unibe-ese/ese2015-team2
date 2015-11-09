@@ -81,5 +81,23 @@ public class DevelopmentDataUsers {
         profileFacade.create(profile2);
         
         
+        Customer customer3 = new Customer();
+        customer3.setAccountType(1);
+        customer3.setCity("Zürich");
+        customer3.setFirstName("Eve");
+        customer3.setLastName("Mendoza");
+        customer3.setMatnr("11-100-089");
+        customer3.setPassword("123");
+        customer3.setPhone("");
+        customer3.setStreet("Gesellschaftsstrasse 3");
+        customer3.setUsername("eve.mendoza");
+        customer3.setZip("8100");
+        
+        Profile profile3 = new StudentProfile();
+        profile3.setCustomer(customer3);
+        customer3.setProfile(profile3);
+        customerFacade.create(customer3);
+        profileFacade.create(profile3);
+        
     }
 }
