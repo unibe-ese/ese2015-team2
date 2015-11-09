@@ -48,11 +48,7 @@
                                 <h:outputText value="#{message.messageText}"/>
                             </p:column>
                             
-                            <shiro:authenticated>
-                                <p:column headerText="">
-                                    <b:commandButton value="Hinzufügen" action="#{addCourseToProfileBean.addCourse(course)}" look="success"/>
-                                </p:column>
-                            </shiro:authenticated>
+                            
                         </p:dataTable>
                     </h:form>
                 </b:column>

@@ -33,25 +33,24 @@ public class Message implements Serializable {
     
     @Column(length = 2000)
     private String messageText;
+   
+    private String sender;
     
-    @ManyToOne
-    private Customer sender;
-    @ManyToOne
-    private Customer reciever;
+    private String reciever;
     
-    public Customer getReciever() {
+    public String getReciever() {
         return reciever;
     }
 
-    public void setReciever(Customer reciever) {
+    public void setReciever(String reciever) {
         this.reciever = reciever;
     }
 
-    public Customer getSender() {
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(Customer sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
     

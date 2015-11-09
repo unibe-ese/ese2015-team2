@@ -40,6 +40,8 @@ public class DevelopementDataMessages {
            
             Message firstMessage = new Message();
             firstMessage.setSubject("Testbetreff");
+            firstMessage.setReciever("marc.jost");
+            firstMessage.setSender("mischa.wenger");
             firstMessage.setMessageText("Hier steht die Testnachricht.");
             messageFacade.create(firstMessage);
 

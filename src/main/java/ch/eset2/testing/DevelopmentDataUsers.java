@@ -80,11 +80,6 @@ public class DevelopmentDataUsers {
         customerFacade.create(customer2);
         profileFacade.create(profile2);
         
-        Message message = new Message();
-        message.setSender(customer);
-        message.setReciever(customer2);
-        message.setSubject("Testbetreff");
-        message.setMessageText("Das ist die Nachricht, die versendet wird");
         
     }
 }
