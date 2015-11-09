@@ -49,7 +49,7 @@ public class DevelopmentDataUsers {
         customer.setFirstName("Marc");
         customer.setLastName("Jost");
         customer.setMatnr("12-108-130");
-        customer.setPassword("123");
+        customer.setPassword("a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3");
         customer.setPhone("");
         customer.setStreet("Stöckackerstrasse 98");
         customer.setUsername("marc.jost");
@@ -68,7 +68,7 @@ public class DevelopmentDataUsers {
         customer2.setFirstName("Mischa");
         customer2.setLastName("Wenger");
         customer2.setMatnr("11-109-089");
-        customer2.setPassword("123");
+        customer2.setPassword("a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3");
         customer2.setPhone("");
         customer2.setStreet("Weidenweg 10D");
         customer2.setUsername("mischa.wenger");

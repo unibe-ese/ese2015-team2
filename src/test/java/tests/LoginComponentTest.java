@@ -21,6 +21,8 @@ public class LoginComponentTest extends TestCase {
 
     LoginComponent loginComponent;
 
+
+      
     protected void setUp() {
         loginComponent = new LoginComponent();
 
@@ -29,20 +31,4 @@ public class LoginComponentTest extends TestCase {
     public void test() {
         assertTrue(true);
     }
-
-    /*   
-   public void testLogin(){
-       String username = "mischa.wenger";
-       String password = "123";
-       loginComponent.setUsername(username);
-       loginComponent.setPassword(password);
-       try{
-       loginComponent.login();
-       }
-       catch (IOException e){
-           
-       }
-   }
-
-     */
 }

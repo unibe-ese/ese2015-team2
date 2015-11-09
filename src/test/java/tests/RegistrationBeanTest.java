@@ -35,7 +35,7 @@ public class RegistrationBeanTest extends TestCase {
 
     /*
    public void testRegisterNewCustomer(){
-       assertEquals(Navigation.REGSUCCESS, regBean.registerNewCustomer());
+       //assertEquals(Navigation.REGSUCCESS, regBean.registerNewCustomer());
        
    }
 

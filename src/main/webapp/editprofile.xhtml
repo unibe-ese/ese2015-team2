@@ -54,7 +54,7 @@
                                 <b:commandButton value="Speichern" action="#{editProfileBean.saveProfile()}" look="success"/>
                             </b:column>
                             <b:column span="4">
-                                <b:commandButton value="Profil löschen" rendered="#{viewProfileBean.belongsToMe()}" action="#{editProfileBean.removeProfile()}" look="danger"/>
+                                <b:commandButton value="Profil löschen" rendered="#{viewProfileBean.myProfile}" action="#{editProfileBean.removeProfile()}" look="danger"/>
                             </b:column>
                         </b:row>
                     </b:column>

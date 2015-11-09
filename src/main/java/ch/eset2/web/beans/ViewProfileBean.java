@@ -8,8 +8,8 @@ package ch.eset2.web.beans;
 import ch.eset2.model.CourseProfile;
 import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import java.io.Serializable;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
@@ -18,35 +18,29 @@ import org.apache.shiro.SecurityUtils;
  * @author foxhound
  */
 @Named
-@RequestScoped
-public class ViewProfileBean {
+@ViewScoped
+public class ViewProfileBean implements Serializable {
     
     private Customer customer;
     private Profile profile;
     
-    @PostConstruct
-    private void init(){
-        // Only works for my profile for now
-        customer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        profile = customer.getProfile();
+    private boolean hasCourses = false;
+    private boolean myProfile = false;
+    
+    public void init(){
+        customer = profile.getCustomer();
+        hasCourses = !profile.getCourseProfiles().isEmpty();
+        
+        Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
+        myProfile = loggedInCustomer.getProfile().equals(profile);
+    }
+
+    public boolean isHasCourses() {
+        return hasCourses;
     }
     
-    public boolean hasCourses(){
-        if(profile==null){
-            System.err.println("PROFILE IS FUCKING NULL");
-            return false;
-        }
-        System.err.println("COURSES of this user: " );
-        for(CourseProfile cp : profile.getCourseProfiles()){
-            System.err.println(cp.getCourse().getTitle());
-        }
-        System.err.println("RETURNING: " + !profile.getCourseProfiles().isEmpty());
-        return !profile.getCourseProfiles().isEmpty();
-    }
-    
-    public boolean belongsToMe(){
-        // return (SecurityUtils.... get...profile.id == parameter dann true 
-        return true;
+    public boolean isMyProfile(){
+        return myProfile;
     }
 
     public Customer getCustomer() {
