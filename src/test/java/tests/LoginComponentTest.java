@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tests;
+
 import ch.eset2.model.Course;
 import ch.eset2.model.CourseProfile;
 import ch.eset2.web.beans.LoginComponent;
@@ -16,18 +17,20 @@ import static junit.framework.Assert.assertEquals;
  *
  * @author Mischa Wenger
  */
-
 public class LoginComponentTest extends TestCase {
 
-      LoginComponent loginComponent;
-   
-   
-      protected void setUp(){
-       loginComponent = new LoginComponent();
-   
-   }
+    LoginComponent loginComponent;
 
-   /*   
+    protected void setUp() {
+        loginComponent = new LoginComponent();
+
+    }
+
+    public void test() {
+        assertTrue(true);
+    }
+
+    /*   
    public void testLogin(){
        String username = "mischa.wenger";
        String password = "123";
@@ -41,6 +44,5 @@ public class LoginComponentTest extends TestCase {
        }
    }
 
-   */
-    
+     */
 }
