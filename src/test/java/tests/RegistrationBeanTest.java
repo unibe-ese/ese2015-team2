@@ -20,21 +20,21 @@ import static junit.framework.Assert.assertEquals;
 
 public class RegistrationBeanTest extends TestCase {
 
-    RegistrationBean regBean;
-    Customer customer;
+    //RegistrationBean regBean;
+    //Customer customer;
    
    protected void setUp(){
-       regBean = new RegistrationBean();
-       customer = new Customer();
-       customer.setAccountType(0);
-       regBean.setNewCustomer(customer);
+//       regBean = new RegistrationBean();
+//       customer = new Customer();
+//       customer.setAccountType(0);
+//       regBean.setNewCustomer(customer);
    }
 
-   /*
+   
    public void testRegisterNewCustomer(){
-       assertEquals(Navigation.REGSUCCESS, regBean.registerNewCustomer());
+       //assertEquals(Navigation.REGSUCCESS, regBean.registerNewCustomer());
        
    }
 
-   */
+   
 }

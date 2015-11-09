@@ -19,28 +19,27 @@ import static junit.framework.Assert.assertEquals;
 
 public class LoginComponentTest extends TestCase {
 
-      LoginComponent loginComponent;
+    LoginComponent loginComponent;
    
    
-      protected void setUp(){
-       loginComponent = new LoginComponent();
+    
+    protected void setUp(){
+       //loginComponent = new LoginComponent();
    
-   }
+    }
 
-   /*   
+      
    public void testLogin(){
-       String username = "mischa.wenger";
-       String password = "123";
-       loginComponent.setUsername(username);
-       loginComponent.setPassword(password);
-       try{
-       loginComponent.login();
-       }
-       catch (IOException e){
-           
-       }
+//       String username = "mischa.wenger";
+//       String password = "123";
+//       loginComponent.setUsername(username);
+//       loginComponent.setPassword(password);
+//       try{
+//       loginComponent.login();
+//       }
+//       catch (IOException e){
+//           
+//       }
    }
-
-   */
     
 }

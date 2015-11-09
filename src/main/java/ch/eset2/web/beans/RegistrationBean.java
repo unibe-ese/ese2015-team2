@@ -16,6 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 
 /**
  *
@@ -47,9 +48,11 @@ public class RegistrationBean implements Serializable {
     public String registerNewCustomer(){
         Profile profile = ProfileFactory.getProfile(newCustomer.getAccountType());
         profile.setCustomer(newCustomer);
+        //profileFacade.create(profile);
         newCustomer.setProfile(profile);
+        newCustomer.setPassword(new Sha256Hash(newCustomer.getPassword()).toHex());
         customerFacade.create(newCustomer);
-        profileFacade.create(profile);
+        
         return Navigation.REGSUCCESS;
     }
 
