@@ -6,6 +6,8 @@
 package tests;
 import ch.eset2.model.Course;
 import ch.eset2.model.CourseProfile;
+import ch.eset2.web.beans.LoginComponent;
+import java.io.IOException;
 import java.util.ArrayList;
 import junit.framework.*;
 import static junit.framework.Assert.assertEquals;
@@ -15,32 +17,30 @@ import static junit.framework.Assert.assertEquals;
  * @author Mischa Wenger
  */
 
-public class CourseTest extends TestCase {
+public class LoginComponentTest extends TestCase {
 
-    Course course;
-    CourseProfile cp;
-             
+      LoginComponent loginComponent;
    
-   // assigning the values
-   protected void setUp(){
-      course = new Course();
-      cp = new CourseProfile();
-      course.testInit();
+   
+      protected void setUp(){
+       loginComponent = new LoginComponent();
+   
    }
 
-   // test method to add two values
-   public void testAddCourseProfile(){
-       course.addCourseProfile(cp);
-       assertEquals(cp, course.getCourseProfiles().get(0));
+   /*   
+   public void testLogin(){
+       String username = "mischa.wenger";
+       String password = "123";
+       loginComponent.setUsername(username);
+       loginComponent.setPassword(password);
+       try{
+       loginComponent.login();
+       }
+       catch (IOException e){
+           
+       }
    }
-   
-   public void testRemoveCourseProfile(){
-       ArrayList<CourseProfile> cpList = new ArrayList<>();
-       cpList.add(cp);
-       course.setCourseProfiles(cpList);
-       
-       course.removeCourseProfile(cp);
-       assertTrue(course.getCourseProfiles().isEmpty());
-       
-   }
+
+   */
+    
 }

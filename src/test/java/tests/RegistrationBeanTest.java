@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package tests;
-import ch.eset2.model.Course;
-import ch.eset2.model.CourseProfile;
+
+import ch.eset2.model.Customer;
+import ch.eset2.web.beans.RegistrationBean;
+import ch.eset2.web.util.Navigation;
+import ch.eset2.web.util.ProfileFactory;
 import java.util.ArrayList;
 import junit.framework.*;
 import static junit.framework.Assert.assertEquals;
@@ -15,32 +18,23 @@ import static junit.framework.Assert.assertEquals;
  * @author Mischa Wenger
  */
 
-public class CourseTest extends TestCase {
+public class RegistrationBeanTest extends TestCase {
 
-    Course course;
-    CourseProfile cp;
-             
+    RegistrationBean regBean;
+    Customer customer;
    
-   // assigning the values
    protected void setUp(){
-      course = new Course();
-      cp = new CourseProfile();
-      course.testInit();
+       regBean = new RegistrationBean();
+       customer = new Customer();
+       customer.setAccountType(0);
+       regBean.setNewCustomer(customer);
    }
 
-   // test method to add two values
-   public void testAddCourseProfile(){
-       course.addCourseProfile(cp);
-       assertEquals(cp, course.getCourseProfiles().get(0));
-   }
-   
-   public void testRemoveCourseProfile(){
-       ArrayList<CourseProfile> cpList = new ArrayList<>();
-       cpList.add(cp);
-       course.setCourseProfiles(cpList);
-       
-       course.removeCourseProfile(cp);
-       assertTrue(course.getCourseProfiles().isEmpty());
+   /*
+   public void testRegisterNewCustomer(){
+       assertEquals(Navigation.REGSUCCESS, regBean.registerNewCustomer());
        
    }
+
+   */
 }

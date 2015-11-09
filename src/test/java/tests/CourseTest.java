@@ -43,4 +43,17 @@ public class CourseTest extends TestCase {
        assertTrue(course.getCourseProfiles().isEmpty());
        
    }
+   
+   public void testRemoveCourseProfile2(){
+       ArrayList<CourseProfile> cpList = new ArrayList<>();
+       CourseProfile cp2 = new CourseProfile();
+       cp2.setId(11l);
+       cpList.add(cp);
+       cpList.add(cp2);
+       
+       course.setCourseProfiles(cpList);
+       
+       course.removeCourseProfile(cp);
+       assertEquals(cp2, course.getCourseProfiles().get(0));
+   }
 }
