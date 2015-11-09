@@ -26,26 +26,25 @@ import org.apache.shiro.SecurityUtils;
 @Named
 @RequestScoped
 public class EditProfileBean implements Serializable {
-    
+
     // TODO: make it so that a user cannot change an other users profile
-    
     @Inject
     private ProfileFacade profileFacade;
-    
+
     @Inject
     private CustomerFacade customerFacade;
 
     private Profile profile;
     private Customer customer;
-    
-    public EditProfileBean(){
-        
+
+    public EditProfileBean() {
+
     }
-    
+
     @PostConstruct
-    private void retrieveCustomer(){
+    private void retrieveCustomer() {
         customer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        if(customer.getProfile()==null){
+        if (customer.getProfile() == null) {
             profile = ProfileFactory.getProfile(customer.getAccountType());
             profile.setCustomer(customer);
             profileFacade.create(profile);
@@ -54,15 +53,15 @@ public class EditProfileBean implements Serializable {
         } else {
             profile = customer.getProfile();
         }
-        
+
     }
-    
-    public String saveProfile(){
+
+    public String saveProfile() {
         try {
             profileFacade.edit(profile);
             customerFacade.edit(customer);
             return Navigation.VIEWPROFILE;
-        } catch (Exception e){ // TODO
+        } catch (Exception e) { // TODO
             System.out.println("ch.eset2.web.beans.EditProfileBean.saveProfile()");
             e.printStackTrace();
             return null;
@@ -84,6 +83,15 @@ public class EditProfileBean implements Serializable {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
-    
-    
+
+    public String removeProfile() {
+        if (profile != null) {
+            customer.setProfile(null);
+            customerFacade.edit(customer);
+            profileFacade.remove(profile);
+            this.profile = null;
+        }
+        return Navigation.INDEX;
+    }
+
 }
