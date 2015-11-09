@@ -6,6 +6,7 @@
 package ch.eset2.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -97,6 +98,11 @@ public abstract class Profile implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    
+    public void testInit(){
+    courseProfiles = new ArrayList<CourseProfile>(); 
     }
 
     @Override
