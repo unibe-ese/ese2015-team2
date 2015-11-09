@@ -50,7 +50,6 @@ public class ViewMessagesBean implements Serializable {
      * @param username the string for what it's filtered.
      */
     private void filter(String username) {
-
         for (int i = 0; i < messages.size(); i++) {
             if (!messages.get(i).getReciever().equals(username)) {
                 messages.remove(messages.get(i));

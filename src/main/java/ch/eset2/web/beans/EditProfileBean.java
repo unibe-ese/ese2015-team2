@@ -14,10 +14,8 @@ import ch.eset2.web.util.ProfileFactory;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import junit.framework.Assert;
 import org.apache.shiro.SecurityUtils;
 
 /**
