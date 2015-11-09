@@ -20,7 +20,7 @@
                 <b:navLink value="Vorlesungen" href="viewcourses.xhtml"></b:navLink>
                 <shiro:authenticated>
                     <b:navLink value="Mein Profil" href="viewprofile.xhtml"></b:navLink>
-                    <b:navLink value="Posteingang" href="#"></b:navLink>
+                    <b:navLink value="Posteingang" href="inbox.xhtml"></b:navLink>
                 </shiro:authenticated>
             </b:navbarLinks>
             <ezcomp:loginComponent loginAction="#{loginComponent.login}" logoutAction="#{loginComponent.logout}" usernameField="#{loginComponent.username}" passwordField="#{loginComponent.password}"/>

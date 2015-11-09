@@ -5,10 +5,9 @@
  */
 package ch.eset2.testing;
 
-import static ch.eset2.model.CourseProfile_.profile;
 import ch.eset2.model.Customer;
+import ch.eset2.model.Message;
 import ch.eset2.model.Profile;
-import static ch.eset2.model.Profile_.customer;
 import ch.eset2.model.StudentProfile;
 import ch.eset2.model.dao.CustomerFacade;
 import ch.eset2.model.dao.ProfileFacade;
@@ -61,5 +60,26 @@ public class DevelopmentDataUsers {
         customer.setProfile(profile);
         customerFacade.create(customer);
         profileFacade.create(profile);
+        
+        
+        Customer customer2 = new Customer();
+        customer2.setAccountType(1);
+        customer2.setCity("Thun");
+        customer2.setFirstName("Mischa");
+        customer2.setLastName("Wenger");
+        customer2.setMatnr("11-109-089");
+        customer2.setPassword("123");
+        customer2.setPhone("");
+        customer2.setStreet("Weidenweg 10D");
+        customer2.setUsername("mischa.wenger");
+        customer2.setZip("3608");
+        
+        Profile profile2 = new StudentProfile();
+        profile2.setCustomer(customer2);
+        customer2.setProfile(profile2);
+        customerFacade.create(customer2);
+        profileFacade.create(profile2);
+        
+        
     }
 }
