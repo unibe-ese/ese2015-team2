@@ -15,7 +15,30 @@
     </f:metadata>
     
     <ui:define name="content">
-        <b:container>
+        
+        
+        <b:jumbotron rendered="#{!viewMessageBean.myMessage}">
+            <b:container>
+                <b:row style="display: flex; align-items: center; min-height: 50%; min-height: 50vh; height: 200px;">
+                    <b:column col-md="8">
+                       
+                            <h2>Ooops, etwas ist schiefgelaufen. </h2>
+                            <p>
+                                Bitte kehre zu deinem Posteingang zurück.
+                            </p>
+                        
+                    </b:column>
+                    <b:column col-md="4" >
+                        <p>
+                           <a href="inbox.xhtml" class="btn btn-info">Zurück zum Posteingang »</a>
+                           
+                        </p>
+                    </b:column>
+                </b:row>
+            </b:container>
+        </b:jumbotron>
+        
+        <b:container rendered="#{viewMessageBean.myMessage}">
             <b:row>
                 <b:column span="6" offset="3">
                     <h1>Nachricht lesen</h1>
@@ -28,7 +51,7 @@
                                     <h:outputText id="reciever" value="#{viewMessageBean.message.reciever}"/>
                                 </b:column>
                             </b:row>
-                            
+
                             <h:outputLabel value="Absender:"/>
                             <b:row>
                                 <b:column span="12">
@@ -49,10 +72,10 @@
                             </b:row>
                         </b:panelGrid>
                         <b:row>
-                        <b:column span="3" offset="4">
+                            <b:column span="3" offset="4">
                                 <br/>
                                 <a href="inbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
-                        </b:column>
+                            </b:column>
                             <b:column span="2" offset="2">
                                 <br/>
                                 <a href="createMessage.xhtml" class="btn btn-success">Nachricht schreiben »</a>
@@ -60,7 +83,7 @@
                         </b:row>
                     </h:form>
                 </b:column>
-                
+
             </b:row>
         </b:container>
     </ui:define>
