@@ -15,7 +15,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
+ * CreateMessageBean provides a message send service.
+ * It allows to persist a new message to the database.
+ * {@link CreateMessageBean#init() } should be called from the server before
+ * using any service of this class.
  * @author Mischa Wenger / Eve Mendoza
  */
 @Named(value = "createMessageBean")
@@ -28,7 +31,7 @@ public class CreateMessageBean implements Serializable {
     private Message newMessage;
     
     /**
-     * Creates a new instance of RegistrationBean
+     * Creates a new instance of CreateMessageBean
      */
     public CreateMessageBean() {
     }
@@ -38,11 +41,18 @@ public class CreateMessageBean implements Serializable {
         newMessage = new Message();
     }
     
+    
+    /**
+     * Persists the new message to the database.
+     * @return the "sendSuccess.xhtml" page to indicate that the message was sent.
+     */
     public String createNewMessage(){
         messageFacade.create(newMessage);
-        return Navigation.REGSUCCESS;
+        return Navigation.SENDSUCCESS;
     }
 
+    
+    //getters and setters
     public Message getNewMessage() {
         return newMessage;
     }

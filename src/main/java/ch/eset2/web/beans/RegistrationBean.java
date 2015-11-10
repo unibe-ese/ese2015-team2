@@ -16,9 +16,12 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 
 /**
- *
+ * RegistrationBean adds new customers to the database.
+ * {@link RegistrationBean#init() } should be called from the server before
+ * using any service of this class.
  * @author Marc Jost
  */
 @Named(value = "registrationBean")
@@ -44,15 +47,23 @@ public class RegistrationBean implements Serializable {
         newCustomer = new Customer();
     }
     
+    /**
+     * Saves the new customer to the database.
+     * @return the RegistrationSuccess page.
+     */
     public String registerNewCustomer(){
         Profile profile = ProfileFactory.getProfile(newCustomer.getAccountType());
         profile.setCustomer(newCustomer);
+        //profileFacade.create(profile);
         newCustomer.setProfile(profile);
+        newCustomer.setPassword(new Sha256Hash(newCustomer.getPassword()).toHex());
         customerFacade.create(newCustomer);
-        profileFacade.create(profile);
+        
         return Navigation.REGSUCCESS;
     }
 
+    
+    //getters and setters
     public Customer getNewCustomer() {
         return newCustomer;
     }

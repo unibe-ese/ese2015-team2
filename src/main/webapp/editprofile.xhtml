@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
@@ -73,3 +74,94 @@
     </ui:define>
 
 </ui:composition>
+=======
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                template="./layout/baseTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">
+        title
+    </ui:define>
+
+    <ui:define name="content">
+        <h:outputStylesheet library="css" name="profile.css"  />
+        <b:container>
+            <br />
+            <b:row>
+                <h:form>
+                    <b:column span="7">
+                        <h1>Profil editieren</h1>
+                        <br />
+                        <h3>Profilinformationen</h3>
+                        <b:panelGrid colSpans="4,8">
+                            <h:outputLabel value="Profilbeschreibung:"/>
+                            <p:inputTextarea rows="8" cols="50" value="#{editProfileBean.profile.description}" counter="display" maxlength="250" counterTemplate="{0} verbleibende Zeichen." autoResize="false" />
+                            #{' '}
+                            <h:outputText id="display" />
+                        </b:panelGrid>
+                        <h3>Kontakt:</h3>
+                        <b:panelGrid colSpans="4,8">
+                            <h:outputText value="Name:"/>
+                            <b:inputText value="#{editProfileBean.customer.lastName}"/>
+                            <h:outputText value="Vorname:"/>
+                            <b:inputText value="#{editProfileBean.customer.firstName}"/>
+                            <h:outputText value="Geburtstag:"/>
+                            <b:datepicker value="#{editProfileBean.profile.birthday}"/>
+                            <h:outputText value="Matrikelnummer:"/>
+                            <b:inputText value="#{editProfileBean.customer.matnr}"/>
+                            <h:outputText value="Strasse:"/>
+                            <b:inputText value="#{editProfileBean.customer.street}"/>
+                            <h:outputText value="PLZ:"/>
+                            <b:inputText value="#{editProfileBean.customer.zip}"/>
+                            <h:outputText value="Stadt/Ort:"/>
+                            <b:inputText value="#{editProfileBean.customer.city}"/>
+                            <h:outputText value="Phone:"/>
+                            <b:inputText value="#{editProfileBean.customer.phone}"/>
+                        </b:panelGrid>
+                        <br> </br>
+                            
+                        <b:row>
+                            <b:column offset="4" span="4">
+                                <b:commandButton value="Speichern" action="#{editProfileBean.saveProfile()}" look="success"/>
+                            </b:column>
+                            <b:column span="4">
+                                <b:commandButton value="Profil löschen" rendered="#{viewProfileBean.myProfile}" action="#{editProfileBean.removeProfile()}" look="danger"/>
+                            </b:column>
+                        </b:row>
+                    </b:column>
+                    <b:column span="5">
+                        <b:row>
+                            <b:column span="3" offset="2">
+                                <br/>
+                                <a class="profile-image" href="#">
+                                    <span class="profile-image-initials">MJ</span>
+                                </a>
+                                <br />
+                                <b:panelGrid colSpans="6,6">
+                                    <b:commandButton action="#" value="X"  size="xs" look="danger"/>
+                                    <b:commandButton action="#" value="Durchsuchen"  size="xs"/>
+                                </b:panelGrid>
+                            </b:column>
+                        </b:row>
+                    </b:column>
+                </h:form>
+
+            </b:row>
+            <br>
+                <br>
+
+                </br>
+
+            </br>
+
+        </b:container>
+    </ui:define>
+
+</ui:composition>
+>>>>>>> origin/master
