@@ -16,37 +16,40 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 /**
- *
- * @author foxhound
+ * Represents a real course of the univerity and holds all its information.
+ * Special fields:
+ * id: Every course has an unique id.
+ * @author Marc Jost, 17.10.2015
  */
 @Entity
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String title;
-    
+
     @Column(length = 2000)
     private String description;
-    
+
     private String ECTS;
     private String semester;
-    
+    private String level;
+
     @OneToMany(mappedBy = "course")
     private List<CourseProfile> courseProfiles;
 
-    public void addCourseProfile(CourseProfile cp){
+    public void addCourseProfile(CourseProfile cp) {
         courseProfiles.add(cp);
     }
-    
-    public void removeCourseProfile(CourseProfile cp){
+
+    public void removeCourseProfile(CourseProfile cp) {
         courseProfiles.remove(cp);
     }
-    
+
     public List<CourseProfile> getCourseProfiles() {
         return courseProfiles;
     }
@@ -78,8 +81,7 @@ public class Course implements Serializable {
     public void setLevel(String level) {
         this.level = level;
     }
-    private String level;
-    
+
     public Long getId() {
         return id;
     }
@@ -104,10 +106,10 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    public void testInit(){
-    courseProfiles = new ArrayList<CourseProfile>(); 
+    public void testInit() {
+        courseProfiles = new ArrayList<CourseProfile>();
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -115,6 +117,12 @@ public class Course implements Serializable {
         return hash;
     }
 
+    
+    /**
+     * Checks identity only for same unique {@link Course#id}.
+     * @param object the object to be compare with.
+     * @return true when instance of this class and id's are identical.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -132,5 +140,5 @@ public class Course implements Serializable {
     public String toString() {
         return "ch.eset2.model.Course[ id=" + id + " ]";
     }
-    
+
 }

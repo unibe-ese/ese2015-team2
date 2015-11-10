@@ -17,8 +17,12 @@ import javax.persistence.Temporal;
 import static javax.persistence.TemporalType.DATE;
 
 /**
- *
- * @author foxhound
+ * Models the relationship between a {@link Course} and {@link Profile}.
+ * A CourseProfile holds only one {@link Course} and one {@link Profile}, but
+ * courses and profile can hold many {@link CourseProfile} instances.
+ * Special fields:
+ * id: Every courseProfile has an unique id.
+ * @author Marc Jost, 17.10.2015
  */
 @Entity
 public class CourseProfile implements Serializable {
@@ -96,6 +100,12 @@ public class CourseProfile implements Serializable {
         return hash;
     }
 
+    
+    /**
+     * Checks identity only for same unique {@link CourseProfile#id}.
+     * @param object the object to be compare with.
+     * @return true when instance of this class and id's are identical.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

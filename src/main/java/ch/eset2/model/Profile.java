@@ -19,8 +19,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
- *
- * @author foxhound
+ * Represents a profile of a {@link Customer} hold extendet customer information.
+ * The customers are represented by this class. Other customers may access the
+ * {@link Profile}.
+ * Special fields:
+ * id: Every Profile has an unique id.
+ * {@link #customer}: Every profile belongs to exactly one customer.
+ * {@link #courseProfiles}: Relationship to courses the profileowner attends.
+ * @author Marc Jost, 17.10.2015
  */
 @Entity
 public abstract class Profile implements Serializable {
@@ -112,6 +118,12 @@ public abstract class Profile implements Serializable {
         return hash;
     }
 
+    
+    /**
+     * Checks identity only for same unique {@link Profile#id}.
+     * @param object the object to be compare with.
+     * @return true when instance of this class and id's are identical.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

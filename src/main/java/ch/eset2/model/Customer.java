@@ -182,7 +182,7 @@ public class Customer implements Serializable {
 
     /**
      * Compares an object to this customer, customers are identical when they
-     * have the same id.
+     * have the same {@link Customer#id}.
      * @param object to be compared with this customer.
      * @return true when the given object is a customer with the same id.
      */
