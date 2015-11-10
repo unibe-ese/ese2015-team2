@@ -43,8 +43,8 @@
                                 <h:outputText value="#{message.reciever}"/>
                             </p:column>
 
-                            <p:column headerText="Nachricht">
-                                <h:outputText value="#{message.messageText}"/>
+                            <p:column headerText="Nachrichtenvorschau">
+                                <b:navLink value="#{message.messageTextPreview()}" href="viewmessage.xhtml?id=#{message.id}"></b:navLink>
                             </p:column>
                             
                             

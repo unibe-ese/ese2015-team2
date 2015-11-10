@@ -41,6 +41,21 @@ public class Message implements Serializable {
     
     private String reciever;
     
+    
+    /**
+     * Creates a short preview of 30 chars of the messageText.
+     * @return the first 30 chars of the messageText. Whole messagetext if text
+     * is shorter than 30 chars.
+     */
+    public String messageTextPreview(){
+        if (messageText.length() <= 30){
+            return messageText;
+        }
+        else {
+            return messageText.substring(0, 30).concat("...");
+        }
+    }
+    
     public String getReciever() {
         return reciever;
     }
