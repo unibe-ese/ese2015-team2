@@ -9,8 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 
 /**
- *
- * @author foxhound
+ * Extends the abstract class {@link Profile}.
+ * In the current implementation there are no additional fields for StudentProfiles.
+ * @author Marc Jost, 17.10.2015
  */
 @Entity
 public class StudentProfile extends Profile implements Serializable {
@@ -22,6 +23,12 @@ public class StudentProfile extends Profile implements Serializable {
         return hash;
     }
 
+    
+    /**
+     * Checks identity only for same unique {@link Profile#id}.
+     * @param object the object to be compare with.
+     * @return true when instance of this class and id's are identical.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

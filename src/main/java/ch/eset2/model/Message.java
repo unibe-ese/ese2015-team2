@@ -17,8 +17,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
- *
- * @author foxhound
+ * Represents a message sent from a {@link Customer} to an other.
+ * Special fields:
+ * reciever: The {@link Customer} that can see this message in his inbox.
+ * id: Every message has an unique id.
+ * @author Marc Jost, 17.10.2015
  */
 @Entity
 public class Message implements Serializable {
@@ -85,6 +88,12 @@ public class Message implements Serializable {
         return hash;
     }
 
+    
+    /**
+     * Checks identity only for same unique {@link Message#id}.
+     * @param object the object to be compare with.
+     * @return true when instance of this class and id's are identical.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
