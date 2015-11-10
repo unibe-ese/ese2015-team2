@@ -9,11 +9,13 @@ import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
 import ch.eset2.model.dao.CustomerFacade;
 import ch.eset2.model.dao.ProfileFacade;
+import ch.eset2.web.util.InitialsGenerator;
 import ch.eset2.web.util.Navigation;
 import ch.eset2.web.util.ProfileFactory;
+import ch.eset2.web.util.UserHelper;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
@@ -26,7 +28,7 @@ import org.apache.shiro.SecurityUtils;
  * @author foxhound
  */
 @Named
-@RequestScoped
+@ViewScoped
 public class EditProfileBean implements Serializable {
 
     // TODO: make it so that a user cannot change an other users profile
@@ -35,6 +37,9 @@ public class EditProfileBean implements Serializable {
 
     @Inject
     private CustomerFacade customerFacade;
+    
+    @Inject
+    private UserHelper userHelper;
 
     private Profile profile;
     private Customer customer;
@@ -61,6 +66,10 @@ public class EditProfileBean implements Serializable {
         }
 
     }
+    
+    public String getInitials(){
+        return InitialsGenerator.generateInitials(customer);
+    }
 
     /**
      * Persists the profileChanges to the database.
@@ -70,7 +79,7 @@ public class EditProfileBean implements Serializable {
         try {
             profileFacade.edit(profile);
             customerFacade.edit(customer);
-            return Navigation.VIEWPROFILE;
+            return Navigation.VIEWPROFILE + "?faces-redirect=true&id=" + userHelper.getMyProfileID();
         } catch (Exception e) { // TODO
             System.out.println("ch.eset2.web.beans.EditProfileBean.saveProfile()");
             e.printStackTrace();

@@ -14,7 +14,7 @@
         <f:viewAction action="#{viewProfileBean.init()}"/>
     </f:metadata>
     <ui:define name="content">
-        
+
         <h:outputStylesheet library="css" name="profile.css"  />
         <b:container>
             <br />
@@ -23,10 +23,13 @@
                     <h1>#{viewProfileBean.customer.firstName} #{viewProfileBean.customer.lastName}</h1>
                     <br />
                     <b:row>
-                        <b:column span="4">
+                        <b:column span="4" rendered="#{empty viewProfileBean.profile.imageLink}">
                             <a class="profile-image" href="#">
-                                <span class="profile-image-initials">MJ</span>
+                                <span class="profile-image-initials">#{viewProfileBean.initials}</span>
                             </a>
+                        </b:column>
+                        <b:column span="4" rendered="#{not empty viewProfileBean.profile.imageLink}">
+                            <h:graphicImage value="#{viewProfileBean.profile.imageLink}" width="180" height="135"/>
                         </b:column>
                         <b:column span="8">
                             #{viewProfileBean.profile.description}
@@ -81,7 +84,7 @@
                                         </p:dataTable>
                                     </h:form>
                                 </b:column>
-                                
+
                             </b:row>
                         </b:column>
                     </b:row>

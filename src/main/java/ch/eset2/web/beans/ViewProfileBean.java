@@ -8,6 +8,7 @@ package ch.eset2.web.beans;
 import ch.eset2.model.CourseProfile;
 import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
+import ch.eset2.web.util.InitialsGenerator;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -31,8 +32,14 @@ public class ViewProfileBean implements Serializable {
         customer = profile.getCustomer();
         hasCourses = !profile.getCourseProfiles().isEmpty();
         
+        
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
+        if(loggedInCustomer == null) return; 
         myProfile = loggedInCustomer.getProfile().equals(profile);
+    }
+    
+    public String getInitials(){
+        return InitialsGenerator.generateInitials(customer);
     }
 
     public boolean isHasCourses() {

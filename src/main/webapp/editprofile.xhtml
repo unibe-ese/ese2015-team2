@@ -17,7 +17,7 @@
         <b:container>
             <br />
             <b:row>
-                <h:form>
+                <h:form prependId="false">
                     <b:column span="7">
                         <h1>Profil editieren</h1>
                         <br />
@@ -34,8 +34,6 @@
                             <b:inputText value="#{editProfileBean.customer.lastName}"/>
                             <h:outputText value="Vorname:"/>
                             <b:inputText value="#{editProfileBean.customer.firstName}"/>
-                            <h:outputText value="Geburtstag:"/>
-                            <b:datepicker value="#{editProfileBean.profile.birthday}"/>
                             <h:outputText value="Matrikelnummer:"/>
                             <b:inputText value="#{editProfileBean.customer.matnr}"/>
                             <h:outputText value="Strasse:"/>
@@ -47,42 +45,49 @@
                             <h:outputText value="Phone:"/>
                             <b:inputText value="#{editProfileBean.customer.phone}"/>
                         </b:panelGrid>
-                        <br> </br>
-                            
+                        <br /> 
+                        <br />
                         <b:row>
                             <b:column offset="4" span="4">
-                                <b:commandButton value="Speichern" action="#{editProfileBean.saveProfile()}" look="success"/>
+                                <b:commandButton id="save" value="Speichern" action="#{editProfileBean.saveProfile()}" look="success" ajax="false"/>
                             </b:column>
                             <b:column span="4">
-                                <b:commandButton value="Profil löschen" rendered="#{viewProfileBean.myProfile}" action="#{editProfileBean.removeProfile()}" look="danger"/>
+                                <b:commandButton value="Profil löschen" action="#{editProfileBean.removeProfile()}" look="danger"/>
                             </b:column>
                         </b:row>
                     </b:column>
                     <b:column span="5">
                         <b:row>
-                            <b:column span="3" offset="2">
-                                <br/>
-                                <a class="profile-image" href="#">
-                                    <span class="profile-image-initials">MJ</span>
-                                </a>
+                            <b:column span="7" offset="1">
                                 <br />
-                                <b:panelGrid colSpans="6,6">
-                                    <b:commandButton action="#" value="X"  size="xs" look="danger"/>
-                                    <b:commandButton action="#" value="Durchsuchen"  size="xs"/>
-                                </b:panelGrid>
+                                <b:row rendered="#{empty editProfileBean.profile.imageLink}">
+                                    <a class="profile-image" href="#" >
+                                        <span class="profile-image-initials">#{editProfileBean.initials}</span>
+                                    </a>
+                                </b:row>
+                                <b:row rendered="#{not empty editProfileBean.profile.imageLink}">
+                                    <h:graphicImage value="#{editProfileBean.profile.imageLink}"/>
+                                </b:row>
+                                <br />
+                                <b:row>
+                                    <b:panelGrid colSpans="2,10">
+                                        <h:outputText value="Link:"/>
+                                        <b:inputText id="picLink" value="#{editProfileBean.profile.imageLink}">
+                                            <f:facet name="append">
+                                                <b:button value="X" look="danger" onclick="$('#picLink').val('');return false;"/>
+                                            </f:facet>
+                                        </b:inputText>
+                                    </b:panelGrid>
+                                </b:row>
                             </b:column>
                         </b:row>
                     </b:column>
                 </h:form>
-
             </b:row>
-            <br>
-                <br>
-
-                </br>
-
-            </br>
-
+            <br />
+            <br />
+            <br />
+            <br />
         </b:container>
     </ui:define>
 

@@ -57,6 +57,7 @@ public class DevelopmentDataUsers {
         
         Profile profile = new StudentProfile();
         profile.setCustomer(customer);
+        profile.setImageLink("http://bigpicturesb.net/wp-content/uploads/2011/11/generic-profile-pic.png");
         customer.setProfile(profile);
         customerFacade.create(customer);
         profileFacade.create(profile);

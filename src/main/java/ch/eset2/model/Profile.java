@@ -7,16 +7,13 @@ package ch.eset2.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
 
 /**
  *
@@ -26,6 +23,12 @@ import javax.persistence.Temporal;
 public abstract class Profile implements Serializable {
 
     protected static final long serialVersionUID = 1L;
+    
+    protected String imageLink;
+
+    protected String gender;
+    
+    protected String description = "Noch keine Profilbeschreibung";
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,13 +56,15 @@ public abstract class Profile implements Serializable {
         this.courseProfiles = courseProfiles;
     }
     
-    protected String gender;
-    
-    @Temporal(javax.persistence.TemporalType.DATE)
-    protected Date birthday;
-    
-    protected String description = "Noch keine Profilbeschreibung";
+    public String getImageLink() {
+        return imageLink;
+    }
 
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+    
+    
     public Customer getCustomer() {
         return customer;
     }
@@ -74,14 +79,6 @@ public abstract class Profile implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 
     public String getDescription() {
@@ -100,9 +97,8 @@ public abstract class Profile implements Serializable {
         this.id = id;
     }
     
-    
     public void testInit(){
-    courseProfiles = new ArrayList<CourseProfile>(); 
+        courseProfiles = new ArrayList<CourseProfile>(); 
     }
 
     @Override
