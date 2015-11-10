@@ -24,7 +24,7 @@ import org.apache.shiro.SecurityUtils;
  */
 @Named
 @RequestScoped
-public class ViewMessagesBean implements Serializable {
+public class ViewInboxBean implements Serializable {
 
     @Inject
     private MessageFacade messageFacade;
