@@ -10,7 +10,7 @@ Tutors:
 Student:
 * eve.mendoza//123
 
-Of course you can always register your own account on the page.
+Ofcourse you can always register your own account on the page. Happy testing!
 
 # ese2015-team2
 
