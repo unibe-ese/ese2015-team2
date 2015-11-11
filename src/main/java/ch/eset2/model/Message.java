@@ -5,20 +5,19 @@
  */
 package ch.eset2.model;
 
-import ch.eset2.model.dao.CustomerFacade;
 import java.io.Serializable;
-import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
- *
- * @author foxhound
+ * Represents a message sent from a {@link Customer} to an other.
+ * Special fields:
+ * reciever: The {@link Customer} that can see this message in his inbox.
+ * id: Every message has an unique id.
+ * @author Marc Jost, 17.10.2015
  */
 @Entity
 public class Message implements Serializable {
@@ -37,6 +36,21 @@ public class Message implements Serializable {
     private String sender;
     
     private String reciever;
+    
+    
+    /**
+     * Creates a short preview of 30 chars of the messageText.
+     * @return the first 30 chars of the messageText. Whole messagetext if text
+     * is shorter than 30 chars.
+     */
+    public String messageTextPreview(){
+        if (messageText.length() <= 30){
+            return messageText;
+        }
+        else {
+            return messageText.substring(0, 30).concat("...");
+        }
+    }
     
     public String getReciever() {
         return reciever;
@@ -85,6 +99,12 @@ public class Message implements Serializable {
         return hash;
     }
 
+    
+    /**
+     * Checks identity only for same unique {@link Message#id}.
+     * @param object the object to be compare with.
+     * @return true when instance of this class and id's are identical.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

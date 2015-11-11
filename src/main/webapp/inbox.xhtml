@@ -23,14 +23,16 @@
                     <hr />
                     
                     
-                    <b:column span="12" rendered="#{!viewMessagesBean.hasMessages()}">  <!--TODO-->
+                    <b:column span="12" rendered="#{!viewInboxBean.hasMessages()}">
+                        
+                        <br></br>
                         <h2>Es befinden sich keine Nachrichten in ihrem Posteingang.</h2>
                     </b:column>
                     
-                    <h:form id="table" rendered="#{viewMessagesBean.hasMessages()}">
-                        <p:dataTable var="message" value="#{viewMessagesBean.messages}">
+                    <h:form id="table" rendered="#{viewInboxBean.hasMessages()}">
+                        <p:dataTable var="message" value="#{viewInboxBean.messages}">
                             <p:column headerText="Betreff">
-                                <b:navLink value="#{message.subject}" href="viewMessage#{message.id}.xhtml"></b:navLink>
+                                <b:navLink value="#{message.subject}" href="viewmessage.xhtml?id=#{message.id}"></b:navLink>
                             </p:column>
 
                             <p:column headerText="Absender">
@@ -41,8 +43,8 @@
                                 <h:outputText value="#{message.reciever}"/>
                             </p:column>
 
-                            <p:column headerText="Nachricht">
-                                <h:outputText value="#{message.messageText}"/>
+                            <p:column headerText="Nachrichtenvorschau">
+                                <b:navLink value="#{message.messageTextPreview()}" href="viewmessage.xhtml?id=#{message.id}"></b:navLink>
                             </p:column>
                             
                             

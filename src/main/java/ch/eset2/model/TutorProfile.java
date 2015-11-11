@@ -12,8 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
- * @author foxhound
+ * Extends the abstract class {@link Profile}. 
+ * In the current implementation there are no additional fields for TutorProfiles.
+ * @author Marc Jost, 17.10.2015
  */
 @Entity
 public class TutorProfile extends Profile implements Serializable {
@@ -25,6 +26,12 @@ public class TutorProfile extends Profile implements Serializable {
         return hash;
     }
 
+    
+    /**
+     * Checks identity only for same unique {@link Profile#id}.
+     * @param object the object to be compare with.
+     * @return true when instance of this class and id's are identical.
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
