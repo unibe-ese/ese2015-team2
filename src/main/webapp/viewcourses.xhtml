@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -19,37 +19,27 @@
             <b:row>
                 <b:column span="12">
                     <h1>Vorlesungen suchen</h1>
-                    <h:form id="search">
-                        <b:inputText>
-                            <f:facet name="prepend">
-                                <b:icon name="search"/>
-                            </f:facet>
-                            <f:facet name="append">
-                                <b:button value="Suchen" look="primary" outcome=""/>
-                            </f:facet>
-                        </b:inputText>
-                    </h:form>
-                    <hr />
+                    <p>Nutzen Sie die Eingabefelder in der Tabelle, um den Inhalt zu filtern.</p>
                     <h:form id="table">
                         <p:dataTable var="course" value="#{viewCoursesBean.courses}">
-                            <p:column headerText="Titel">
-                                <h:outputText value="#{course.title}"/>
+                            <p:column headerText="Titel" sortBy="#{course.title}" filterBy="#{course.title}" filterMatchMode="contains">
+                                <h:link value="#{course.title}" outcome="/viewcourse.xhtml?faces-redirect=true&amp;id=#{course.getId()}"/>
                             </p:column>
 
-                            <p:column headerText="ECTS">
+                            <p:column headerText="ECTS" style="width:75px" sortBy="#{course.ECTS}">
                                 <h:outputText value="#{course.ECTS}"/>
                             </p:column>
 
-                            <p:column headerText="Semester">
+                            <p:column headerText="Semester" sortBy="#{course.semester}" filterBy="#{course.semester}" filterMatchMode="contains">
                                 <h:outputText value="#{course.semester}"/>
                             </p:column>
 
-                            <p:column headerText="Stufe">
+                            <p:column headerText="Stufe" sortBy="#{course.level}" filterBy="#{course.level}" filterMatchMode="contains">
                                 <h:outputText value="#{course.level}"/>
                             </p:column>
                             
                             <shiro:authenticated>
-                                <p:column headerText="">
+                                <p:column headerText="" rendered="#{!viewCoursesBean.hasCourseRegistered(course)}" style="width:120px">
                                     <b:commandButton value="Hinzufügen" action="#{addCourseToProfileBean.addCourse(course)}" look="success"/>
                                 </p:column>
                             </shiro:authenticated>

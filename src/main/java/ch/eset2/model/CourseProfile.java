@@ -6,15 +6,12 @@
 package ch.eset2.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import static javax.persistence.TemporalType.DATE;
 
 /**
  *
@@ -38,8 +35,18 @@ public class CourseProfile implements Serializable {
     
     private double grade;
     private int rate;
-    @Temporal(DATE)
-    private Date passedAt;
+    
+    private String passedInYear;
+    
+    private String fee;
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
 
     public Profile getProfile() {
         return profile;
@@ -73,12 +80,12 @@ public class CourseProfile implements Serializable {
         this.rate = rate;
     }
 
-    public Date getPassedAt() {
-        return passedAt;
+    public String getPassedInYear() {
+        return passedInYear;
     }
 
-    public void setPassedAt(Date passedAt) {
-        this.passedAt = passedAt;
+    public void setPassedInYear(String passedInYear) {
+        this.passedInYear = passedInYear;
     }
 
     public Long getId() {

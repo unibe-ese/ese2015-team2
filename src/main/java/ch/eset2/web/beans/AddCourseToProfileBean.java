@@ -17,7 +17,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import junit.framework.Assert;
 import org.apache.shiro.SecurityUtils;
 
 /**
@@ -44,7 +43,7 @@ public class AddCourseToProfileBean implements Serializable {
     private CourseProfileFacade courseProfileFacade;
     
     @PostConstruct
-    private void init(){
+    public void init(){
         Customer customer = (Customer) SecurityUtils.getSubject().getPrincipal();
         profile = customer.getProfile();
     }
@@ -56,7 +55,6 @@ public class AddCourseToProfileBean implements Serializable {
      * @param course to be added to the profile of the customer
      */
     public void addCourse(Course course){
-        Assert.assertNotNull(course);
         CourseProfile cp = new CourseProfile();
         
         profile.addCourseProfile(cp);

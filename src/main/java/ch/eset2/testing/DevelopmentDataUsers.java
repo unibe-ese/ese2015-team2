@@ -11,6 +11,7 @@ import ch.eset2.model.Profile;
 import ch.eset2.model.StudentProfile;
 import ch.eset2.model.dao.CustomerFacade;
 import ch.eset2.model.dao.ProfileFacade;
+import ch.eset2.web.util.AccountType;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -44,7 +45,7 @@ public class DevelopmentDataUsers {
         
         
         Customer customer = new Customer();
-        customer.setAccountType(1);
+        customer.setAccountType(AccountType.TUTOR);
         customer.setCity("Bern");
         customer.setFirstName("Marc");
         customer.setLastName("Jost");
@@ -64,7 +65,7 @@ public class DevelopmentDataUsers {
         
         
         Customer customer2 = new Customer();
-        customer2.setAccountType(1);
+        customer2.setAccountType(AccountType.TUTOR);
         customer2.setCity("Thun");
         customer2.setFirstName("Mischa");
         customer2.setLastName("Wenger");
@@ -83,12 +84,12 @@ public class DevelopmentDataUsers {
         
         
         Customer customer3 = new Customer();
-        customer3.setAccountType(1);
+        customer3.setAccountType(AccountType.STUDENT);
         customer3.setCity("Zürich");
         customer3.setFirstName("Eve");
         customer3.setLastName("Mendoza");
         customer3.setMatnr("11-100-089");
-        customer3.setPassword("123");
+        customer3.setPassword("a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3");
         customer3.setPhone("");
         customer3.setStreet("Gesellschaftsstrasse 3");
         customer3.setUsername("eve.mendoza");

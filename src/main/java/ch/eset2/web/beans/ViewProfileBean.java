@@ -5,7 +5,6 @@
  */
 package ch.eset2.web.beans;
 
-import ch.eset2.model.CourseProfile;
 import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
 import ch.eset2.web.util.InitialsGenerator;
@@ -39,7 +38,7 @@ public class ViewProfileBean implements Serializable {
     }
     
     public String getInitials(){
-        return InitialsGenerator.generateInitials(customer);
+        return InitialsGenerator.generateInitials(profile.getCustomer());
     }
 
     public boolean isHasCourses() {

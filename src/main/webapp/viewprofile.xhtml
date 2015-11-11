@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -60,31 +60,50 @@
                                     Noch keine Kurse gewählt, fügen Sie doch einige hinzu.
                                 </b:column>
                                 <b:column span="12" rendered="#{viewProfileBean.hasCourses}">
-                                    <h:form id="table">
-                                        <p:dataTable var="courseProfile" value="#{viewProfileBean.profile.courseProfiles}">
-                                            <p:column headerText="Titel">
-                                                <h:outputText value="#{courseProfile.course.title}"/>
-                                            </p:column>
+                                    <p:dataTable var="courseProfile" value="#{viewProfileBean.profile.courseProfiles}" rendered="#{viewProfileBean.customer.accountType eq 1}"> <!-- Student -->
+                                        <p:column headerText="Titel" >
+                                            <h:outputText value="#{courseProfile.course.title}"/>
+                                        </p:column>
 
-                                            <p:column headerText="ECTS">
-                                                <h:outputText value="#{courseProfile.course.ECTS}"/>
-                                            </p:column>
+                                        <p:column headerText="ECTS">
+                                            <h:outputText value="#{courseProfile.course.ECTS}"/>
+                                        </p:column>
 
-                                            <p:column headerText="Semester">
-                                                <h:outputText value="#{courseProfile.course.semester}"/>
-                                            </p:column>
+                                        <p:column headerText="Semester">
+                                            <h:outputText value="#{courseProfile.course.semester}"/>
+                                        </p:column>
 
-                                            <p:column headerText="Stufe">
-                                                <h:outputText value="#{courseProfile.course.level}"/>
-                                            </p:column>
+                                        <p:column headerText="Stufe">
+                                            <h:outputText value="#{courseProfile.course.level}"/>
+                                        </p:column>
 
-                                            <p:column headerText="Note">
-                                                <h:outputText value="#{courseProfile.grade}"/>
-                                            </p:column>
-                                        </p:dataTable>
-                                    </h:form>
+                                        <p:column headerText="Note">
+                                            <h:outputText value="#{courseProfile.grade}"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                    
+                                    <p:dataTable var="courseProfile" value="#{viewProfileBean.profile.courseProfiles}" rendered="#{viewProfileBean.customer.accountType eq 2}"> <!-- Tutor -->
+                                        <p:column headerText="Titel" sortBy="#{courseProfile.course.title}">
+                                            <h:outputText value="#{courseProfile.course.title}"/>
+                                        </p:column>
+
+                                        <p:column headerText="ECTS" sortBy="#{courseProfile.course.ECTS}">
+                                            <h:outputText value="#{courseProfile.course.ECTS}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Bestanden in" sortBy="#{courseProfile.passedInYear}">
+                                            <h:outputText value="#{courseProfile.passedInYear}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Stundenlohn" sortBy="#{courseProfile.fee}">
+                                            <h:outputText value="#{courseProfile.fee}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Note" sortBy="#{courseProfile.grade}">
+                                            <h:outputText value="#{courseProfile.grade}"/>
+                                        </p:column>
+                                    </p:dataTable>
                                 </b:column>
-
                             </b:row>
                         </b:column>
                     </b:row>

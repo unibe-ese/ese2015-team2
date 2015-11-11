@@ -5,13 +5,16 @@
  */
 package ch.eset2.web.beans;
 
+import ch.eset2.model.Course;
+import ch.eset2.model.CourseProfile;
 import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
+import ch.eset2.model.dao.CourseFacade;
+import ch.eset2.model.dao.CourseProfileFacade;
 import ch.eset2.model.dao.CustomerFacade;
 import ch.eset2.model.dao.ProfileFacade;
 import ch.eset2.web.util.InitialsGenerator;
 import ch.eset2.web.util.Navigation;
-import ch.eset2.web.util.ProfileFactory;
 import ch.eset2.web.util.UserHelper;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -39,8 +42,14 @@ public class EditProfileBean implements Serializable {
     private CustomerFacade customerFacade;
     
     @Inject
+    private CourseProfileFacade courseProfileFacade;
+    
+    @Inject
+    private CourseFacade courseFacade;
+    
+    @Inject
     private UserHelper userHelper;
-
+    
     private Profile profile;
     private Customer customer;
 
@@ -55,17 +64,10 @@ public class EditProfileBean implements Serializable {
     @PostConstruct
     private void retrieveCustomer() {
         customer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        if (customer.getProfile() == null) {
-            profile = ProfileFactory.getProfile(customer.getAccountType());
-            profile.setCustomer(customer);
-            profileFacade.create(profile);
-            customer.setProfile(profile);
-            customerFacade.edit(customer);
-        } else {
-            profile = customer.getProfile();
-        }
-
+        if (customer.getProfile() == null) return;
+        profile = customer.getProfile();
     }
+    
     
     public String getInitials(){
         return InitialsGenerator.generateInitials(customer);
@@ -86,8 +88,16 @@ public class EditProfileBean implements Serializable {
             return null;
         }
     }
-
     
+    public void removeCourseProfile(CourseProfile cp){
+        Course course = cp.getCourse();
+        course.getCourseProfiles().remove(cp);
+        courseFacade.edit(course);
+        profile.getCourseProfiles().remove(cp);
+        profileFacade.edit(profile);
+        courseProfileFacade.remove(cp);
+    }
+
     //getters and setters
     public Customer getCustomer() {
         return customer;
