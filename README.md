@@ -1,5 +1,13 @@
-### Development Status:
+### Development Status (v1.0 released!):
 http://digital-front.ch:8880/ESET2/
+For testing purposes, please use following account//password:
+Tutors:
+marc.jost//123
+mischa.wenger//123
+Student:
+eve.mendoza//123
+
+Of course you can always register your own account on the page.
 
 # ese2015-team2
 
