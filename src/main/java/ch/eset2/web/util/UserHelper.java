@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.util;
 
 import ch.eset2.model.Customer;
@@ -12,14 +7,21 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- *
- * @author foxhound
+ * Little Helper class to provide a point for EL in sites can access certain 
+ * customer details.
+ * 
+ * @author Marc Jost
+ * @version 1.0
  */
 @SessionScoped
 @Named
 public class UserHelper implements Serializable {
     
-    
+    /**
+     * Returns the ID of the currently logged in customer.
+     * 
+     * @return the ID of the currently logged in customer. 
+     */
     public long getMyProfileID(){
         return ((Customer) SecurityUtils.getSubject().getPrincipal()).getProfile().getId();
     }

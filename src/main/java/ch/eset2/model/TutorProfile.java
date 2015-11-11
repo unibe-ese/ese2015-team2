@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * Extends the abstract class {@link Profile}. 
  * In the current implementation there are no additional fields for TutorProfiles.
  * @author Marc Jost, 17.10.2015
+ * @version 1.0
  */
 @Entity
 public class TutorProfile extends Profile implements Serializable {

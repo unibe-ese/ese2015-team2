@@ -4,7 +4,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
- * {Insert description here}
+ * Provides an abstract base class for all other facades, which 
+ * are responsible to interact with the entity manager. 
  * @author Marc Jost, 17.10.2015
  */
 public abstract class AbstractFacade<T> {

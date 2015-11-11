@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.util;
 
 import ch.eset2.model.Customer;
@@ -17,8 +12,12 @@ import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 
 /**
- *
- * @author foxhound
+ * Responsible to display unique constraint violation on page level during
+ * the registration process.
+ * Will throw a ValidatorException if the username is already present in the database.
+ * 
+ * @author Marc Jost
+ * @version 1.0
  */
 @FacesValidator("uniqueUsernameValidator")
 public class UniqueUsernameValidator implements Validator {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.model;
 
 import java.io.Serializable;
@@ -17,9 +12,11 @@ import javax.persistence.ManyToOne;
  * Models the relationship between a {@link Course} and {@link Profile}.
  * A CourseProfile holds only one {@link Course} and one {@link Profile}, but
  * courses and profile can hold many {@link CourseProfile} instances.
+ * Modelled as a seperate Entity, since this "Join Table" has value of its own.
  * Special fields:
  * id: Every courseProfile has an unique id.
  * @author Marc Jost, 17.10.2015
+ * @version 1.0
  */
 @Entity
 public class CourseProfile implements Serializable {

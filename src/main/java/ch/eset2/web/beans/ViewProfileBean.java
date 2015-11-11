@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
@@ -14,8 +9,9 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- *
- * @author foxhound
+ * Responsible for displaying a profile.
+ * The profile is being set by a viewparam in the URL
+ * @author Marc Jost
  */
 @Named
 @ViewScoped
@@ -27,10 +23,12 @@ public class ViewProfileBean implements Serializable {
     private boolean hasCourses = false;
     private boolean myProfile = false;
     
+    /**
+     * Called on page load. 
+     */
     public void init(){
         customer = profile.getCustomer();
         hasCourses = !profile.getCourseProfiles().isEmpty();
-        
         
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
         if(loggedInCustomer == null) return; 
@@ -64,7 +62,4 @@ public class ViewProfileBean implements Serializable {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
-    
-    
-    
 }

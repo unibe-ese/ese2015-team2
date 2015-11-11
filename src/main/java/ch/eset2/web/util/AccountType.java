@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.util;
 
 /**
- *
- * @author foxhound
+ * Holds Account Types. Could have been done as Enum. I know. 
+ * 
+ * @author Marc Jost
+ * @version 1.0
  */
 public class AccountType {
     public static final int STUDENT = 1;

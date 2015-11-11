@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.model;
 
 import java.io.Serializable;
@@ -17,7 +12,8 @@ import javax.persistence.Id;
  * Special fields:
  * reciever: The {@link Customer} that can see this message in his inbox.
  * id: Every message has an unique id.
- * @author Marc Jost, 17.10.2015
+ * @author Mischa Wenger, 17.10.2015
+ * @version 1.0
  */
 @Entity
 public class Message implements Serializable {

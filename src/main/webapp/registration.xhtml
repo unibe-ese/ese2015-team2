@@ -5,7 +5,8 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:b="http://bootsfaces.net/ui"
-                template="./layout/baseTemplate.xhtml">
+                template="./layout/baseTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="title">
         title
@@ -77,9 +78,12 @@
                             <h:outputText value="Phone:"/>
                             <b:inputText value="#{registrationBean.newCustomer.phone}"/>
                         </b:panelGrid>
+                        <br />
+                        <p:captcha label="captcha" language="de"/>
                         <b:row>
                             <b:column span="2" offset="5">
                                 <br/>
+                                
                                 <b:commandButton action="#{registrationBean.registerNewCustomer()}" value="Registrieren" look="success" size="lg"/>
                             </b:column>
                         </b:row>

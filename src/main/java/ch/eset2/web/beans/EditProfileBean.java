@@ -28,7 +28,8 @@ import org.apache.shiro.SecurityUtils;
  * It allows to persist edited profile variables to the database.
  * {@link EditProfileBean#retrieveCustomer() } should be called from the server before
  * using any service of this class.
- * @author foxhound
+ * @author Marc Jost
+ * @version 1.0
  */
 @Named
 @ViewScoped
@@ -68,14 +69,18 @@ public class EditProfileBean implements Serializable {
         profile = customer.getProfile();
     }
     
-    
+    /**
+     * Generates the Initials uses for the profile picture (if no pic is present)
+     * @return String representation of a customer's initials. E.g Marc Jost
+     *          returns MJ
+     */
     public String getInitials(){
         return InitialsGenerator.generateInitials(customer);
     }
 
     /**
      * Persists the profileChanges to the database.
-     * @return Viewprofile page when successful changed the profile.
+     * @return redirect to viewprofile page
      */
     public String saveProfile() {
         try {
@@ -89,6 +94,11 @@ public class EditProfileBean implements Serializable {
         }
     }
     
+    /**
+     * Removes a courseProfile from this customer's profile, from the course
+     * and from the join table CourseProfile
+     * @param cp 
+     */
     public void removeCourseProfile(CourseProfile cp){
         Course course = cp.getCourse();
         course.getCourseProfiles().remove(cp);
@@ -96,6 +106,20 @@ public class EditProfileBean implements Serializable {
         profile.getCourseProfiles().remove(cp);
         profileFacade.edit(profile);
         courseProfileFacade.remove(cp);
+    }
+    
+    /**
+     * Removes the profile of the logged in customer from the databas
+     * @return the Index page when deleted successfully.
+     */
+    public String removeProfile() {
+        if (profile != null) {
+            customer.setProfile(null);
+            customerFacade.edit(customer);
+            profileFacade.remove(profile);
+            this.profile = null;
+        }
+        return Navigation.INDEX;
     }
 
     //getters and setters
@@ -114,20 +138,4 @@ public class EditProfileBean implements Serializable {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
-
-    
-    /**
-     * Removes the profile of the logged in customer from the databas
-     * @return the Index page when deleted successfully.
-     */
-    public String removeProfile() {
-        if (profile != null) {
-            customer.setProfile(null);
-            customerFacade.edit(customer);
-            profileFacade.remove(profile);
-            this.profile = null;
-        }
-        return Navigation.INDEX;
-    }
-
 }

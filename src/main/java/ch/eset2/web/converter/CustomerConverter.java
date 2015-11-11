@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.converter;
 
 import ch.eset2.model.Customer;
@@ -17,8 +12,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
- * @author foxhound
+ * Converts IDs provided through URL Parameters to objects.
+ * 
+ * @author Marc Jost
+ * @version 1.0
  */
 @Named
 @ApplicationScoped

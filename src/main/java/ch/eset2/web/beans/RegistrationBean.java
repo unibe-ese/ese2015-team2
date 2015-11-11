@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
 import ch.eset2.model.dao.CustomerFacade;
-import ch.eset2.model.dao.ProfileFacade;
 import ch.eset2.web.util.Navigation;
 import ch.eset2.web.util.ProfileFactory;
 import java.io.Serializable;
@@ -19,10 +13,10 @@ import javax.inject.Named;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 
 /**
- * RegistrationBean adds new customers to the database.
- * {@link RegistrationBean#init() } should be called from the server before
- * using any service of this class.
+ * Responsible for registering new customers 
+ * 
  * @author Marc Jost
+ * @version 1.0
  */
 @Named(value = "registrationBean")
 @RequestScoped
@@ -31,16 +25,7 @@ public class RegistrationBean implements Serializable {
     @Inject
     private CustomerFacade customerFacade;
     
-    @Inject
-    private ProfileFacade profileFacade;
-
     private Customer newCustomer;
-    
-    /**
-     * Creates a new instance of RegistrationBean
-     */
-    public RegistrationBean() {
-    }
     
     @PostConstruct
     private void init(){
@@ -48,13 +33,12 @@ public class RegistrationBean implements Serializable {
     }
     
     /**
-     * Saves the new customer to the database.
+     * Saves the new customer to the database and creates an empty profile.
      * @return the RegistrationSuccess page.
      */
     public String registerNewCustomer(){
         Profile profile = ProfileFactory.getProfile(newCustomer.getAccountType());
         profile.setCustomer(newCustomer);
-        //profileFacade.create(profile);
         newCustomer.setProfile(profile);
         newCustomer.setPassword(new Sha256Hash(newCustomer.getPassword()).toHex());
         customerFacade.create(newCustomer);

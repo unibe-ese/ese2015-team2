@@ -25,6 +25,7 @@ import javax.validation.constraints.Pattern;
  * username: Every customer has an unique username that is used to log in.
  * accountType: Customers can either be a Student or a Tutor.
  * @author Marc Jost, 17.10.2015
+ * @version 1.0
  */
 @Entity
 @NamedQueries({

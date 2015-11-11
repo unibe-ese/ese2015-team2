@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.security;
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.dao.CustomerFacade;
-import javax.inject.Inject;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -17,8 +11,10 @@ import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.omnifaces.config.BeanManager;
 
 /**
- *
- * @author foxhound
+ * Provides the authentication mechanism for Shiro. 
+ * 
+ * @author Marc Jost
+ * @version 1.0
  */
 public class JdbcESERealm extends JdbcRealm {
     

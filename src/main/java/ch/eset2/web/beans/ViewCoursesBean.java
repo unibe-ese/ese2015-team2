@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.beans;
 
 import ch.eset2.model.Course;
@@ -13,14 +8,15 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- *
- * @author foxhound
+ * Responsible for displaying all available courses
+ * 
+ * @author Marc Jost
+ * @version 1.0
  */
 @Named
 @RequestScoped
@@ -40,6 +36,13 @@ public class ViewCoursesBean implements Serializable {
         return courses;
     }
     
+    /**
+     * Returns true if the currently logged in Customer has this course registered
+     * in his profile.
+     * 
+     * @param c the course in question
+     * @return true if the customer subscribed to this course, false otherwise
+     */
     public boolean hasCourseRegistered(Course c){
         Customer customer = (Customer) SecurityUtils.getSubject().getPrincipal();
         List<CourseProfile> cps = customer.getProfile().getCourseProfiles();

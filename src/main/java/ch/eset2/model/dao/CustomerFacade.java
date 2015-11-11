@@ -7,8 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * {Insert description here}
- * @author Marc Jost, 17.10.2015
+ * 
+ * @author Marc Jost
+ * @version 1.0
  */
 @Stateless
 public class CustomerFacade extends AbstractFacade<Customer> {

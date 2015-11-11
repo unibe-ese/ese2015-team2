@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.beans;
 import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
@@ -21,6 +16,7 @@ import org.apache.shiro.SecurityUtils;
  * messages in the database with 'reciever' equals to username.
  *
  * @author Mischa Wenger
+ * @version 1.0
  */
 @Named
 @RequestScoped

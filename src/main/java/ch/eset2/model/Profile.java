@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
- * Represents a profile of a {@link Customer} hold extendet customer information.
+ * Represents a profile of a {@link Customer} to hold extended customer information.
  * The customers are represented by this class. Other customers may access the
  * {@link Profile}.
  * Special fields:

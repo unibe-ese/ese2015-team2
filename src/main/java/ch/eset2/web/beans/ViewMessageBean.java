@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.beans;
 
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
-import ch.eset2.model.Profile;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- *
- * @author foxhound
+ * Responsible to display a message
+ * 
+ * @author Marc Jost
+ * @version 1.0
  */
 @Named
 @ViewScoped
