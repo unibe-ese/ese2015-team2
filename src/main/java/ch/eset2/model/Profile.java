@@ -34,8 +34,6 @@ public abstract class Profile implements Serializable {
     
     protected String imageLink;
 
-    protected String gender;
-    
     protected String description = "Noch keine Profilbeschreibung";
     
     @Id
@@ -79,14 +77,6 @@ public abstract class Profile implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getDescription() {
