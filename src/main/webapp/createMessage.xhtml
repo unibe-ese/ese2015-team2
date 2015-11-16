@@ -33,11 +33,7 @@
                             <h:outputLabel value="Absender:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <b:inputText id="sender" value="#{createMessageBean.newMessage.sender}" required="true">
-                                        <f:facet name="append">
-                                            <h:outputText value="@students.unibe.ch" />
-                                        </f:facet>
-                                    </b:inputText>
+                                    <h:outputText id="sender" value="#{createMessageBean.newMessage.sender}"/>
                                 </b:column>
                             </b:row>
                             <h:outputLabel value="Betreff:"/>

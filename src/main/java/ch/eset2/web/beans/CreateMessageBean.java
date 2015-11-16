@@ -1,5 +1,6 @@
 package ch.eset2.web.beans;
 
+import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
 import ch.eset2.model.dao.MessageFacade;
 import ch.eset2.web.util.Navigation;
@@ -8,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.apache.shiro.SecurityUtils;
 
 /**
  * CreateMessageBean provides a message send service.
@@ -24,6 +26,7 @@ public class CreateMessageBean implements Serializable {
     private MessageFacade messageFacade;
     
     private Message newMessage;
+    private Customer loggedInCustomer;
     
     /**
      * Creates a new instance of CreateMessageBean
@@ -34,6 +37,8 @@ public class CreateMessageBean implements Serializable {
     @PostConstruct
     private void init(){
         newMessage = new Message();
+        Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
+        newMessage.setSender(loggedInCustomer.getUsername());
     }
     
     
