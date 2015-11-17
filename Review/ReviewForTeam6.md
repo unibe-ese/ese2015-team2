@@ -119,7 +119,7 @@ Due to the intuitive naming of classes and methods the code is easy to read. The
 >                this.prepareService = prepareService;
 >        }
 
-The code is organized very well and very readable formatted. Getters and setters are indicated with small comments, that saves time for the reader. A domain model and entity relationship diagram would have been great, but looking at the classes also works.
+The code is organized very well and very readable formatted. Getters and setters are indicated with small comments, that saves time for the reader. A domain model and entity relationship diagram would have been great, but looking at the classes also works. Furthermore, a short guide on how to set up the project would have been nice, since the .project file for Eclipse is missing and I coulnd't figure out how to run the application. 
 
 ####Intention-revealing
 As mentioned above, the names are intention-revealing. So is the whole project. Overall, the separation in different models, controllers and services makes sense. Also the data carried by the different forms and model classes is intuitive and chosen well. 
