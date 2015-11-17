@@ -6,6 +6,7 @@ e.g.
 >                onerror="this.onerror=null; this.src='/img/default-avatar.jpg;'"
 >                alt="Profile picture" width="192" height="192"
 >                src="../../img/default-avatar.jpg" />
+
 However, according to me, this doesn't seem to be a problem.
 ####Usage of helper objects between view and model
 Due to the clear separation of the models, they used only few helper objects. I see as a helper object the 'Row.java'. This class has only one responsibility and is only used for the updateSubjectForm, so this is not a problem. However it would be nicer to have directly 'subject' entities displayed in a datatable, because subject already have attributes like 'name' and 'grade'.
