@@ -19,6 +19,7 @@
             <b:navbarLinks>
                 <b:navLink value="Vorlesungen" href="viewcourses.xhtml"></b:navLink>
                 <shiro:authenticated>
+                    <b:navLink value="Tutoren suchen" href="searchtutors.xhtml"></b:navLink>
                     <b:navLink value="Mein Profil" href="viewprofile.xhtml?id=#{userHelper.myProfileID}"></b:navLink>
                     <b:navLink value="Posteingang" href="inbox.xhtml"></b:navLink>
                 </shiro:authenticated>

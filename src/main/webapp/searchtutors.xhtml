@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:shiro="http://shiro.apache.org/tags"
+                xmlns:p="http://primefaces.org/ui"
+                template="./layout/baseTemplate.xhtml">
+
+    <ui:define name="title">
+        title
+    </ui:define>
+
+    <ui:define name="content">
+        <b:container>
+            <br />
+            <b:row>
+                <b:column span="12">
+                    <h1>Tutoren suchen</h1>
+                    <p>Nutzen Sie die Eingabefelder in der Tabelle, um den Inhalt zu filtern.</p>
+                    <h:form id="table">
+                        <p:dataTable var="courseProfile" value="#{searchTutorsBean.courseProfiles}" widgetVar="courseProfilesTable"
+                                     emptyMessage="Leider keine Tutoren für diese Kriterien gefunden." filteredValue="#{searchTutorsBean.filteredCourseProfiles}">
+
+                            <p:column headerText="Vorlesung" sortBy="#{courseProfile.course.title}" filterBy="#{courseProfile.course.title}" filterMatchMode="contains" style="width:380px">
+                                <h:link value="#{courseProfile.course.title}" outcome="/viewcourse.xhtml?faces-redirect=true&amp;id=#{courseProfile.course.id}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Bestanden in" sortBy="#{courseProfile.passedInYear}" filterBy="#{courseProfile.passedInYear}" filterMatchMode="exact">
+                                <h:outputText value="#{courseProfile.passedInYear}"/>
+                            </p:column>
+
+                            <p:column headerText="Note" style="width:75px" sortBy="#{courseProfile.grade}">
+                                <h:outputText value="#{courseProfile.grade}"/>
+                            </p:column>
+
+                            <p:column headerText="Stundenlohn" style="width:125px" sortBy="#{courseProfile.fee}">
+                                <h:outputText value="#{courseProfile.fee}"/>
+                            </p:column>
+
+                            <p:column headerText="Wohnort" sortBy="#{courseProfile.profile.customer.city}" filterBy="#{courseProfile.profile.customer.city}" filterMatchMode="contains">
+                                <h:outputText value="#{courseProfile.profile.customer.city}"/>
+                            </p:column>
+
+                            <p:column headerText="Link">
+                                <h:link value="Zum Profil" outcome="/viewprofile.xhtml?faces-redirect=true&amp;id=#{courseProfile.profile.id}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </b:column>
+            </b:row>
+        </b:container>
+    </ui:define>
+
+</ui:composition>

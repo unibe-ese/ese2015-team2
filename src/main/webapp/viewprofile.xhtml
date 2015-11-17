@@ -48,11 +48,10 @@
                                 <b:column span="8">
                                     <h2>#{viewProfileBean.customer.firstName}'s Studienfächer</h2>
                                 </b:column>
-                                
                             </b:row>
                             <hr />
                             <b:row >
-                                <b:column span="12" rendered="#{!viewProfileBean.hasCourses}">  <!--TODO-->
+                                <b:column span="12" rendered="#{!viewProfileBean.hasCourses}">
                                     Noch keine Kurse gewählt, fügen Sie doch einige hinzu.
                                 </b:column>
                                 <b:column span="12" rendered="#{viewProfileBean.hasCourses}">

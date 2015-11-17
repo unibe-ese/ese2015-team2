@@ -1,5 +1,6 @@
 package ch.eset2.model;
 
+import ch.eset2.web.util.AccountType;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Models the relationship between a {@link Course} and {@link Profile}.
@@ -19,6 +22,9 @@ import javax.persistence.ManyToOne;
  * @version 1.0
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "CourseProfile.findAllTutors", query = "SELECT f FROM CourseProfile f WHERE f.profile.customer.accountType = " + AccountType.TUTOR)
+})
 public class CourseProfile implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,7 +41,6 @@ public class CourseProfile implements Serializable {
     private Course course;
     
     private double grade;
-    private int rate;
     
     private String passedInYear;
     
@@ -71,14 +76,6 @@ public class CourseProfile implements Serializable {
 
     public void setGrade(double grade) {
         this.grade = grade;
-    }
-
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
     }
 
     public String getPassedInYear() {

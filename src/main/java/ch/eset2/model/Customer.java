@@ -53,7 +53,7 @@ public class Customer implements Serializable {
     protected String zip;
     protected String city;
     protected String phone;
-    protected int accountType;
+    protected int accountType; // TODO: Move this to Profile?
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn

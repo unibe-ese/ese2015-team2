@@ -1,6 +1,7 @@
 package ch.eset2.model.dao;
 
 import ch.eset2.model.CourseProfile;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,4 +26,7 @@ public class CourseProfileFacade extends AbstractFacade<CourseProfile> {
         super(CourseProfile.class);
     }
     
+    public List<CourseProfile> findAllTutors(){
+        return em.createNamedQuery("CourseProfile.findAllTutors").getResultList();
+    }
 }
