@@ -40,7 +40,9 @@ When different classes provide similar services, the names are given also simila
 Well done. The methods are named intuitively and descriptive. Very nice and easy to read. Little side note: The  ConstantVariables class is kind of a mixed bag. Sure all fields within are constants, but you are bunching up constants for various areas: 
 
 > public static final int PASSWORD_MIN_LENGTH = 8;
+
 > public static final String EMAIL_REGEX_PATTERN =  ...
+
 > public static final String CONFIRMPASSWORD_ERRORMESSAGE = ...
 
 Sure it's easy putting all constants into one class, but this can escalate quickly. Our suggestion would be to split these constants into seperate classes, such as RegexPatterns, Constraints, ErrorMessages and maybe even make a class for all Navigation Strings (e.g. "redirect:/login?logout").
@@ -73,7 +75,9 @@ There is one small repetition in the Logincontroller create method
   
 Some duplicated code is also in the JavaScript implemented in SignupForm and UpdateProfileForm:
 >     "if(_this.password !== null) {_this.password.equals(_this.confirmPassword)} else {true}", 
+
 and
+
 >     "_this.password.equals(_this.confirmPassword)"
 
 ####Exception, testing null values
