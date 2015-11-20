@@ -26,8 +26,6 @@ public class CreateMessageBean implements Serializable {
     private MessageFacade messageFacade;
     
     private Message newMessage;
-    private Customer loggedInCustomer;
-    
     /**
      * Creates a new instance of CreateMessageBean
      */
@@ -39,14 +37,17 @@ public class CreateMessageBean implements Serializable {
         newMessage = new Message();
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
         newMessage.setSender(loggedInCustomer.getUsername());
+        
     }
     
     
     /**
      * Persists the new message to the database.
+     * @param receiver that should recieve the message
      * @return the "sendSuccess.xhtml" page to indicate that the message was sent.
      */
-    public String createNewMessage(){
+    public String createNewMessage(String receiver){
+        newMessage.setReciever(receiver);
         messageFacade.create(newMessage);
         return Navigation.SENDSUCCESS;
     }

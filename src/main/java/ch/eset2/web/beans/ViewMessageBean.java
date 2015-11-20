@@ -20,6 +20,7 @@ public class ViewMessageBean implements Serializable {
     
     private String customer;
     private Message message;
+    private boolean inReplyState = false;
     
     private boolean myMessage = false;
     
@@ -49,6 +50,14 @@ public class ViewMessageBean implements Serializable {
 
     public void setMessage(Message message) {
         this.message = message;
+    }
+
+    public boolean isInReplyState() {
+        return inReplyState;
+    }
+
+    public void setInReplyState(boolean inReplyState) {
+        this.inReplyState = inReplyState;
     }
     
     
