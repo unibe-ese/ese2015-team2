@@ -31,19 +31,15 @@
                     
                     <h:form id="table" rendered="#{viewInboxBean.hasMessages()}">
                         <p:dataTable var="message" value="#{viewInboxBean.messages}">
-                            <p:column headerText="Betreff">
+                            <p:column width="20%" headerText="Betreff">
                                 <b:navLink value="#{message.subject}" href="viewmessage.xhtml?id=#{message.id}"></b:navLink>
                             </p:column>
 
-                            <p:column headerText="Absender">
+                            <p:column width="20%" headerText="Absender">
                                 <h:outputText value="#{message.sender}"/>
                             </p:column>
 
-                            <p:column headerText="Empfänger">
-                                <h:outputText value="#{message.reciever}"/>
-                            </p:column>
-
-                            <p:column headerText="Nachrichtenvorschau">
+                            <p:column width="60%" headerText="Nachrichtenvorschau">
                                 <b:navLink value="#{message.messageTextPreview()}" href="viewmessage.xhtml?id=#{message.id}"></b:navLink>
                             </p:column>
                             

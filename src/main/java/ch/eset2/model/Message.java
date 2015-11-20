@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Represents a message sent from a {@link Customer} to an other.
@@ -16,6 +18,9 @@ import javax.persistence.Id;
  * @version 1.0
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Message.findByReciever", query = "SELECT f FROM Message f WHERE f.reciever = :reciever")
+})
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,11 +45,11 @@ public class Message implements Serializable {
      * is shorter than 30 chars.
      */
     public String messageTextPreview(){
-        if (messageText.length() <= 30){
+        if (messageText.length() <= 50){
             return messageText;
         }
         else {
-            return messageText.substring(0, 30).concat("...");
+            return messageText.substring(0, 50).concat("...");
         }
     }
     

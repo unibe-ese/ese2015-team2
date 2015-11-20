@@ -35,25 +35,9 @@ public class ViewInboxBean implements Serializable {
      */
     @PostConstruct
     private void init() {
-        messages = messageFacade.findAll();
+        
         currentuser = (Customer) SecurityUtils.getSubject().getPrincipal();
-        this.filter(currentuser.getUsername());
-    }
-
-    /**
-     * filters the messages for the username of the reciever. No boundary check
-     * necessary, because messages can also be empty.
-     *
-     * @param username the string for what it's filtered.
-     */
-    private void filter(String username) {
-        ArrayList<Message> tmpList= new ArrayList<>();
-        for (int i = 0; i < messages.size(); i++) {
-            if (!messages.get(i).getReciever().equals(username)) {
-                tmpList.add(messages.get(i));
-            }
-        }
-        messages.removeAll(tmpList);
+        messages = messageFacade.findMessageByReciever(currentuser.getUsername());
     }
 
     /**
