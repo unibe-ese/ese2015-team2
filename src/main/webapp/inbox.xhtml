@@ -26,21 +26,24 @@
                     <b:column span="12" rendered="#{!viewInboxBean.hasMessages()}">
                         
                         <br></br>
-                        <h2>Es befinden sich keine Nachrichten in ihrem Posteingang.</h2>
+                        <h2>Es befinden sich keine Nachrichten in Ihrem Posteingang.</h2>
                     </b:column>
                     
                     <h:form id="table" rendered="#{viewInboxBean.hasMessages()}">
                         <p:dataTable var="message" value="#{viewInboxBean.messages}">
-                            <p:column width="20%" headerText="Betreff">
-                                <b:navLink value="#{message.subject}" href="viewmessage.xhtml?id=#{message.id}"></b:navLink>
+                            <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Empfangen">
+                                <a href="viewmessage.xhtml?id=#{message.id}">#{message.date}</a>
+                            </p:column>
+                            <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Betreff">
+                                <a href="viewmessage.xhtml?id=#{message.id}">#{message.subject}</a>
                             </p:column>
 
-                            <p:column width="20%" headerText="Absender">
-                                <h:outputText value="#{message.sender}"/>
+                            <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Absender">
+                                <a href="viewmessage.xhtml?id=#{message.id}">#{message.sender}</a>
                             </p:column>
 
-                            <p:column width="60%" headerText="Nachrichtenvorschau">
-                                <b:navLink value="#{message.messageTextPreview()}" href="viewmessage.xhtml?id=#{message.id}"></b:navLink>
+                            <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="55%" headerText="Nachrichtenvorschau">
+                                <a href="viewmessage.xhtml?id=#{message.id}">#{message.messageTextPreview()}</a>
                             </p:column>
                             
                             

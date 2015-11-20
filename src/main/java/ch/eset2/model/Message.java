@@ -38,7 +38,10 @@ public class Message implements Serializable {
     
     private String reciever;
     
+    private String date;
     
+    private int messageState;
+      
     /**
      * Creates a short preview of 30 chars of the messageText.
      * @return the first 30 chars of the messageText. Whole messagetext if text
@@ -51,6 +54,26 @@ public class Message implements Serializable {
         else {
             return messageText.substring(0, 50).concat("...");
         }
+    }
+    
+    public int getMessageState() {
+        return messageState;
+    }
+
+    public void setMessageState(int messageState) {
+        this.messageState = messageState;
+    }
+    
+    public boolean isNew() {
+        return this.messageState == 1;
+    }
+    
+     public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
     
     public String getReciever() {

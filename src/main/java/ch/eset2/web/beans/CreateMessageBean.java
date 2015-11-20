@@ -3,6 +3,8 @@ package ch.eset2.web.beans;
 import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
 import ch.eset2.model.dao.MessageFacade;
+import ch.eset2.web.converter.DateConverter;
+import ch.eset2.web.util.MessageState;
 import ch.eset2.web.util.Navigation;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -47,6 +49,8 @@ public class CreateMessageBean implements Serializable {
      * @return the "sendSuccess.xhtml" page to indicate that the message was sent.
      */
     public String createNewMessage(String receiver){
+        newMessage.setDate(DateConverter.currentTimeAsString());
+        newMessage.setMessageState(MessageState.NEW);
         newMessage.setReciever(receiver);
         messageFacade.create(newMessage);
         return Navigation.SENDSUCCESS;

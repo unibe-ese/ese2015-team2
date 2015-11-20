@@ -3,8 +3,11 @@ package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
+import ch.eset2.model.dao.MessageFacade;
+import ch.eset2.web.util.MessageState;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
@@ -18,6 +21,10 @@ import org.apache.shiro.SecurityUtils;
 @ViewScoped
 public class ViewMessageBean implements Serializable {
     
+    
+    @Inject
+    private MessageFacade messageFacade;
+    
     private String customer;
     private Message message;
     private boolean inReplyState = false;
@@ -26,9 +33,10 @@ public class ViewMessageBean implements Serializable {
     
     public void init(){
         customer = message.getReciever();
-                
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
         myMessage = loggedInCustomer.getUsername().equals(customer);
+        message.setMessageState(MessageState.READ);
+        messageFacade.edit(message);
     }
     
     public boolean isMyMessage(){

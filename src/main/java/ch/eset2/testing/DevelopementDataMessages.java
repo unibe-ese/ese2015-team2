@@ -2,6 +2,7 @@ package ch.eset2.testing;
 
 import ch.eset2.model.Message;
 import ch.eset2.model.dao.MessageFacade;
+import ch.eset2.web.util.MessageState;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -38,6 +39,8 @@ public class DevelopementDataMessages {
             firstMessage.setSubject("Testbetreff1");
             firstMessage.setReciever("marc.jost");
             firstMessage.setSender("mischa.wenger");
+            firstMessage.setDate("20.11.2015 13:00:12");
+            firstMessage.setMessageState(MessageState.NEW);
             firstMessage.setMessageText("Hier steht die Testnachricht von Mischa an Marc.");
             messageFacade.create(firstMessage);
 
@@ -45,6 +48,8 @@ public class DevelopementDataMessages {
             secondMessage.setSubject("TestBetreff2");
             secondMessage.setReciever("mischa.wenger");
             secondMessage.setSender("marc.jost");
+            secondMessage.setDate("20.11.2015 13:12:22");
+            secondMessage.setMessageState(MessageState.NEW);
             secondMessage.setMessageText("Hier steht die Testnachricht2 von Marc an Mischa.");
             messageFacade.create(secondMessage);
             
@@ -52,6 +57,8 @@ public class DevelopementDataMessages {
             thirdMessage.setSubject("Testbetreff3");
             thirdMessage.setReciever("eve.mendoza");
             thirdMessage.setSender("eve.mendoza");
+            thirdMessage.setDate("20.11.2015 13:44:00");
+            thirdMessage.setMessageState(MessageState.NEW);
             thirdMessage.setMessageText("Hier steht die Testnachricht3 von Eve an Eve.");
             messageFacade.create(thirdMessage);
             
@@ -59,6 +66,8 @@ public class DevelopementDataMessages {
             fourthMessage.setSubject("Testbetreff4");
             fourthMessage.setReciever("mischa.wenger");
             fourthMessage.setSender("eve.mendoza");
+            fourthMessage.setDate("20.11.2015 12:10:19");
+            fourthMessage.setMessageState(MessageState.NEW);
             fourthMessage.setMessageText("Hier steht die Testnachricht4 von Eve an Mischa .");
             messageFacade.create(fourthMessage);
             
@@ -66,6 +75,8 @@ public class DevelopementDataMessages {
             fifthMessage.setSubject("Testbetreff5");
             fifthMessage.setReciever("eve.mendoza");
             fifthMessage.setSender("mischa.wenger");
+            fifthMessage.setDate("20.11.2015 12:59:47");
+            fifthMessage.setMessageState(MessageState.NEW);
             fifthMessage.setMessageText("Hier steht die Testnachricht5 vom Mischa an Eve.");
             messageFacade.create(fifthMessage);
             

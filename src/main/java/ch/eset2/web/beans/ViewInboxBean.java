@@ -3,7 +3,6 @@ import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
 import ch.eset2.model.dao.MessageFacade;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
