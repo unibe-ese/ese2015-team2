@@ -121,6 +121,7 @@
                     <h4>Freunde</h4>
                     Noch keine Freunde :(
                     <hr />
+                    <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createMessage?id=#{viewProfileBean.customer.id}" value="Kontaktieren" look="info"/>
                 </b:column>
             </b:row>
         </b:container>

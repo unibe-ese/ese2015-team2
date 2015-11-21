@@ -8,7 +8,7 @@ import ch.eset2.web.util.MessageState;
 import ch.eset2.web.util.Navigation;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
@@ -21,11 +21,13 @@ import org.apache.shiro.SecurityUtils;
  * @author Mischa Wenger / Eve Mendoza
  */
 @Named(value = "createMessageBean")
-@RequestScoped
+@ViewScoped
 public class CreateMessageBean implements Serializable {
     
     @Inject
     private MessageFacade messageFacade;
+    
+    private Customer reciever;
     
     private Message newMessage;
     /**
@@ -55,8 +57,8 @@ public class CreateMessageBean implements Serializable {
         messageFacade.create(newMessage);
         return Navigation.SENDSUCCESS;
     }
-
     
+          
     //getters and setters
     public Message getNewMessage() {
         return newMessage;
@@ -64,5 +66,13 @@ public class CreateMessageBean implements Serializable {
 
     public void setNewMessage(Message newMessage) {
         this.newMessage = newMessage;
+    }
+        
+    public Customer getReciever() {
+        return reciever;
+    }
+
+    public void setReciever(Customer reciever) {
+        this.reciever = reciever;
     }
 }
