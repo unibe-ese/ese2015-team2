@@ -122,6 +122,9 @@
                     Noch keine Freunde :(
                     <hr />
                     <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createMessage?id=#{viewProfileBean.customer.id}" value="Kontaktieren" look="info"/>
+                    <br/>
+                    <br/>
+                    <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createOffer?id=#{viewProfileBean.customer.id}" value="Vertrag aufsetzen" look="info"/>
                 </b:column>
             </b:row>
         </b:container>

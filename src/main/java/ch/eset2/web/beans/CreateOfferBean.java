@@ -1,7 +1,7 @@
 package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
-import ch.eset2.model.Message;
+import ch.eset2.model.Offer;
 import ch.eset2.model.dao.MessageFacade;
 import ch.eset2.web.converter.DateConverter;
 import ch.eset2.web.util.MessageState;
@@ -21,57 +21,57 @@ import org.apache.shiro.SecurityUtils;
  * using any service of this class.
  * @author Mischa Wenger / Eve Mendoza
  */
-@Named(value = "createMessageBean")
+@Named(value = "createOfferBean")
 @ViewScoped
-public class CreateMessageBean implements Serializable {
+public class CreateOfferBean implements Serializable {
     
     @Inject
     private MessageFacade messageFacade;
     
     private Customer reciever;
     
-    private Message newMessage;
+    private Offer newOffer;
     /**
      * Creates a new instance of CreateMessageBean
      */
-    public CreateMessageBean() {
+    public CreateOfferBean() {
     }
     
     @PostConstruct
     private void init(){
-        newMessage = new Message();
+        newOffer = new Offer();
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        newMessage.setSender(loggedInCustomer.getUsername());
+        newOffer.setSender(loggedInCustomer.getUsername());
         
     }
     
     
     /**
-     * Persists the new message to the database.
-     * @param receiver that should recieve the message
-     * @return the "sendSuccess.xhtml" page to indicate that the message was sent.
+     * Persists the new offer to the database.
+     * @param receiver that should recieve the offer
+     * @return the "sendSuccess.xhtml" page to indicate that the offer was sent.
      */
-    public String createNewMessage(String receiver){
+    public String createNewOffer(String receiver){
         setGivenParameters(receiver);
-        messageFacade.create(newMessage);
+        messageFacade.create(newOffer);
         return Navigation.SENDSUCCESS;
     }
     
-    
-    private void setGivenParameters(String reciever){
-        newMessage.setMessageType(MessageType.MESSAGE);
-        newMessage.setDate(DateConverter.currentTimeAsString());
-        newMessage.setMessageState(MessageState.NEW);
-        newMessage.setReciever(reciever);
+     private void setGivenParameters(String reciever){
+        newOffer.setMessageType(MessageType.OFFER);
+        newOffer.setDate(DateConverter.currentTimeAsString());
+        newOffer.setMessageState(MessageState.NEW);
+        newOffer.setReciever(reciever);
     }
+    
           
     //getters and setters
-    public Message getNewMessage() {
-        return newMessage;
+    public Offer getNewOffer() {
+        return newOffer;
     }
 
-    public void setNewMessage(Message newMessage) {
-        this.newMessage = newMessage;
+    public void setNewOffer(Offer newOffer) {
+        this.newOffer = newOffer;
     }
         
     public Customer getReciever() {

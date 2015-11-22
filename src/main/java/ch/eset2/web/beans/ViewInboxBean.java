@@ -1,6 +1,7 @@
 package ch.eset2.web.beans;
 import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
+import ch.eset2.model.Offer;
 import ch.eset2.model.dao.MessageFacade;
 import java.io.Serializable;
 import java.util.List;
@@ -23,6 +24,8 @@ public class ViewInboxBean implements Serializable {
 
     @Inject
     private MessageFacade messageFacade;
+    
+    private List<Offer> offers;
 
     private List<Message> messages;
 
@@ -34,9 +37,9 @@ public class ViewInboxBean implements Serializable {
      */
     @PostConstruct
     private void init() {
-        
         currentuser = (Customer) SecurityUtils.getSubject().getPrincipal();
         messages = messageFacade.findMessageByReciever(currentuser.getUsername());
+        offers = messageFacade.findOfferByReciever(currentuser.getUsername());
     }
 
     /**
@@ -57,10 +60,33 @@ public class ViewInboxBean implements Serializable {
         return !messages.isEmpty();
     }
 
+    /**
+     * Checks whether there are offers or not in the inbox.
+     *
+     * @return true when there exist offers, false when there are no offers.
+     */
+    public boolean hasOffers() {
+        if (offers == null) {
+            System.err.println("OFFERS IS FUCKING NULL");
+            return false;
+        }
+        System.err.println("OFFERS of this user: ");
+        for (Offer offer : offers) {
+            System.err.println(offer.getId());
+        }
+        System.err.println("RETURNING: " + !offers.isEmpty());
+        return !offers.isEmpty();
+    }
+    
+    
     
     //getters
     public List<Message> getMessages() {
         return messages;
     }
 
+    
+    public List<Offer> getOffers() {
+        return offers;
+    }
 }

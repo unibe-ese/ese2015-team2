@@ -10,14 +10,14 @@
                 xmlns:o="http://omnifaces.org/ui">
 
     <f:metadata>
-        <o:viewParam name="id" value="#{viewMessageBean.message}" converter="#{messageConverter}" converterMessage="Ungültiger Request. Unbekannte Nachricht" required="true" requiredMessage="Ungültiger Request. Nutzen Sie einen Link aus der Website."/>
-        <f:viewAction action="#{viewMessageBean.init()}"/>
+        <o:viewParam name="id" value="#{viewOfferBean.offer}" converter="#{messageConverter}" converterMessage="Ungültiger Request. Unbekannte Nachricht" required="true" requiredMessage="Ungültiger Request. Nutzen Sie einen Link aus der Website."/>
+        <f:viewAction action="#{viewOfferBean.init()}"/>
     </f:metadata>
 
     <ui:define name="content">
 
 
-        <b:jumbotron rendered="#{!viewMessageBean.myMessage}">
+        <b:jumbotron rendered="#{!viewOfferBean.myOffer}">
             <b:container>
                 <b:row style="display: flex; align-items: center; min-height: 50%; min-height: 50vh; height: 200px;">
                     <b:column col-md="8">
@@ -38,36 +38,60 @@
             </b:container>
         </b:jumbotron>
 
-        <b:container rendered="#{viewMessageBean.myMessage}">
+        <b:container rendered="#{viewOfferBean.myOffer}">
             <b:row>
                 <b:column span="6" offset="3">
-                    <h1>Nachricht lesen</h1>
+                    <h1>Vertrag lesen</h1>
                     <br />
                     <h:form>
                         <b:panelGrid colSpans="4,8">
                             <h:outputLabel value="Empfangen am:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText id="date" value="#{viewMessageBean.message.date}"/>
+                                    <h:outputText id="date" value="#{viewOfferBean.offer.date}"/>
                                 </b:column>
                             </b:row>
 
                             <h:outputLabel value="Absender:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText id="sender" value="#{viewMessageBean.message.sender}"/>
+                                    <h:outputText id="sender" value="#{viewOfferBean.offer.sender}"/>
                                 </b:column>
                             </b:row>
                             <h:outputLabel value="Betreff:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText id="subject" value="#{viewMessageBean.message.subject}"/>
+                                    <h:outputText id="subject" value="#{viewOfferBean.offer.subject}"/>
+                                </b:column>
+                            </b:row>
+                            <h:outputLabel value="Fee:"/>
+                            <b:row>
+                                <b:column span="12">
+                                    <h:outputText id="fee" value="#{viewOfferBean.offer.fee}"/>
+                                </b:column>
+                            </b:row>
+                            <h:outputLabel value="Erster Termin:"/>
+                            <br/>
+                            <b:row>
+                                <b:column span="12">
+                            <p>Am:</p>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column span="12">
+                                    <h:outputText id="firstAppointmentDay" value="#{viewOfferBean.offer.firstAppointmentDay}"/>
+                                </b:column>
+                            </b:row>
+                            <p>Um:</p>
+                            <b:row>
+                                <b:column span="12">
+                                    <h:outputText id="firstAppointmentTime" value="#{viewOfferBean.offer.firstAppointmentTime} Uhr"/>
                                 </b:column>
                             </b:row>
                             <h:outputText value="Nachricht:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText style="width: 100%; height: 160px;" value="#{viewMessageBean.message.messageText}"/>
+                                    <h:outputText style="width: 100%; height: 160px;" value="#{viewOfferBean.offer.messageText}"/>
                                 </b:column>
                             </b:row>
                         </b:panelGrid>
@@ -77,7 +101,7 @@
 
 
             <h:form>
-                <b:row rendered="#{viewMessageBean.inReplyState}">
+                <b:row rendered="#{viewOfferBean.inReplyState}">
 
 
                     <b:column span="6" offset="3">
@@ -100,27 +124,26 @@
                     </b:column>
                 </b:row>
 
-                <b:row rendered="#{!viewMessageBean.inReplyState}">
+                <b:row rendered="#{!viewOfferBean.inReplyState}">
 
 
                     <b:column span="6" offset="3">
 
-                        <b:row>                        
+                        <b:row>
                             <b:column span="3" offset="4">
                                 <br/>
                                 <a href="inbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
                             </b:column>
-                            
                             <b:column span="2" offset="1">
                                 <br/>
-                                <b:commandButton id="reply" value="Antworten" action="#{viewMessageBean.setInReplyState(true)}" look="success"/>
+                                <b:commandButton id="reply" value="Antworten" action="#{viewOfferBean.setInReplyState(true)}" look="success"/>
                             </b:column>
                         </b:row>
 
                     </b:column>
 
                 </b:row>
-                <b:row rendered="#{viewMessageBean.inReplyState}">
+                <b:row rendered="#{viewOfferBean.inReplyState}">
 
                     <b:column span="6" offset="3">
                         <b:row>
@@ -131,11 +154,11 @@
                             </b:column>
                             <b:column span="3" offset="1">
                                 <br/>
-                                <a href="viewmessage.xhtml?id=#{viewMessageBean.message.id}" class="btn btn-info">Abbrechen »</a>
+                                <a href="viewoffer.xhtml?id=#{viewOfferBean.offer.id}" class="btn btn-info">Abbrechen »</a>
                             </b:column>
                             <b:column span="2" offset="1">
                                 <br/>
-                                <b:commandButton action="#{createMessageBean.createNewMessage(viewMessageBean.message.sender)}" value="Senden" look="success"/>
+                                <b:commandButton action="#{createMessageBean.createNewMessage(viewOfferBean.offer.sender)}" value="Antwort senden" look="success"/>
                             </b:column>
                         </b:row>
                     </b:column>

@@ -1,8 +1,10 @@
 package ch.eset2.testing;
 
 import ch.eset2.model.Message;
+import ch.eset2.model.Offer;
 import ch.eset2.model.dao.MessageFacade;
 import ch.eset2.web.util.MessageState;
+import ch.eset2.web.util.MessageType;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -42,6 +44,7 @@ public class DevelopementDataMessages {
             firstMessage.setDate("20.11.2015 13:00:12");
             firstMessage.setMessageState(MessageState.NEW);
             firstMessage.setMessageText("Hier steht die Testnachricht von Mischa an Marc.");
+            firstMessage.setMessageType(MessageType.MESSAGE);
             messageFacade.create(firstMessage);
 
             Message secondMessage = new Message();
@@ -51,6 +54,7 @@ public class DevelopementDataMessages {
             secondMessage.setDate("20.11.2015 13:12:22");
             secondMessage.setMessageState(MessageState.NEW);
             secondMessage.setMessageText("Hier steht die Testnachricht2 von Marc an Mischa.");
+            secondMessage.setMessageType(MessageType.MESSAGE);
             messageFacade.create(secondMessage);
             
             Message thirdMessage = new Message();
@@ -60,6 +64,7 @@ public class DevelopementDataMessages {
             thirdMessage.setDate("20.11.2015 13:44:00");
             thirdMessage.setMessageState(MessageState.NEW);
             thirdMessage.setMessageText("Hier steht die Testnachricht3 von Eve an Eve.");
+            thirdMessage.setMessageType(MessageType.MESSAGE);
             messageFacade.create(thirdMessage);
             
             Message fourthMessage = new Message();
@@ -68,6 +73,7 @@ public class DevelopementDataMessages {
             fourthMessage.setSender("eve.mendoza");
             fourthMessage.setDate("20.11.2015 12:10:19");
             fourthMessage.setMessageState(MessageState.NEW);
+            fourthMessage.setMessageType(MessageType.MESSAGE);
             fourthMessage.setMessageText("Hier steht die Testnachricht4 von Eve an Mischa .");
             messageFacade.create(fourthMessage);
             
@@ -77,8 +83,22 @@ public class DevelopementDataMessages {
             fifthMessage.setSender("mischa.wenger");
             fifthMessage.setDate("20.11.2015 12:59:47");
             fifthMessage.setMessageState(MessageState.NEW);
+            fifthMessage.setMessageType(MessageType.MESSAGE);
             fifthMessage.setMessageText("Hier steht die Testnachricht5 vom Mischa an Eve.");
             messageFacade.create(fifthMessage);
+            
+            Offer firstOffer = new Offer();
+            firstOffer.setSubject("TestOffer 1");
+            firstOffer.setReciever("mischa.wenger");
+            firstOffer.setSender("eve.mendoza");
+            firstOffer.setDate("20.11.2015 12:50:47");
+            firstOffer.setMessageState(MessageState.NEW);
+            firstOffer.setMessageType(MessageType.OFFER);
+            firstOffer.setMessageText("Hier ist der erste Offer.");
+            firstOffer.setFee("20.00");
+            firstOffer.setFirstAppointmentDay("30.11.2015");
+            firstOffer.setFirstAppointmentTime("18:00");
+            messageFacade.create(firstOffer);
             
             /*
             Course ei = new Course();

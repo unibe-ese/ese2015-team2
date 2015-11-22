@@ -1,6 +1,7 @@
 package ch.eset2.model.dao;
 
 import ch.eset2.model.Message;
+import ch.eset2.model.Offer;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,5 +29,9 @@ public class MessageFacade extends AbstractFacade<Message> {
     
     public List<Message> findMessageByReciever(String reciever){
         return em.createNamedQuery("Message.findByReciever").setParameter("reciever", reciever).getResultList();
+    }
+    
+    public List<Offer> findOfferByReciever(String reciever){
+        return em.createNamedQuery("Offer.findByReciever").setParameter("reciever", reciever).getResultList();
     }
 }

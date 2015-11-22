@@ -19,7 +19,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Message.findByReciever", query = "SELECT f FROM Message f WHERE f.reciever = :reciever")
+    @NamedQuery(name = "Message.findByReciever", query = "SELECT f FROM Message f WHERE f.reciever = :reciever AND f.messageType = 1")
 })
 public class Message implements Serializable {
 
@@ -30,6 +30,8 @@ public class Message implements Serializable {
     private Long id;
     
     private String subject;
+    
+    private int messageType;
     
     @Column(length = 2000)
     private String messageText;
@@ -110,6 +112,14 @@ public class Message implements Serializable {
 
     public void setMessageText(String messageText) {
         this.messageText = messageText;
+    }
+    
+    public int getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(int messageType) {
+        this.messageType = messageType;
     }
 
     public void setId(Long id) {
