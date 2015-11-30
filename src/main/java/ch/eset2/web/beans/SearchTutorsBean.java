@@ -7,7 +7,6 @@ package ch.eset2.web.beans;
 
 import ch.eset2.model.Course;
 import ch.eset2.model.CourseProfile;
-import ch.eset2.model.dao.CourseFacade;
 import ch.eset2.model.dao.CourseProfileFacade;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -30,15 +29,11 @@ public class SearchTutorsBean {
     private List<Course> availableCourses;
     
     @Inject
-    private CourseFacade courseFacade;
-    
-    @Inject
     private CourseProfileFacade courseProfileFacade;
     
     @PostConstruct
     private void init(){
         courseProfiles = courseProfileFacade.findAllTutors();
-        availableCourses = courseFacade.findAll();
     }
     
     public List<CourseProfile> getCourseProfiles(){

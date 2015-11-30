@@ -30,7 +30,7 @@
                     <b:inputSecret id="password" placeholder="Password" fieldSize="sm" value="#{cc.attrs.passwordField}" required="true"/>
                 </div>
                 #{' '}
-                <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success" icon="log-in" iconAlign="right">
+                <b:commandButton action="#{cc.attrs.loginAction}" value="Login" look="success">
                     <f:ajax execute="@form" render="@form" />
                 </b:commandButton>
             </h:form>

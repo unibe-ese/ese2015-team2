@@ -18,6 +18,9 @@
         <b:navBar brand="ESET2"  brandHref="#{request.contextPath}/index.xhtml" inverse="true" fixed="top">
             <b:navbarLinks>
                 <b:navLink value="Vorlesungen" href="viewcourses.xhtml"></b:navLink>
+                <shiro:notAuthenticated>
+                    <b:navLink value="Registrieren!" href="registration.xhtml"></b:navLink>
+                </shiro:notAuthenticated>
                 <shiro:authenticated>
                     <b:navLink value="Tutoren suchen" href="searchtutors.xhtml"></b:navLink>
                     <b:navLink value="Mein Profil" href="viewprofile.xhtml?id=#{userHelper.myProfileID}"></b:navLink>

@@ -1,6 +1,7 @@
 package ch.eset2.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -59,9 +62,52 @@ public class Customer implements Serializable {
     @JoinColumn
     protected Profile profile;
     
+//    @ManyToMany (fetch = FetchType.EAGER)
+//    @JoinTable(name = "friends", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "friendId"))
+//    private List<Customer> friends;
+    
+    @ManyToMany
+    @JoinTable (name = "friends",
+            joinColumns = 
+                @JoinColumn(name = "customerId", referencedColumnName = "id"),
+            inverseJoinColumns = 
+                @JoinColumn (name = "friendId", referencedColumnName = "id"))
+    private List<Customer> friends;
+    
+    @ManyToMany(mappedBy = "friends")
+    private List<Customer> friendOf;
+    
+//    @ManyToMany (fetch = FetchType.EAGER)
+//    @JoinTable(name = "friends", joinColumns = @JoinColumn(name = "friendId"), inverseJoinColumns = @JoinColumn(name = "id"))
+//    private List<Customer> friendOf;
+    
     @OneToMany
     private List<Message> messages;
+    
+    public void addFriend(Customer friend){
+        friends.add(friend);
+    }
+    
+    public void removeFriend(Customer friend){
+        friends.remove(friend);
+    }
+    
+    public List<Customer> getFriends() {
+        return friends;
+    }
 
+    public void setFriends(List<Customer> friends) {
+        this.friends = friends;
+    }
+
+    public List<Customer> getFriendOf() {
+        return friendOf;
+    }
+
+    public void setFriendOf(List<Customer> friendOf) {
+        this.friendOf = friendOf;
+    }
+    
     public List<Message> getMessages() {
         return messages;
     }

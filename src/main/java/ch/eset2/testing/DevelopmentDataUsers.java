@@ -78,7 +78,6 @@ public class DevelopmentDataUsers {
         customerFacade.create(customer2);
         profileFacade.create(profile2);
         
-        
         Customer customer3 = new Customer();
         customer3.setAccountType(AccountType.STUDENT);
         customer3.setCity("Zürich");

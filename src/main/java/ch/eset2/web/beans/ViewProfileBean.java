@@ -2,9 +2,12 @@ package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
+import ch.eset2.model.dao.CustomerFacade;
 import ch.eset2.web.util.InitialsGenerator;
+import ch.eset2.web.util.PrivacyHelper;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
@@ -17,22 +20,39 @@ import org.apache.shiro.SecurityUtils;
 @ViewScoped
 public class ViewProfileBean implements Serializable {
     
-    private Customer customer;
+    @Inject
+    private PrivacyHelper privacyHelper;
+    
+    @Inject
+    private AddFriendBean addFriendBean;
+    
+    private Customer viewedCustomer;
+    private Customer loggedInCustomer;
     private Profile profile;
     
     private boolean hasCourses = false;
     private boolean myProfile = false;
     
+    
     /**
      * Called on page load. 
      */
     public void init(){
-        customer = profile.getCustomer();
+        viewedCustomer = profile.getCustomer();
         hasCourses = !profile.getCourseProfiles().isEmpty();
         
-        Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
+        loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
         if(loggedInCustomer == null) return; 
         myProfile = loggedInCustomer.getProfile().equals(profile);
+    }
+    
+    public boolean hasPermissionToViewFullProfile(){
+        return privacyHelper.hasPermissionToViewFullProfile(loggedInCustomer, viewedCustomer);
+    }
+    
+    // TODO: Remove this. Adding friends directly won't be possible
+    public void addFriend(){
+        addFriendBean.addFriend(loggedInCustomer, viewedCustomer);
     }
     
     public String getInitials(){
@@ -47,12 +67,12 @@ public class ViewProfileBean implements Serializable {
         return myProfile;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Customer getViewedCustomer() {
+        return viewedCustomer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setViewedCustomer(Customer viewedCustomer) {
+        this.viewedCustomer = viewedCustomer;
     }
 
     public Profile getProfile() {
