@@ -19,7 +19,10 @@ import org.apache.shiro.SecurityUtils;
  * It allows to persist a new message to the database.
  * {@link CreateMessageBean#init() } should be called from the server before
  * using any service of this class.
- * @author Mischa Wenger / Eve Mendoza
+ * 
+ * @author Mischa Wenger 
+ * @author Eve Mendoza
+ * @version 1.0
  */
 @Named(value = "createOfferBean")
 @ViewScoped
@@ -28,7 +31,7 @@ public class CreateOfferBean implements Serializable {
     @Inject
     private MessageFacade messageFacade;
     
-    private Customer reciever;
+    private Customer receiver;
     
     private Offer newOffer;
     /**
@@ -41,8 +44,7 @@ public class CreateOfferBean implements Serializable {
     private void init(){
         newOffer = new Offer();
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        newOffer.setSender(loggedInCustomer.getUsername());
-        
+        newOffer.setSender(loggedInCustomer);
     }
     
     
@@ -51,20 +53,15 @@ public class CreateOfferBean implements Serializable {
      * @param receiver that should recieve the offer
      * @return the "sendSuccess.xhtml" page to indicate that the offer was sent.
      */
-    public String createNewOffer(String receiver){
-        setGivenParameters(receiver);
+    public String createNewOffer(Customer receiver){
+        newOffer.setMessageType(MessageType.OFFER);
+        newOffer.setSendDate(DateConverter.currentTimeAsString());
+        newOffer.setMessageState(MessageState.NEW);
+        newOffer.setReceiver(receiver);
         messageFacade.create(newOffer);
         return Navigation.SENDSUCCESS;
     }
     
-     private void setGivenParameters(String reciever){
-        newOffer.setMessageType(MessageType.OFFER);
-        newOffer.setDate(DateConverter.currentTimeAsString());
-        newOffer.setMessageState(MessageState.NEW);
-        newOffer.setReciever(reciever);
-    }
-    
-          
     //getters and setters
     public Offer getNewOffer() {
         return newOffer;
@@ -74,11 +71,11 @@ public class CreateOfferBean implements Serializable {
         this.newOffer = newOffer;
     }
         
-    public Customer getReciever() {
-        return reciever;
+    public Customer getReceiver() {
+        return receiver;
     }
 
-    public void setReciever(Customer reciever) {
-        this.reciever = reciever;
+    public void setReceiver(Customer receiver) {
+        this.receiver = receiver;
     }
 }

@@ -48,14 +48,14 @@
                             <h:outputLabel value="Empfangen am:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText id="date" value="#{viewMessageBean.message.date}"/>
+                                    <h:outputText id="date" value="#{viewMessageBean.message.sendDate}"/>
                                 </b:column>
                             </b:row>
 
                             <h:outputLabel value="Absender:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText id="sender" value="#{viewMessageBean.message.sender}"/>
+                                    <h:outputText id="sender" value="#{viewMessageBean.message.sender.username}"/>
                                 </b:column>
                             </b:row>
                             <h:outputLabel value="Betreff:"/>

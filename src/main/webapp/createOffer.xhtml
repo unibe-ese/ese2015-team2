@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -10,7 +10,7 @@
                 xmlns:o="http://omnifaces.org/ui">
 
     <f:metadata>
-        <o:viewParam name="id" value="#{createOfferBean.reciever}" converter="#{customerConverter}" converterMessage="Ungültiger Request. Unbekannte Nachricht" required="true" requiredMessage="Ungültiger Request. Nutzen Sie einen Link aus der Website."/>
+        <o:viewParam name="id" value="#{createOfferBean.receiver}" converter="#{customerConverter}" converterMessage="Ungültiger Request. Unbekannte Nachricht" required="true" requiredMessage="Ungültiger Request. Nutzen Sie einen Link aus der Website."/>
     </f:metadata>
 
 
@@ -30,14 +30,14 @@
                                 <h:outputLabel value="Empfänger:"/>
                                 <b:row>
                                     <b:column span="12">
-                                        <h:outputText id="reciever" value="#{createOfferBean.reciever.username}"/>
+                                        <h:outputText id="reciever" value="#{createOfferBean.receiver.username}"/>
                                     </b:column>
                                 </b:row>
                                 <h:outputLabel value="Betreff:"/>
                                 <b:row>
                                     <b:column span="12">
                                         <b:selectOneMenu id="subject" value="#{createOfferBean.newOffer.subject}"  >
-                                            <f:selectItems value="#{createOfferBean.reciever.profile.courseProfiles}" var="courseProfile" itemValue="#{courseProfile.course.title}" itemLabel="#{courseProfile.course.title}"/>
+                                            <f:selectItems value="#{createOfferBean.receiver.profile.courseProfiles}" var="courseProfile" itemValue="#{courseProfile.course.title}" itemLabel="#{courseProfile.course.title}"/>
                                         </b:selectOneMenu>
                                     </b:column>
                                 </b:row>
@@ -88,15 +88,15 @@
 
                             <b:column span="3" offset="0">
                                 <br/>
-                                <a href="inbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
+                                <a href="viewinbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
                             </b:column>
                             <b:column span="3" offset="1">
                                 <br/>
-                                <a href="viewprofile.xhtml?id=#{createOfferBean.reciever.profile.id}" class="btn btn-info">Abbrechen »</a>
+                                <a href="viewprofile.xhtml?id=#{createOfferBean.receiver.profile.id}" class="btn btn-info">Abbrechen »</a>
                             </b:column>
                             <b:column span="2" offset="1">
                                 <br/>
-                                <b:commandButton action="#{createOfferBean.createNewOffer(createOfferBean.reciever.username)}" value="Offerte abschicken" look="success"/>
+                                <b:commandButton action="#{createOfferBean.createNewOffer(createOfferBean.receiver.username)}" value="Offerte abschicken" look="success"/>
                             </b:column>
                         </b:row>
 

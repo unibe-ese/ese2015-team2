@@ -9,9 +9,9 @@ package ch.eset2.web.util;
 public class Navigation {
     public static final String INDEX = "index.xhtml";
     public static final String REGISTRATION = "registration.xhtml";
-    public static final String REGSUCCESS = "regSuccess.xhtml";
+    public static final String REGSUCCESS = "regsuccess.xhtml";
     public static final String EDITPROFILE = "editprofile.xhtml";
     public static final String VIEWPROFILE = "viewprofile.xhtml";
-    public static final String SENDSUCCESS = "sendSuccess.xhtml";
+    public static final String SENDSUCCESS = "sendsuccess.xhtml";
     public static final String SEARCHTUTOR = "searchtutors.xhtml";
 }

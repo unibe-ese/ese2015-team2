@@ -25,16 +25,17 @@ public class ViewOfferBean implements Serializable {
     @Inject
     private MessageFacade messageFacade;
     
-    private String customer;
+    private Customer customer;
+    
     private Offer offer;
     private boolean inReplyState = false;
     
     private boolean myOffer = false;
     
     public void init(){
-        customer = offer.getReciever();
+        customer = offer.getReceiver();
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        myOffer = loggedInCustomer.getUsername().equals(customer);
+        myOffer = loggedInCustomer.getUsername().equals(customer.getUsername());
         offer.setMessageState(MessageState.READ);
         messageFacade.edit(offer);
     }

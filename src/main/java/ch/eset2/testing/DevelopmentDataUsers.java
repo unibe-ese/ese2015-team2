@@ -1,7 +1,6 @@
 package ch.eset2.testing;
 
 import ch.eset2.model.Customer;
-import ch.eset2.model.Message;
 import ch.eset2.model.Profile;
 import ch.eset2.model.StudentProfile;
 import ch.eset2.model.dao.CustomerFacade;

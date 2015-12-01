@@ -18,7 +18,7 @@ import javax.validation.constraints.Pattern;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Offer.findByReciever", query = "SELECT f FROM Offer f WHERE f.reciever = :reciever AND f.messageType = 2")
+    @NamedQuery(name = "Offer.findByReceiver", query = "SELECT f FROM Offer f WHERE f.receiver = :receiver AND f.messageType = 2")
 })
 public class Offer extends Message {
 
