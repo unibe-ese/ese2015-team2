@@ -25,16 +25,16 @@ public class ViewMessageBean implements Serializable {
     @Inject
     private MessageFacade messageFacade;
     
-    private String customer;
+    private Customer customer;
     private Message message;
     private boolean inReplyState = false;
     
     private boolean myMessage = false;
     
     public void init(){
-        customer = message.getReciever();
+        customer = message.getReceiver();
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        myMessage = loggedInCustomer.getUsername().equals(customer);
+        myMessage = loggedInCustomer.getUsername().equals(customer.getUsername());
         message.setMessageState(MessageState.READ);
         messageFacade.edit(message);
     }

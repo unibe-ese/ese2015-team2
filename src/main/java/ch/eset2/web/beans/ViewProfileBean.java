@@ -2,7 +2,6 @@ package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
-import ch.eset2.model.dao.CustomerFacade;
 import ch.eset2.web.util.InitialsGenerator;
 import ch.eset2.web.util.PrivacyHelper;
 import java.io.Serializable;
@@ -14,7 +13,9 @@ import org.apache.shiro.SecurityUtils;
 /**
  * Responsible for displaying a profile.
  * The profile is being set by a viewparam in the URL
+ * 
  * @author Marc Jost
+ * @version 1.0
  */
 @Named
 @ViewScoped

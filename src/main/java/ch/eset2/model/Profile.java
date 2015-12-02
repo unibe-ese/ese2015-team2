@@ -58,6 +58,10 @@ public abstract class Profile implements Serializable {
         return courseProfiles;
     }
 
+    public boolean hasCourseProfiles(){
+        return !courseProfiles.isEmpty();
+    }
+    
     public void setCourseProfiles(List<CourseProfile> courseProfiles) {
         this.courseProfiles = courseProfiles;
     }

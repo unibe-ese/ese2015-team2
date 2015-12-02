@@ -10,7 +10,7 @@
                 template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
-        title
+        Inbox
     </ui:define>
 
     <ui:define name="content">
@@ -19,71 +19,61 @@
             <b:row>
                 <b:column span="12">
                     <h1>Ihr Posteingang:</h1>
-
                     <hr />
-
                     <h4>Nachrichten:</h4>
                     <b:column span="12" rendered="#{!viewInboxBean.hasMessages()}">
-
-                        <br></br>
+                        <br/>
+                        <br/>
                         <h2>Es befinden sich keine Nachrichten in Ihrem Posteingang.</h2>
                     </b:column>
-
 
                     <h:form id="table" rendered="#{viewInboxBean.hasMessages()}">
                         <p:dataTable var="message" value="#{viewInboxBean.messages}">
                             <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Empfangen">
-                                <a href="viewmessage.xhtml?id=#{message.id}">#{message.date}</a>
+                                <a href="viewmessage.xhtml?id=#{message.id}">#{message.sendDate}</a>
                             </p:column>
                             <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Betreff">
                                 <a href="viewmessage.xhtml?id=#{message.id}">#{message.subject}</a>
                             </p:column>
 
                             <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Absender">
-                                <a href="viewmessage.xhtml?id=#{message.id}">#{message.sender}</a>
+                                <a href="viewmessage.xhtml?id=#{message.id}">#{message.sender.username}</a>
                             </p:column>
 
                             <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="55%" headerText="Nachrichtenvorschau">
                                 <a href="viewmessage.xhtml?id=#{message.id}">#{message.messageTextPreview()}</a>
                             </p:column>
-
-
                         </p:dataTable>
                     </h:form>
-
-                    <hr>
-                    </hr>
-
+                    <hr />
                     <h4>Verträge:</h4>
                     <b:column span="12" rendered="#{!viewInboxBean.hasOffers()}">
-
-                        <br></br>
+                        <br/>
+                        <br/>
                         <h2>Es befinden sich keine Verträge in Ihrem Posteingang.</h2>
                     </b:column>
 
                     <h:form id="offerTable" rendered="#{viewInboxBean.hasOffers()}">
                         <p:dataTable var="offer" value="#{viewInboxBean.offers}">
                             <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Empfangen">
-                                <a href="viewoffer.xhtml?id=#{offer.id}">#{offer.date}</a>
+                                <a href="viewoffer.xhtml?id=#{offer.id}">#{offer.sendDate}</a>
                             </p:column>
                             <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Betreff">
                                 <a href="viewoffer.xhtml?id=#{offer.id}">#{offer.subject}</a>
                             </p:column>
 
                             <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Absender">
-                                <a href="viewoffer.xhtml?id=#{offer.id}">#{offer.sender}</a>
+                                <a href="viewoffer.xhtml?id=#{offer.id}">#{offer.sender.username}</a>
                             </p:column>
 
                             <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="55%" headerText="Nachrichtenvorschau">
                                 <a href="viewoffer.xhtml?id=#{offer.id}">#{offer.messageTextPreview()}</a>
                             </p:column>
 
-
                         </p:dataTable>
                     </h:form>
                 </b:column>
             </b:row>
-
         </b:container>
     </ui:define>
 </ui:composition>

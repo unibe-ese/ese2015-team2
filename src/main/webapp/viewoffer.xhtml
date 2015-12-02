@@ -48,14 +48,14 @@
                             <h:outputLabel value="Empfangen am:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText id="date" value="#{viewOfferBean.offer.date}"/>
+                                    <h:outputText id="date" value="#{viewOfferBean.offer.sendDate}"/>
                                 </b:column>
                             </b:row>
 
                             <h:outputLabel value="Absender:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText id="sender" value="#{viewOfferBean.offer.sender}"/>
+                                    <h:outputText id="sender" value="#{viewOfferBean.offer.sender.username}"/>
                                 </b:column>
                             </b:row>
                             <h:outputLabel value="Betreff:"/>
@@ -64,10 +64,10 @@
                                     <h:outputText id="subject" value="#{viewOfferBean.offer.subject}"/>
                                 </b:column>
                             </b:row>
-                            <h:outputLabel value="Fee:"/>
+                            <h:outputLabel value="Stundenlohn:"/>
                             <b:row>
                                 <b:column span="12">
-                                    <h:outputText id="fee" value="#{viewOfferBean.offer.fee}"/>
+                                    <h:outputText id="fee" value="#{viewOfferBean.offer.fee} CHF"/>
                                 </b:column>
                             </b:row>
                             <h:outputLabel value="Erster Termin:"/>
@@ -130,13 +130,17 @@
                     <b:column span="6" offset="3">
 
                         <b:row>
-                            <b:column span="3" offset="4">
+                            <b:column span="2" offset="0">
                                 <br/>
                                 <a href="inbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
                             </b:column>
-                            <b:column span="2" offset="1">
+                            <b:column span="2" offset="2">
                                 <br/>
                                 <b:commandButton id="reply" value="Antworten" action="#{viewOfferBean.setInReplyState(true)}" look="success"/>
+                            </b:column>
+                            <b:column rendered="#{!viewOfferBean.offer.accepted}" span="2" offset="1">
+                                <br/>
+                                <b:commandButton id="accept" value="Zustimmen" action="#{viewOfferBean.acceptOffer()}" look="success"/>
                             </b:column>
                         </b:row>
 

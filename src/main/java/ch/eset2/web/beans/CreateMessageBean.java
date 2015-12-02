@@ -28,7 +28,7 @@ public class CreateMessageBean implements Serializable {
     @Inject
     private MessageFacade messageFacade;
     
-    private Customer reciever;
+    private Customer receiver;
     
     private Message newMessage;
     /**
@@ -41,30 +41,24 @@ public class CreateMessageBean implements Serializable {
     private void init(){
         newMessage = new Message();
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        newMessage.setSender(loggedInCustomer.getUsername());
-        
+        newMessage.setSender(loggedInCustomer);
     }
     
     
     /**
      * Persists the new message to the database.
-     * @param receiver that should recieve the message
+     * @param receiver who should receive the message
      * @return the "sendSuccess.xhtml" page to indicate that the message was sent.
      */
-    public String createNewMessage(String receiver){
-        setGivenParameters(receiver);
+    public String createNewMessage(Customer receiver){
+        newMessage.setMessageType(MessageType.MESSAGE);
+        newMessage.setSendDate(DateConverter.currentTimeAsString());
+        newMessage.setMessageState(MessageState.NEW);
+        newMessage.setReceiver(receiver);
         messageFacade.create(newMessage);
         return Navigation.SENDSUCCESS;
     }
     
-    
-    private void setGivenParameters(String reciever){
-        newMessage.setMessageType(MessageType.MESSAGE);
-        newMessage.setDate(DateConverter.currentTimeAsString());
-        newMessage.setMessageState(MessageState.NEW);
-        newMessage.setReciever(reciever);
-    }
-          
     //getters and setters
     public Message getNewMessage() {
         return newMessage;
@@ -74,11 +68,11 @@ public class CreateMessageBean implements Serializable {
         this.newMessage = newMessage;
     }
         
-    public Customer getReciever() {
-        return reciever;
+    public Customer getReceiver() {
+        return receiver;
     }
 
-    public void setReciever(Customer reciever) {
-        this.reciever = reciever;
+    public void setReceiver(Customer receiver) {
+        this.receiver = receiver;
     }
 }

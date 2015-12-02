@@ -8,18 +8,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 /**
  * Represents a message sent from a {@link Customer} to an other.
  * Special fields:
- * reciever: The {@link Customer} that can see this message in his inbox.
+ * receiver: The {@link Customer} that can see this message in his inbox.
  * id: Every message has an unique id.
+ * 
  * @author Mischa Wenger, 17.10.2015
  * @version 1.0
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "Message.findByReciever", query = "SELECT f FROM Message f WHERE f.reciever = :reciever AND f.messageType = 1")
+    @NamedQuery(name = "Message.findByReceiver", query = "SELECT f FROM Message f WHERE f.receiver = :receiver AND f.messageType = 1")
 })
 public class Message implements Serializable {
 
@@ -36,11 +38,13 @@ public class Message implements Serializable {
     @Column(length = 2000)
     private String messageText;
    
-    private String sender;
+    @OneToOne
+    private Customer sender;
     
-    private String reciever;
+    @OneToOne
+    private Customer receiver;
     
-    private String date;
+    private String sendDate;
     
     private int messageState;
       
@@ -70,27 +74,27 @@ public class Message implements Serializable {
         return this.messageState == 1;
     }
     
-     public String getDate() {
-        return date;
+     public String getSendDate() {
+        return sendDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setSendDate(String sendDate) {
+        this.sendDate = sendDate;
     }
     
-    public String getReciever() {
-        return reciever;
+    public Customer getReceiver() {
+        return receiver;
     }
 
-    public void setReciever(String reciever) {
-        this.reciever = reciever;
+    public void setReceiver(Customer receiver) {
+        this.receiver = receiver;
     }
 
-    public String getSender() {
+    public Customer getSender() {
         return sender;
     }
 
-    public void setSender(String sender) {
+    public void setSender(Customer sender) {
         this.sender = sender;
     }
     

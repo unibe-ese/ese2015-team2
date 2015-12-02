@@ -12,8 +12,8 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- * Displays the messages of the current logged in user by checking all the
- * messages in the database with 'reciever' equals to username.
+ * Displays the messages of the currently logged in user by checking all the
+ * messages in the database with 'receiver' equals to id of the logged in user.
  *
  * @author Mischa Wenger
  * @version 1.0
@@ -29,7 +29,7 @@ public class ViewInboxBean implements Serializable {
 
     private List<Message> messages;
 
-    private Customer currentuser;
+    private Customer currentUser;
 
     /**
      * Gets the messages from the database and calls the filter with username of
@@ -37,9 +37,9 @@ public class ViewInboxBean implements Serializable {
      */
     @PostConstruct
     private void init() {
-        currentuser = (Customer) SecurityUtils.getSubject().getPrincipal();
-        messages = messageFacade.findMessageByReciever(currentuser.getUsername());
-        offers = messageFacade.findOfferByReciever(currentuser.getUsername());
+        currentUser = (Customer) SecurityUtils.getSubject().getPrincipal();
+        messages = messageFacade.findMessageByReceiver(currentUser);
+        offers = messageFacade.findOfferByReceiver(currentUser);
     }
 
     /**
@@ -49,14 +49,13 @@ public class ViewInboxBean implements Serializable {
      */
     public boolean hasMessages() {
         if (messages == null) {
-            System.err.println("MESSAGES IS FUCKING NULL");
             return false;
         }
-        System.err.println("MESSAGES of this user: ");
-        for (Message message : messages) {
-            System.err.println(message.getId());
-        }
-        System.err.println("RETURNING: " + !messages.isEmpty());
+        //System.err.println("MESSAGES of this user: ");
+        //for (Message message : messages) {
+          //  System.err.println(message.getId());
+        //}
+        //System.err.println("RETURNING: " + !messages.isEmpty());
         return !messages.isEmpty();
     }
 
@@ -67,14 +66,14 @@ public class ViewInboxBean implements Serializable {
      */
     public boolean hasOffers() {
         if (offers == null) {
-            System.err.println("OFFERS IS FUCKING NULL");
+          //  System.err.println("OFFERS IS FUCKING NULL");
             return false;
         }
-        System.err.println("OFFERS of this user: ");
-        for (Offer offer : offers) {
-            System.err.println(offer.getId());
-        }
-        System.err.println("RETURNING: " + !offers.isEmpty());
+        //System.err.println("OFFERS of this user: ");
+        //for (Offer offer : offers) {
+        //    System.err.println(offer.getId());
+        //}
+        //System.err.println("RETURNING: " + !offers.isEmpty());
         return !offers.isEmpty();
     }
     
