@@ -14,4 +14,6 @@ public class Navigation {
     public static final String VIEWPROFILE = "viewprofile.xhtml";
     public static final String SENDSUCCESS = "sendsuccess.xhtml";
     public static final String SEARCHTUTOR = "searchtutors.xhtml";
+    public static final String ACCEPTSUCCESS = "acceptsuccess.xhtml";
+    public static final String OFFERFAILED = "offerfailed.xhtml";
 }
