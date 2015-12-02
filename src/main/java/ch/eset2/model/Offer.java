@@ -31,6 +31,7 @@ public class Offer extends Message {
     @Pattern(regexp = "\\d+.\\d{2}", message = "Ungültiges Format. Format: xx.xx")
     private String fee;
     
+    @Pattern(regexp = "\\d{2}.\\d{2}.\\d{4}", message = "Ungültiges Format. Format: dd.mm.yyyy")
     private String firstAppointmentDay;
     
     @Pattern(regexp = "\\d{2}:\\d{2}", message = "Ungültiges Format. Format: xx:xx")

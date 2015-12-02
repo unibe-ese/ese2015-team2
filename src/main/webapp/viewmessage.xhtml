@@ -115,6 +115,8 @@
                                 <br/>
                                 <b:commandButton id="reply" value="Antworten" action="#{viewMessageBean.setInReplyState(true)}" look="success"/>
                             </b:column>
+                            <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createoffer?id=#{viewMessageBean.message.sender.id}" value="Vertrag aufsetzen" look="info"/>
+
                         </b:row>
 
                     </b:column>
