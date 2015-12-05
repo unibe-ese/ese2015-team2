@@ -30,7 +30,7 @@
                     </b:column>
                     <b:column col-md="4" >
                         <p>
-                            <a href="inbox.xhtml" class="btn btn-info">Zurück zum Posteingang »</a>
+                            <a href="#{navigation.INBOX}" class="btn btn-info">Zurück zum Posteingang »</a>
 
                         </p>
                     </b:column>
@@ -108,7 +108,7 @@
                         <b:row>                        
                             <b:column span="2" offset="1">
                                 <br/>
-                                <a href="inbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
+                                <a href="#{navigation.INBOX}" class="btn btn-info">Zurück zur Inbox »</a>
                             </b:column>
                             
                             <b:column span="2" offset="2">
@@ -117,7 +117,7 @@
                             </b:column>
                             <b:column span="2" offset="1">
                                 <br/>
-                            <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createoffer?id=#{viewMessageBean.message.sender.id}" value="Vertrag aufsetzen" look="info"/>
+                                <b:button rendered="#{viewMessageBean.message.receiver.accountType eq accountType.TUTOR}" outcome="#{navigation.CREATEOFFER}?id=#{viewMessageBean.message.sender.id}" value="Vertrag aufsetzen" look="info"/>
                             </b:column>
                         </b:row>
 
@@ -131,11 +131,11 @@
 
                             <b:column span="3" offset="0">
                                 <br/>
-                                <a href="inbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
+                                <a href="#{navigation.INBOX}" class="btn btn-info">Zurück zur Inbox »</a>
                             </b:column>
                             <b:column span="3" offset="1">
                                 <br/>
-                                <a href="viewmessage.xhtml?id=#{viewMessageBean.message.id}" class="btn btn-info">Abbrechen »</a>
+                                <a href="#{navigation.VIEWMESSAGE}?id=#{viewMessageBean.message.id}" class="btn btn-info">Abbrechen »</a>
                             </b:column>
                             <b:column span="2" offset="1">
                                 <br/>

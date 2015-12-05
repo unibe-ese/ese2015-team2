@@ -29,6 +29,12 @@ public class ViewOfferBean implements Serializable {
     @Inject
     private MessageFacade messageFacade;
     
+    @Inject
+    private AddFriendBean addFriendBean;
+    
+    @Inject
+    private ConfirmOfferBean confirmOfferBean;
+    
     private Customer customer;
     
     private Offer offer;
@@ -54,38 +60,15 @@ public class ViewOfferBean implements Serializable {
        if (true && !offer.isAccepted()){ //Here would be a link to paypal etc. to confim that the user payed
        offer.setMessageState(MessageState.ACCEPTED);
        messageFacade.edit(offer);
-       sendConfirmation();
+       addFriendBean.addFriend(offer.getReceiver(), offer.getSender());
+       confirmOfferBean.confirm(offer);
        return Navigation.ACCEPTSUCCESS;
        }
        else {
        return Navigation.OFFERFAILED;
        }
     }
-
-    
-    private void sendConfirmation(){
-        Message confirmation = new Message();
-        confirmation.setMessageState(MessageState.NEW);
-        confirmation.setMessageType(MessageType.MESSAGE);
-        confirmation.setSubject("Angenommen: " + offer.getSubject());
-        confirmation.setMessageText("Ihre Offerte wurde erfolgreich angenommen. <br/>"
-                + "Hier sehen Sie die Konditionen: <br/>" +
-                offer.toFormatedString());
-        confirmation.setSender((Customer) SecurityUtils.getSubject().getPrincipal());
-        confirmation.setReceiver(offer.getSender());
-        confirmation.setSendDate(DateConverter.currentTimeAsString());
-        messageFacade.create(confirmation);
-        
-    }
-    /*public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
-   
-*/    
+  
     public Offer getOffer() {
         return offer;
     }

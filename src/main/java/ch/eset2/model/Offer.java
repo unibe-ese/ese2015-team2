@@ -66,7 +66,7 @@ public class Offer extends Message {
         return (super.getMessageState() == MessageState.ACCEPTED);
     }
     
-    public String toFormatedString() {
+    public String toHtmlFormatedString() {
        return ( "<br/" +
                 "Subject: " + super.getSubject() + "<br/>" + 
                 "Stundenlohn: " + fee + "<br/>" + 

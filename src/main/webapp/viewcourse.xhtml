@@ -57,7 +57,7 @@
                                         </p:column>
 
                                         <p:column headerText="Link">
-                                            <h:link value="Zum Profil" outcome="/viewprofile.xhtml?faces-redirect=true&amp;id=#{courseProfile.profile.id}"/>
+                                            <h:link value="Zum Profil" outcome="#{navigation.VIEWPROFILE}?faces-redirect=true&amp;id=#{courseProfile.profile.id}"/>
                                         </p:column>
                                     </p:dataTable>
                                 </b:column>

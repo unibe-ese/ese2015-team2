@@ -23,7 +23,7 @@
                     <h:form id="table">
                         <p:dataTable var="course" value="#{viewCoursesBean.courses}">
                             <p:column headerText="Titel" sortBy="#{course.title}" filterBy="#{course.title}" filterMatchMode="contains">
-                                <h:link value="#{course.title}" outcome="/viewcourse.xhtml?faces-redirect=true&amp;id=#{course.getId()}"/>
+                                <h:link value="#{course.title}" outcome="#{navigation.VIEWCOURSE}?faces-redirect=true&amp;id=#{course.getId()}"/>
                             </p:column>
 
                             <p:column headerText="ECTS" style="width:75px" sortBy="#{course.ECTS}">

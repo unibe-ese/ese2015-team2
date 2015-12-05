@@ -30,7 +30,7 @@
                     </b:column>
                     <b:column col-md="4" >
                         <p>
-                            <a href="inbox.xhtml" class="btn btn-info">Zurück zum Posteingang »</a>
+                            <a href="#{navigation.INBOX}" class="btn btn-info">Zurück zum Posteingang »</a>
 
                         </p>
                     </b:column>
@@ -43,6 +43,11 @@
                 <b:column span="6" offset="3">
                     <h1>Vertrag lesen</h1>
                     <br />
+                    <b:row rendered="#{viewOfferBean.offer.accepted}">
+                        <h4>Sie haben den Vertrag bereits angenommen!</h4>
+                    <br />
+                    <br />
+                    </b:row>
                     <h:form>
                         <b:panelGrid colSpans="4,8">
                             <h:outputLabel value="Empfangen am:"/>
@@ -132,7 +137,7 @@
                         <b:row>
                             <b:column span="2" offset="0">
                                 <br/>
-                                <a href="inbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
+                                <a href="#{navigation.INBOX}" class="btn btn-info">Zurück zur Inbox »</a>
                             </b:column>
                             <b:column span="2" offset="2">
                                 <br/>
@@ -154,11 +159,11 @@
 
                             <b:column span="3" offset="0">
                                 <br/>
-                                <a href="inbox.xhtml" class="btn btn-info">Zurück zur Inbox »</a>
+                                <a href="#{navigation.INBOX}" class="btn btn-info">Zurück zur Inbox »</a>
                             </b:column>
                             <b:column span="3" offset="1">
                                 <br/>
-                                <a href="viewoffer.xhtml?id=#{viewOfferBean.offer.id}" class="btn btn-info">Abbrechen »</a>
+                                <a href="#{navigation.VIEWOFFER}?id=#{viewOfferBean.offer.id}" class="btn btn-info">Abbrechen »</a>
                             </b:column>
                             <b:column span="2" offset="1">
                                 <br/>

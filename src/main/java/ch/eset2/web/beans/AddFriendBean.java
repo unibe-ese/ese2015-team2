@@ -25,10 +25,12 @@ public class AddFriendBean {
     private CustomerFacade customerFacade;
     
     public void addFriend(Customer customer, Customer friend){
+        if (!customer.getFriends().contains(friend)){
         customer.addFriend(friend);
         customerFacade.edit(customer);
         friend.addFriend(customer);
         customerFacade.edit(friend);
+        }
     }
     
 }
