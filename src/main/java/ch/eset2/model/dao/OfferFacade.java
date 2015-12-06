@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * 
+ * To access the {@link Offer} from the database.
  * @author Mischa Wenger
  * @version 1.0
  */

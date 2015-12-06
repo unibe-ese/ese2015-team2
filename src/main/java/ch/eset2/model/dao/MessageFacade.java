@@ -8,8 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * 
- * @author Marc Jost
+ * To access the {@link Message} from the database.
+ * @author Mischa Wenger
  * @version 1.0
  */
 @Stateless

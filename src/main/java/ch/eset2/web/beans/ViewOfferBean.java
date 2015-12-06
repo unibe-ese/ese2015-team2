@@ -13,7 +13,7 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- * Responsible to display an offer
+ * Responsible to display an offer.
  * 
  * @author Mischa Wenger
  * @version 1.0
@@ -53,6 +53,13 @@ public class ViewOfferBean implements Serializable {
         return myOffer;
     }
     
+    
+    /**
+     * Persists to the database that a customer has accepted the displayed offer.
+     * The customers become friends when they have an accepted offer.
+     * @return the navigationpage for fail, when the transaction failed or the
+     *  offer was already accepted. Acceptsuccess when everything went ok.
+     */
     public String acceptOffer(){
        if (true && !offer.isAccepted()){ //Here would be a link to paypal etc. to confim that the user payed
        offer.setMessageState(MessageState.ACCEPTED);

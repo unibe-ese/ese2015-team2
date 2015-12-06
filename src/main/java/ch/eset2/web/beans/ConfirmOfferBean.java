@@ -18,7 +18,8 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- * Provides a service to confirm an {@link Offer} and creates a confirmation message.
+ * Provides a service to confirm an {@link Offer} and to create a
+ * confirmation message.
  * 
  * @author Mischa Wenger
  * @version 2.0
@@ -29,13 +30,18 @@ public class ConfirmOfferBean {
     
     @Inject
     private MessageFacade messageFacade;
-    
+   
+   /**
+    * Confirms a given offer by sending a confirmation to the {@link Customer} 
+    * that sent the offer. The confirmation message is formated with html.
+    * @param offer that has to be confirmed.
+    */ 
    public void confirm(Offer offer){
         Message confirmation = new Message();
         confirmation.setMessageState(MessageState.NEW);
         confirmation.setMessageType(MessageType.MESSAGE);
         confirmation.setSubject("Angenommen: " + offer.getSubject());
-        confirmation.setMessageText("Ihre Offerte wurde erfolgreich angenommen. Vielen Dank, dass Sie unsere Dienst nutzen!<br/>"
+        confirmation.setMessageText("Ihre Offerte wurde erfolgreich angenommen. Vielen Dank, dass Sie unseren Dienst nutzen!<br/>"
                 + "Hier sehen Sie die Konditionen: <br/>" +
                 offer.toHtmlFormatedString());
         confirmation.setSender((Customer) SecurityUtils.getSubject().getPrincipal());

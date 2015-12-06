@@ -12,9 +12,9 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- * Responsible to display a message
+ * Responsible to display a message.
  * 
- * @author Marc Jost
+ * @author Mischa Wenger
  * @version 1.0
  */
 @Named
@@ -39,19 +39,11 @@ public class ViewMessageBean implements Serializable {
         messageFacade.edit(message);
     }
     
+    //getter and setter
     public boolean isMyMessage(){
         return myMessage;
     }
 
-    /*public String getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
-
-*/
     public Message getMessage() {
         return message;
     }

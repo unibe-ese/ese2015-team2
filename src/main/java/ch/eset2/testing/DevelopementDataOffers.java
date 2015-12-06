@@ -13,7 +13,7 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 /**
- * Simple Class to create some initial Data in the database
+ * Simple Class to create some initial offers in the database.
  *
  * @author Mischa Wenger
  * @version 1.0
@@ -55,7 +55,7 @@ public class DevelopementDataOffers {
             firstOffer.setMessageType(MessageType.OFFER);
             firstOffer.setMessageText("Hier ist der erste Offer.");
             firstOffer.setFee(20.00);
-            firstOffer.setCommission(2.00);
+            firstOffer.setCommission("2.00");
             firstOffer.setFirstAppointmentDay("30.11.2015");
             firstOffer.setFirstAppointmentTime("18:00");
             offerFacade.create(firstOffer);
@@ -70,7 +70,7 @@ public class DevelopementDataOffers {
             secondOffer.setMessageType(MessageType.OFFER);
             secondOffer.setMessageText("Gerne offeriere ich dir meine arkanen Künste.");
             secondOffer.setFee(20.00);
-            secondOffer.setCommission(2.00);
+            secondOffer.setCommission("2.00");
             secondOffer.setFirstAppointmentDay("30.11.2015");
             secondOffer.setFirstAppointmentTime("18:00");
             offerFacade.create(secondOffer);

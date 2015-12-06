@@ -49,9 +49,9 @@ public class Message implements Serializable {
     private int messageState;
       
     /**
-     * Creates a short preview of 30 chars of the messageText.
-     * @return the first 30 chars of the messageText. Whole messagetext if text
-     * is shorter than 30 chars.
+     * Creates a short preview of 50 chars of the messageText.
+     * @return the first 50 chars of the messageText. Whole messagetext if text
+     * is shorter than 50 chars.
      */
     public String messageTextPreview(){
         if (messageText.length() <= 50){

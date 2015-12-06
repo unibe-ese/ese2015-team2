@@ -10,7 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.validation.constraints.Pattern;
 
 /**
- * Represents a message sent from a {@link Customer} to an other. Special
+ * Represents an offer sent from a {@link Customer} to an other. Special
  * fields: reciever: The {@link Customer} that can see this message in his
  * inbox. id: Every message has an unique id.
  *
@@ -32,7 +32,7 @@ public class Offer extends Message {
    
     private double fee;
 
-    private double commission;
+    private String commission;
     
     @Pattern(regexp = "\\d{2}.\\d{2}.\\d{4}", message = "Ungültiges Format. Format: dd.mm.yyyy")
     private String firstAppointmentDay;
@@ -40,19 +40,27 @@ public class Offer extends Message {
     @Pattern(regexp = "\\d{2}:\\d{2}", message = "Ungültiges Format. Format: xx:xx")
     private String firstAppointmentTime;
 
-    public double getFee() {
-        return fee;
+    /**
+     * To access the fee in format xx.xx for smooth display of CHF.
+     * @return {@link Offer#fee} in a formatted String "xx.xx".
+     */
+    public String getFeeAsString() {
+        return String.format("%.2f", fee);
     }
 
+     public double getFee() {
+        return fee;
+    }
+     
     public void setFee(double fee) {
         this.fee = fee;
     }
 
-    public double getCommission() {
+    public String getCommission() {
         return commission;
     }
 
-    public void setCommission(double commission) {
+    public void setCommission(String commission) {
         this.commission = commission;
     }
     
@@ -78,10 +86,14 @@ public class Offer extends Message {
         return (super.getMessageState() == MessageState.ACCEPTED);
     }
     
+     /**
+      * Formats the offer in a proper way to display important fields for a reciever.
+      * @return a string of the offers important fields formated in html.
+      */
     public String toHtmlFormatedString() {
        return ( "<br/" +
                 "Subject: " + super.getSubject() + "<br/>" + 
-                "Stundenlohn: " + fee + " CHF zuzüglich einmaliger Gebühr von " + commission + " CHF<br/>" + 
+                "Stundenlohn: " + getFeeAsString() + " CHF zuzüglich einmaliger Gebühr von " + commission + " CHF<br/>" + 
                 "Erster Termin: " + firstAppointmentDay + " um " + firstAppointmentTime + " Uhr <br/> " +
                 "Nachricht: " + super.getMessageText());
     }

@@ -14,7 +14,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
-
+        
 /**
  * CreateOfferBean provides an offer creation service.
  * It allows to persist a new offer to the database.
@@ -36,7 +36,7 @@ public class CreateOfferBean implements Serializable {
     
     private Offer newOffer;
     /**
-     * Creates a new instance of CreateMessageBean
+     * Creates a new instance of CreateOfferBean
      */
     public CreateOfferBean() {
     }
@@ -58,7 +58,7 @@ public class CreateOfferBean implements Serializable {
         newOffer.setMessageType(MessageType.OFFER);
         newOffer.setSendDate(DateConverter.currentTimeAsString());
         newOffer.setMessageState(MessageState.NEW);
-        newOffer.setCommission(newOffer.getFee() * CommissionConstants.COMMISSION);
+        newOffer.setCommission(String.format("%.2f", newOffer.getFee() * CommissionConstants.COMMISSION));
         newOffer.setReceiver(receiver);
         offerFacade.create(newOffer);
         return Navigation.SENDSUCCESS;

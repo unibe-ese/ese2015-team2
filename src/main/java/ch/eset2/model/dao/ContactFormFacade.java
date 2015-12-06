@@ -2,7 +2,6 @@ package ch.eset2.model.dao;
 
 import ch.eset2.model.ContactForm;
 //import ch.eset2.model.Offer;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

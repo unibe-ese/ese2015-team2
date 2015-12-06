@@ -13,8 +13,9 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- * Displays the messages of the currently logged in user by checking all the
- * messages in the database with 'receiver' equals to id of the logged in user.
+ * Displays the {@link Message}s and {@link Offer}s of the currently logged in
+ * user by checking all the messages/offers in the database with 'receiver'
+ * equals to id of the logged in user.
  *
  * @author Mischa Wenger
  * @version 1.0

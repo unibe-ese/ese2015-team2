@@ -13,7 +13,8 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 /**
- * Simple Class to create some initial Data in the database
+ * Simple Class to create some initial Data links between courses and customers
+ * in the database.
  *
  * @author Mischa Wenger
  * @version 1.0

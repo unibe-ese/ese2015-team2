@@ -15,9 +15,9 @@ import javax.ejb.Startup;
 import javax.inject.Inject;
 
 /**
- * Simple Class to create some initial Data in the database
+ * Simple Class to create some initial messages in the database.
  *
- * @author Marc Jost
+ * @author Mischa Wenger
  * @version 1.0
  */
 @Singleton
