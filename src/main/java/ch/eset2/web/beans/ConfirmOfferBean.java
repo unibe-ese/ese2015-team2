@@ -35,7 +35,7 @@ public class ConfirmOfferBean {
         confirmation.setMessageState(MessageState.NEW);
         confirmation.setMessageType(MessageType.MESSAGE);
         confirmation.setSubject("Angenommen: " + offer.getSubject());
-        confirmation.setMessageText("Ihre Offerte wurde erfolgreich angenommen. <br/>"
+        confirmation.setMessageText("Ihre Offerte wurde erfolgreich angenommen. Vielen Dank, dass Sie unsere Dienst nutzen!<br/>"
                 + "Hier sehen Sie die Konditionen: <br/>" +
                 offer.toHtmlFormatedString());
         confirmation.setSender((Customer) SecurityUtils.getSubject().getPrincipal());

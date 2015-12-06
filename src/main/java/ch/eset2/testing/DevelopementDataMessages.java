@@ -99,20 +99,7 @@ public class DevelopementDataMessages {
             fifthMessage.setMessageType(MessageType.MESSAGE);
             fifthMessage.setMessageText("Hier steht die Testnachricht5 vom Mischa an Eve.");
             messageFacade.create(fifthMessage);
-
-            Offer firstOffer = new Offer();
-            firstOffer.setSubject("TestOffer 1");
-            firstOffer.setReceiver(eve);
-            firstOffer.setSender(mischa);
-            firstOffer.setSendDate("20.11.2015 12:50:47");
-            firstOffer.setMessageState(MessageState.NEW);
-            firstOffer.setMessageType(MessageType.OFFER);
-            firstOffer.setMessageText("Hier ist der erste Offer.");
-            firstOffer.setFee("20.00");
-            firstOffer.setFirstAppointmentDay("30.11.2015");
-            firstOffer.setFirstAppointmentTime("18:00");
-            offerFacade.create(firstOffer);
-
+            
         } catch (Exception e) {
             // TBD
         }

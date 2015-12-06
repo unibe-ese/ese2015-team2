@@ -29,22 +29,34 @@ public class Offer extends Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Pattern(regexp = "\\d+.\\d{2}", message = "Ungültiges Format. Format: xx.xx")
-    private String fee;
+   
+    private double fee;
 
+    private double commission;
+    
     @Pattern(regexp = "\\d{2}.\\d{2}.\\d{4}", message = "Ungültiges Format. Format: dd.mm.yyyy")
     private String firstAppointmentDay;
 
     @Pattern(regexp = "\\d{2}:\\d{2}", message = "Ungültiges Format. Format: xx:xx")
     private String firstAppointmentTime;
 
-    public String getFee() {
+    public double getFee() {
         return fee;
     }
 
-    public void setFee(String fee) {
+    public void setFee(double fee) {
         this.fee = fee;
     }
+
+    public double getCommission() {
+        return commission;
+    }
+
+    public void setCommission(double commission) {
+        this.commission = commission;
+    }
+    
+    
 
     public String getFirstAppointmentDay() {
         return firstAppointmentDay;
@@ -69,7 +81,7 @@ public class Offer extends Message {
     public String toHtmlFormatedString() {
        return ( "<br/" +
                 "Subject: " + super.getSubject() + "<br/>" + 
-                "Stundenlohn: " + fee + "<br/>" + 
+                "Stundenlohn: " + fee + " CHF zuzüglich einmaliger Gebühr von " + commission + " CHF<br/>" + 
                 "Erster Termin: " + firstAppointmentDay + " um " + firstAppointmentTime + " Uhr <br/> " +
                 "Nachricht: " + super.getMessageText());
     }

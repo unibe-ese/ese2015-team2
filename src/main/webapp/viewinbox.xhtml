@@ -22,9 +22,8 @@
                     <hr />
                     <h4>Nachrichten:</h4>
                     <b:column span="12" rendered="#{!viewInboxBean.hasMessages()}">
-                        <br/>
-                        <br/>
                         <h3>Es befinden sich keine Nachrichten in Ihrem Posteingang.</h3>
+                        <br/>
                     </b:column>
 
                     <h:form id="table" rendered="#{viewInboxBean.hasMessages()}">
@@ -48,9 +47,9 @@
                     <hr />
                     <h4>Verträge:</h4>
                     <b:column span="12" rendered="#{!viewInboxBean.hasOffers()}">
-                        <br/>
-                        <br/>
                         <h3>Es befinden sich keine Verträge in Ihrem Posteingang.</h3>
+                        <br/>
+                        <br/>
                     </b:column>
 
                     <h:form id="offerTable" rendered="#{viewInboxBean.hasOffers()}">

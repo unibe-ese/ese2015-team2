@@ -2,12 +2,9 @@ package ch.eset2.web.beans;
 
 
 import ch.eset2.model.Customer;
-import ch.eset2.model.Message;
 import ch.eset2.model.Offer;
 import ch.eset2.model.dao.MessageFacade;
-import ch.eset2.web.converter.DateConverter;
 import ch.eset2.web.util.MessageState;
-import ch.eset2.web.util.MessageType;
 import ch.eset2.web.util.Navigation;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;

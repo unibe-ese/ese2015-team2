@@ -4,6 +4,7 @@ import ch.eset2.model.Customer;
 import ch.eset2.model.Offer;
 import ch.eset2.model.dao.OfferFacade;
 import ch.eset2.web.converter.DateConverter;
+import ch.eset2.web.util.CommissionConstants;
 import ch.eset2.web.util.MessageState;
 import ch.eset2.web.util.MessageType;
 import ch.eset2.web.util.Navigation;
@@ -57,6 +58,7 @@ public class CreateOfferBean implements Serializable {
         newOffer.setMessageType(MessageType.OFFER);
         newOffer.setSendDate(DateConverter.currentTimeAsString());
         newOffer.setMessageState(MessageState.NEW);
+        newOffer.setCommission(newOffer.getFee() * CommissionConstants.COMMISSION);
         newOffer.setReceiver(receiver);
         offerFacade.create(newOffer);
         return Navigation.SENDSUCCESS;

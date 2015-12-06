@@ -54,7 +54,7 @@
                                     </b:column>
                                 </b:row>
 
-                                <h:outputLabel value="Stundenlohn:"/>
+                                <h:outputLabel value="Stundenlohn*:"/>
                                 <b:row>
                                     <b:column span="7">
                                         <b:inputText id="fee" value="#{createOfferBean.newOffer.fee}" required="true">
@@ -65,6 +65,11 @@
                                     </b:column>
                                 </b:row>
                             </b:panelGrid>
+                            <b:row>
+                                <b:column offset-lg="3">
+                                    <p>*Es wird ein Aufschlag von 10% berechnet.</p>
+                                </b:column>
+                            </b:row>
                             <h:outputLabel value="Erster Termin:"/>
                             <b:panelGrid colSpans="3,9">
                                 <p>Am:</p>

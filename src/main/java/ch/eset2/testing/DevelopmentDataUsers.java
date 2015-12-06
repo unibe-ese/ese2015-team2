@@ -95,5 +95,45 @@ public class DevelopmentDataUsers {
         customerFacade.create(customer3);
         profileFacade.create(profile3);
         
+        
+        Customer ese = new Customer();
+        ese.setAccountType(AccountType.TUTOR);
+        ese.setCity("Bern");
+        ese.setFirstName("Hans");
+        ese.setLastName("Muster");
+        ese.setMatnr("12-108-130");
+        ese.setPassword("a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3");
+        ese.setPhone("");
+        ese.setStreet("Stöckackerstrasse 98");
+        ese.setUsername("ese");
+        ese.setZip("3018");
+        
+        Profile eseProfile = new StudentProfile();
+        eseProfile.setCustomer(ese);
+        eseProfile.setImageLink("http://bigpicturesb.net/wp-content/uploads/2011/11/generic-profile-pic.png");
+        ese.setProfile(eseProfile);
+        customerFacade.create(ese);
+        profileFacade.create(eseProfile);
+        
+        
+        Customer ese2 = new Customer();
+        ese2.setAccountType(AccountType.STUDENT);
+        ese2.setCity("Bern");
+        ese2.setFirstName("Erna");
+        ese2.setLastName("Musterhans");
+        ese2.setMatnr("12-108-130");
+        ese2.setPassword("a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3");
+        ese2.setPhone("");
+        ese2.setStreet("Stöckackerstrasse 98");
+        ese2.setUsername("ese2");
+        ese2.setZip("3018");
+        
+        Profile ese2Profile = new StudentProfile();
+        ese2Profile.setCustomer(ese2);
+        ese2Profile.setImageLink("http://bigpicturesb.net/wp-content/uploads/2011/11/generic-profile-pic.png");
+        ese2.setProfile(ese2Profile);
+        customerFacade.create(ese2);
+        profileFacade.create(ese2Profile);
+        
     }
 }
