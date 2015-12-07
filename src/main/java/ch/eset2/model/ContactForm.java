@@ -7,12 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/*
+/**
  * Represents a contactForm filled out by a user, either signed in or not.
  * Special fields:
  * id: Every ContactForm has an unique id.
  * @author Eve Mendoza Quiros, 1.12.2015
- * @version 1.0
+ * @version 2.0
  */
 @Entity
 public class ContactForm implements Serializable {

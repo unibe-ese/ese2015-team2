@@ -20,6 +20,7 @@ import org.apache.shiro.SecurityUtils;
  * {@link ContactFormBean#init() } should be called from the server before
  * using any service of this class.
  * @author Eve Mendoza Quiros
+ * @version 2.0
  */
 @Named(value = "contactFormBean")
 @ViewScoped
@@ -41,7 +42,6 @@ public class ContactFormBean implements Serializable {
     @PostConstruct
     private void init(){
         newContactForm = new ContactForm();
-        //if (currentUser.isAuthenticated()){
         if(SecurityUtils.getSubject().isAuthenticated()){
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
         newContactForm.setSender(loggedInCustomer.getUsername()+ emailaddon);  

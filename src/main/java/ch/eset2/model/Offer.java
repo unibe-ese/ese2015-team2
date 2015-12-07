@@ -14,8 +14,8 @@ import javax.validation.constraints.Pattern;
  * fields: reciever: The {@link Customer} that can see this message in his
  * inbox. id: Every message has an unique id.
  *
- * @author Mischa Wenger, 17.10.2015
- * @version 1.0
+ * @author Mischa Wenger
+ * @version 2.0
  */
 @Entity
 @NamedQueries({
@@ -64,8 +64,6 @@ public class Offer extends Message {
         this.commission = commission;
     }
     
-    
-
     public String getFirstAppointmentDay() {
         return firstAppointmentDay;
     }

@@ -19,7 +19,9 @@ import org.apache.shiro.SecurityUtils;
  * It allows to persist a new message to the database.
  * {@link CreateMessageBean#init() } should be called from the server before
  * using any service of this class.
- * @author Mischa Wenger / Eve Mendoza
+ * @author Mischa Wenger
+ * @author Eve Mendoza
+ * @version 1.0
  */
 @Named(value = "createMessageBean")
 @ViewScoped

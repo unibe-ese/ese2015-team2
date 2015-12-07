@@ -23,7 +23,7 @@ import org.apache.shiro.SecurityUtils;
  * 
  * @author Mischa Wenger 
  * @author Eve Mendoza
- * @version 1.0
+ * @version 2.0
  */
 @Named(value = "createOfferBean")
 @ViewScoped

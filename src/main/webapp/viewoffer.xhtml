@@ -141,11 +141,11 @@
                             </b:column>
                             <b:column span="2" offset="2">
                                 <br/>
-                                <b:commandButton id="reply" value="Antworten" action="#{viewOfferBean.setInReplyState(true)}" look="success"/>
+                                <b:commandButton id="reply" value="Antworten ohne Anzunehmen" action="#{viewOfferBean.setInReplyState(true)}" look="danger"/>
                             </b:column>
-                            <b:column rendered="#{!viewOfferBean.offer.accepted}" span="2" offset="1">
+                            <b:column rendered="#{!viewOfferBean.offer.accepted}" span="2" offset="3">
                                 <br/>
-                                <b:commandButton id="accept" value="Zustimmen" action="#{viewOfferBean.acceptOffer()}" look="success"/>
+                                <b:commandButton id="accept" value="Zustimmen" action="#{acceptOfferBean.acceptOffer(viewOfferBean.offer)}" look="success"/>
                             </b:column>
                         </b:row>
 

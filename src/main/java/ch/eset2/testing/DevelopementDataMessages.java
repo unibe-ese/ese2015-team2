@@ -18,7 +18,7 @@ import javax.inject.Inject;
  * Simple Class to create some initial messages in the database.
  *
  * @author Mischa Wenger
- * @version 1.0
+ * @version 2.0
  */
 @Singleton
 @Startup

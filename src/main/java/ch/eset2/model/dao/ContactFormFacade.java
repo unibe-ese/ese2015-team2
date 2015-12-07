@@ -8,8 +8,8 @@ import javax.persistence.PersistenceContext;
 
 /**
  * 
- * @author Marc Jost
- * @version 1.0
+ * @author Eve Mendoza
+ * @version 2.0
  */
 @Stateless
 public class ContactFormFacade extends AbstractFacade<ContactForm> {

@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
  * receiver: The {@link Customer} that can see this message in his inbox.
  * id: Every message has an unique id.
  * 
- * @author Mischa Wenger, 17.10.2015
+ * @author Mischa Wenger
  * @version 1.0
  */
 @Entity

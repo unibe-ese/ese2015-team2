@@ -4,7 +4,6 @@ import ch.eset2.model.Customer;
 import ch.eset2.model.Offer;
 import ch.eset2.model.dao.MessageFacade;
 import ch.eset2.web.util.MessageState;
-import ch.eset2.web.util.Navigation;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -23,12 +22,6 @@ public class ViewOfferBean implements Serializable {
 
     @Inject
     private MessageFacade messageFacade;
-
-    @Inject
-    private AddFriendBean addFriendBean;
-
-    @Inject
-    private ConfirmOfferBean confirmOfferBean;
 
     private Customer customer;
 
@@ -49,25 +42,6 @@ public class ViewOfferBean implements Serializable {
 
     public boolean isMyOffer() {
         return myOffer;
-    }
-
-    /**
-     * Persists to the database that a customer has accepted the displayed
-     * offer. The customers become friends when they have an accepted offer.
-     *
-     * @return the navigationpage for fail, when the transaction failed or the
-     * offer was already accepted. Acceptsuccess when everything went ok.
-     */
-    public String acceptOffer() {
-        if (!offer.isAccepted()) { //Here would be a link to paypal etc. to confim that the user payed
-            offer.setMessageState(MessageState.ACCEPTED);
-            messageFacade.edit(offer);
-            addFriendBean.addFriend(offer.getReceiver(), offer.getSender());
-            confirmOfferBean.confirm(offer);
-            return Navigation.ACCEPTSUCCESS;
-        } else {
-            return Navigation.OFFERFAILED;
-        }
     }
 
     public Offer getOffer() {

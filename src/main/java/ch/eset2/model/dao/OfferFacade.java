@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 /**
  * To access the {@link Offer} from the database.
  * @author Mischa Wenger
- * @version 1.0
+ * @version 2.0
  */
 @Stateless
 public class OfferFacade extends AbstractFacade<Offer> {
