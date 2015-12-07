@@ -12,25 +12,25 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * Provides the means to define a friendship between two {@link Customer} entities.
- * 
+ * Provides the means to define a friendship between two {@link Customer}
+ * entities.
+ *
  * @author Marc Jost
  * @version 2.0
  */
 @RequestScoped
 @Named
 public class AddFriendBean {
-    
+
     @Inject
     private CustomerFacade customerFacade;
-    
-    public void addFriend(Customer customer, Customer friend){
-        if (!customer.getFriends().contains(friend)){
-        customer.addFriend(friend);
-        customerFacade.edit(customer);
-        friend.addFriend(customer);
-        customerFacade.edit(friend);
+
+    public void addFriend(Customer customer, Customer friend) {
+        if (!customer.getFriends().contains(friend)) {
+            customer.addFriend(friend);
+            customerFacade.edit(customer);
+            friend.addFriend(customer);
+            customerFacade.edit(friend);
         }
     }
-    
 }

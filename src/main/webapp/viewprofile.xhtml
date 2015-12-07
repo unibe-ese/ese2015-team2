@@ -125,9 +125,6 @@
                             <b:column span="12">
                                 <b:panelGrid colSpans="4,8">
                                     <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createmessage?id=#{viewProfileBean.viewedCustomer.id}" value="Kontaktieren" look="info"/>
-                                    <h:form>
-                                        <b:commandButton rendered="#{!viewProfileBean.myProfile}" action="#{viewProfileBean.addFriend()}" value="Freund hinzufügen" look="danger"/>
-                                    </h:form>
                                 </b:panelGrid>
                             </b:column>
                         </b:row>

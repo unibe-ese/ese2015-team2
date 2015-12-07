@@ -39,10 +39,10 @@ public class DevelopementDataCourseToProfile {
 
     @PostConstruct
     public void initializeTestData() {
-        createTestOffers();
+        addTestCoursesToProfiles();
     }
 
-    private void createTestOffers() {
+    private void addTestCoursesToProfiles() {
         try {
 
             Course course = courseFacade.findAll().get(0);
@@ -62,11 +62,16 @@ public class DevelopementDataCourseToProfile {
             ese.getProfile().addCourseProfile(courseProfile);
             courseProfileFacade.create(courseProfile);
             
+            course.addCourseProfile(courseProfile);
+            courseFacade.edit(course);
+            
             CourseProfile courseProfile2 = new CourseProfile();
             courseProfile2.setCourse(course);
             courseProfile2.setProfile(ese2.getProfile());
             ese2.getProfile().addCourseProfile(courseProfile2);
             courseProfileFacade.create(courseProfile2);
+            course.addCourseProfile(courseProfile2);
+            courseFacade.edit(course);
             
             
         } catch (Exception e) {

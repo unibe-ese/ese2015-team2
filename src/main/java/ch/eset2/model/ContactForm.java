@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 
 /*
  * Represents a contactForm filled out by a user, either signed in or not.
@@ -33,22 +31,6 @@ public class ContactForm implements Serializable {
     private String sender;
     
     private String date;
-    
-    //private final String emailaddon = "@students.unibern.ch";
-      
-    /**
-     * Creates a short preview of 30 chars of the messageText.
-     * @return the first 30 chars of the messageText. Whole messagetext if text
-     * is shorter than 30 chars.
-     */
-    public String messageTextPreview(){
-        if (messageText.length() <= 50){
-            return messageText;
-        }
-        else {
-            return messageText.substring(0, 50).concat("...");
-        }
-    }
     
      public String getDate() {
         return date;
@@ -118,7 +100,7 @@ public class ContactForm implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.eset2.model.Message[ id=" + id + " ]";
+        return "ch.eset2.model.ContactForm[ id=" + id + " ]";
     }
     
 }
