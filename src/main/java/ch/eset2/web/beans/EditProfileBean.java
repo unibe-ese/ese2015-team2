@@ -22,6 +22,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 
 /**
  * EditeProfileBean manages changes of the profile.
@@ -53,6 +54,9 @@ public class EditProfileBean implements Serializable {
     
     private Profile profile;
     private Customer customer;
+    
+    // Used to store the new password entered by the user
+    private String newPassword = "";
 
     public EditProfileBean() {
 
@@ -85,6 +89,7 @@ public class EditProfileBean implements Serializable {
     public String saveProfile() {
         try {
             profileFacade.edit(profile);
+            if(!newPassword.isEmpty()) customer.setPassword(new Sha256Hash(newPassword).toHex());
             customerFacade.edit(customer);
             return Navigation.VIEWPROFILE + "?faces-redirect=true&id=" + userHelper.getMyProfileID();
         } catch (Exception e) { // TODO
@@ -137,5 +142,13 @@ public class EditProfileBean implements Serializable {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+    
+    public String getNewPassword(){
+        return newPassword;
+    }
+    
+    public void setNewPassword(String newPassword){
+        this.newPassword = newPassword;
     }
 }

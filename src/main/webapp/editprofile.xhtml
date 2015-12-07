@@ -28,7 +28,7 @@
                             #{' '}
                             <h:outputText id="display" />
                         </b:panelGrid>
-                        <h3>Kontakt:</h3>
+                        <h3>Benutzerinfo:</h3>
                         <b:panelGrid colSpans="4,8">
                             <h:outputText value="Name:"/>
                             <b:inputText value="#{editProfileBean.customer.lastName}"/>
@@ -44,6 +44,8 @@
                             <b:inputText value="#{editProfileBean.customer.city}"/>
                             <h:outputText value="Phone:"/>
                             <b:inputText value="#{editProfileBean.customer.phone}"/>
+                            <h:outputText value="Neues Passwort:"/>
+                            <b:inputSecret value="#{editProfileBean.newPassword}"/>
                         </b:panelGrid>
                         <hr />
                         <p:dataTable id="studentCoursesTable" var="courseProfile" value="#{editProfileBean.profile.courseProfiles}" editable="true" rendered="#{editProfileBean.customer.accountType eq 1}"> <!-- Student -->
