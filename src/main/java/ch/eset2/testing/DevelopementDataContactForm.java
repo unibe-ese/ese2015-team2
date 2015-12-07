@@ -1,7 +1,7 @@
 package ch.eset2.testing;
 
-import ch.eset2.model.ContactForm;
-import ch.eset2.model.dao.ContactFormFacade;
+import ch.eset2.model.ContactMessage;
+import ch.eset2.model.dao.ContactMessageFacade;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -18,7 +18,7 @@ import javax.inject.Inject;
 public class DevelopementDataContactForm {
 
     @Inject
-    private ContactFormFacade contactFormFacade;
+    private ContactMessageFacade contactFormFacade;
 
     public DevelopementDataContactForm() {
 
@@ -32,7 +32,7 @@ public class DevelopementDataContactForm {
     private void createTestContactForm() {
         try {
            
-            ContactForm firstContactForm = new ContactForm();
+            ContactMessage firstContactForm = new ContactMessage();
             firstContactForm.setSubject("TestKontaktForm");
             firstContactForm.setSender("eve.mendoza");
             firstContactForm.setDate("20.11.2015 13:00:12");

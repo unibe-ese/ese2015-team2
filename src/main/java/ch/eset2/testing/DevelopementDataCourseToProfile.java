@@ -6,6 +6,7 @@ import ch.eset2.model.Customer;
 import ch.eset2.model.dao.CourseFacade;
 import ch.eset2.model.dao.CourseProfileFacade;
 import ch.eset2.model.dao.CustomerFacade;
+import ch.eset2.model.dao.ProfileFacade;
 import javax.annotation.PostConstruct;
 import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
@@ -29,6 +30,9 @@ public class DevelopementDataCourseToProfile {
     
     @Inject
     private CourseFacade courseFacade;
+    
+    @Inject
+    private ProfileFacade profileFacade;
     
     @Inject
     private CourseProfileFacade courseProfileFacade;
@@ -61,7 +65,7 @@ public class DevelopementDataCourseToProfile {
             courseProfile.setProfile(ese.getProfile());
             ese.getProfile().addCourseProfile(courseProfile);
             courseProfileFacade.create(courseProfile);
-            
+            profileFacade.edit(ese.getProfile());
             course.addCourseProfile(courseProfile);
             courseFacade.edit(course);
             

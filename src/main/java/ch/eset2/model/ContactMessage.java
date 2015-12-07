@@ -10,12 +10,12 @@ import javax.persistence.Id;
 /**
  * Represents a contactForm filled out by a user, either signed in or not.
  * Special fields:
- * id: Every ContactForm has an unique id.
+ id: Every ContactMessage has an unique id.
  * @author Eve Mendoza Quiros, 1.12.2015
  * @version 2.0
  */
 @Entity
-public class ContactForm implements Serializable {
+public class ContactMessage implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -81,17 +81,17 @@ public class ContactForm implements Serializable {
 
     
     /**
-     * Checks identity only for same unique {@link ContactForm#id}.
+     * Checks identity only for same unique {@link ContactMessage#id}.
      * @param object the object to be compare with.
      * @return true when instance of this class and id's are identical.
      */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ContactForm)) {
+        if (!(object instanceof ContactMessage)) {
             return false;
         }
-        ContactForm other = (ContactForm) object;
+        ContactMessage other = (ContactMessage) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

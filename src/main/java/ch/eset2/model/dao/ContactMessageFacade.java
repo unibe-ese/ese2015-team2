@@ -1,6 +1,6 @@
 package ch.eset2.model.dao;
 
-import ch.eset2.model.ContactForm;
+import ch.eset2.model.ContactMessage;
 //import ch.eset2.model.Offer;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
  * @version 2.0
  */
 @Stateless
-public class ContactFormFacade extends AbstractFacade<ContactForm> {
+public class ContactMessageFacade extends AbstractFacade<ContactMessage> {
 
     @PersistenceContext(unitName = "eset2_pu")
     private EntityManager em;
@@ -22,8 +22,8 @@ public class ContactFormFacade extends AbstractFacade<ContactForm> {
         return em;
     }
 
-    public ContactFormFacade() {
-        super(ContactForm.class);
+    public ContactMessageFacade() {
+        super(ContactMessage.class);
     }
     
    /* public List<Message> findMessageByReciever(String reciever){

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -19,56 +19,34 @@
         <b:container>
             <b:row>
                 <b:column span="6" offset="3">
-                    <b:row><h1>Kontakt</h1></b:row>
                         <b:row>
-                                <p>Bei jeglichen Fragen, Beschwerden oder Rückmeldungen können Sie das unten aufgeführte Kontaktformular ausfüllen. Ein Mitarbeiter wird sich Ihr Anliegen anschauen und sich bei Ihnen melden. </p>
-                                <h:outputLabel value="Kontaktformular"/> 
-                                <br/>
+                            <h1>Kontakt</h1>
+                            <p>Bei jeglichen Fragen, Beschwerden oder Rückmeldungen können Sie das unten aufgeführte Kontaktformular ausfüllen. Ein Mitarbeiter wird sich Ihr Anliegen anschauen und sich bei Ihnen melden. </p>
+                            <h:outputLabel value="Kontaktformular"/> 
+                            <br/>
                             <h:outputLabel value="Betreff:"/>
-                            
-                            <b:row>
-                                <b:column span="12">
-                                    <b:inputText maxlength="50" id="subject" value="#{contactFormBean.newContactForm.subject}" required="true">
-                                    </b:inputText>
-                                </b:column>
-                            </b:row>
+                            <b:inputText maxlength="50" id="subject" value="#{contactFormBean.newContactMessage.subject}" required="true"/>
                             <h:outputLabel value="Absender(Email-Adresse):"/>
-                            <b:row>
-                                <b:column span="12">
-                                    <b:inputText maxlength="50" id="sender" value="#{contactFormBean.newContactForm.sender}" required="true">
-                                    </b:inputText>
-                                </b:column>
-                            </b:row>
+                            <b:inputText maxlength="50" id="sender" value="#{contactFormBean.newContactMessage.sender}" required="true"/>
                             <h:outputLabel value="Nachricht:"/>
-                            <p:inputTextarea id="messageText" style="width: 100%; height: 160px;" value="#{contactFormBean.newContactForm.messageText}" counter="displayMessageCounter" maxlength="999" counterTemplate="{0} verbleibende Zeichen." autoResize="false" required="true" />
+                            <p:inputTextarea id="messageText" style="width: 100%; height: 160px;" value="#{contactFormBean.newContactMessage.messageText}" counter="displayMessageCounter" maxlength="999" counterTemplate="{0} verbleibende Zeichen." autoResize="false" required="true" />
                             <h:outputText id="displayMessageCounter" />
                         </b:row>
-
-                    </b:column>
-                </b:row>
-
-                <b:row>
-
-                    <b:column span="6" offset="3">
-                        <b:row>
-                            <h:form>
-                            <b:column span="12">
-                                <br/>
-                                <b:row>
-                                    <b:column span="4">
-                                <b:button value="Abbrechen" outcome="#{navigation.INDEX}" look="danger"/>
-                                    </b:column>
-                                    <b:column span="6">
-                                <b:commandButton action="#{contactFormBean.createNewContactForm()}" value="Senden" look="success"/>
-                                    </b:column>
-                                </b:row>
-                            </b:column>
-                            </h:form>
-                        </b:row>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column span="6" offset="3">
+                    <b:row>
+                        <b:column span="4">
+                            <b:button value="Abbrechen" outcome="#{navigation.INDEX}" look="danger"/>
+                        </b:column>
+                        <b:column span="6">
+                            <b:commandButton action="#{contactFormBean.createNewContactMessage()}" value="Senden" look="success"/>
+                        </b:column>
+                    </b:row>
                 </b:column>
             </b:row>
         </b:container>
         </h:form>
     </ui:define>
-
 </ui:composition>

@@ -1,8 +1,8 @@
 package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
-import ch.eset2.model.ContactForm;
-import ch.eset2.model.dao.ContactFormFacade;
+import ch.eset2.model.ContactMessage;
+import ch.eset2.model.dao.ContactMessageFacade;
 import ch.eset2.web.converter.DateConverter;
 import ch.eset2.web.util.Navigation;
 import java.io.Serializable;
@@ -16,8 +16,8 @@ import org.apache.shiro.SecurityUtils;
 
 /**
  * ContactFormBean provides a form for users to get in contact with staff.
- * It allows to persist a new ContactForm to the database.
- * {@link ContactFormBean#init() } should be called from the server before
+ * It allows to persist a new ContactMessage to the database.
+ {@link ContactFormBean#init() } should be called from the server before
  * using any service of this class.
  * @author Eve Mendoza Quiros
  * @version 2.0
@@ -27,48 +27,45 @@ import org.apache.shiro.SecurityUtils;
 public class ContactFormBean implements Serializable {
     
     @Inject
-    private ContactFormFacade ContactFormFacade;
+    private ContactMessageFacade contactMessageFacade;
     
-    private ContactForm newContactForm;
+    private ContactMessage newContactMessage;
     
     private final String emailaddon = "@students.unibern.ch";
     
-    /*
-     * Creates a new instance of ContactFormBean
-     */
     public ContactFormBean() {
     }
     
     @PostConstruct
     private void init(){
-        newContactForm = new ContactForm();
+        newContactMessage = new ContactMessage();
         if(SecurityUtils.getSubject().isAuthenticated()){
         Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        newContactForm.setSender(loggedInCustomer.getUsername()+ emailaddon);  
+        newContactMessage.setSender(loggedInCustomer.getUsername()+ emailaddon);  
         }
     }
     
     /**
-     * Persists the new ContactForm to the database.
+     * Persists the new ContactMessage to the database.
      * @return the "contacFormSuccess.xhtml" page to indicate that the message was sent.
      */
-    public String createNewContactForm(){
-        ContactFormFacade.create(newContactForm);
-        newContactForm.setDate(DateConverter.currentTimeAsString());
+    public String createNewContactMessage(){
+        contactMessageFacade.create(newContactMessage);
+        newContactMessage.setDate(DateConverter.currentTimeAsString());
         return Navigation.CONTACTFORMSUCCESS;
     }
     
     
     private void setGivenParameters(String reciever){
-        newContactForm.setDate(DateConverter.currentTimeAsString());
+        newContactMessage.setDate(DateConverter.currentTimeAsString());
     }
           
     //getters and setters
-    public ContactForm getNewContactForm() {
-        return newContactForm;
+    public ContactMessage getNewContactMessage() {
+        return newContactMessage;
     }
 
-    public void setNewContactForm(ContactForm newContactForm) {
-        this.newContactForm = newContactForm;
+    public void setNewContactMessage(ContactMessage newContactMessage) {
+        this.newContactMessage = newContactMessage;
     }
 }
