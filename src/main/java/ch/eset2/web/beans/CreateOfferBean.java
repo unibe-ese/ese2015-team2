@@ -28,6 +28,8 @@ import org.apache.shiro.SecurityUtils;
 @Named(value = "createOfferBean")
 @ViewScoped
 public class CreateOfferBean implements Serializable {
+
+    private static final long serialVersionUID = -8513115324089925702L;
     
     @Inject
     private OfferFacade offerFacade;

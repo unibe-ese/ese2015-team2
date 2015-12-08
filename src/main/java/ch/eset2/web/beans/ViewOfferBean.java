@@ -20,6 +20,8 @@ import org.apache.shiro.SecurityUtils;
 @ViewScoped
 public class ViewOfferBean implements Serializable {
 
+    private static final long serialVersionUID = 2035456320306976180L;
+
     @Inject
     private MessageFacade messageFacade;
 

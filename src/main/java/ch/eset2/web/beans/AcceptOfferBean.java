@@ -4,6 +4,7 @@ import ch.eset2.model.Offer;
 import ch.eset2.model.dao.MessageFacade;
 import ch.eset2.web.util.MessageState;
 import ch.eset2.web.util.Navigation;
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,8 +17,10 @@ import javax.inject.Named;
  */
 @RequestScoped
 @Named
-public class AcceptOfferBean {
+public class AcceptOfferBean implements Serializable {
 
+    private static final long serialVersionUID = -1183866598086792744L;
+    
     @Inject
     private MessageFacade messageFacade;
     

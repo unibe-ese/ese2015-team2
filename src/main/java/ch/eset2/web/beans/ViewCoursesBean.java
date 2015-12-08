@@ -21,6 +21,8 @@ import org.apache.shiro.SecurityUtils;
 @Named
 @RequestScoped
 public class ViewCoursesBean implements Serializable {
+
+    private static final long serialVersionUID = -7474694757392637116L;
     
     @Inject
     private CourseFacade courseFacade;

@@ -19,6 +19,8 @@ import javax.inject.Named;
 @Named
 @ViewScoped
 public class ViewCourseBean implements Serializable {
+
+    private static final long serialVersionUID = 6719395635620760732L;
     
     private Course course;
     private List<CourseProfile> courseProfiles = new ArrayList<CourseProfile>();

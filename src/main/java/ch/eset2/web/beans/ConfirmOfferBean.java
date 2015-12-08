@@ -12,6 +12,7 @@ import ch.eset2.model.dao.MessageFacade;
 import ch.eset2.web.converter.DateConverter;
 import ch.eset2.web.util.MessageState;
 import ch.eset2.web.util.MessageType;
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -26,7 +27,9 @@ import org.apache.shiro.SecurityUtils;
  */
 @RequestScoped
 @Named
-public class ConfirmOfferBean {
+public class ConfirmOfferBean implements Serializable {
+
+    private static final long serialVersionUID = 2030159759374265509L;
     
     @Inject
     private MessageFacade messageFacade;

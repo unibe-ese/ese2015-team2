@@ -8,6 +8,7 @@ package ch.eset2.web.beans;
 import ch.eset2.model.Course;
 import ch.eset2.model.CourseProfile;
 import ch.eset2.model.dao.CourseProfileFacade;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -22,7 +23,9 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class SearchTutorsBean {
+public class SearchTutorsBean implements Serializable {
+
+    private static final long serialVersionUID = -1293941133096182060L;
     
     private List<CourseProfile> courseProfiles;
     private List<CourseProfile> filteredCourseProfiles;

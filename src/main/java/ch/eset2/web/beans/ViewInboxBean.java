@@ -24,6 +24,8 @@ import org.apache.shiro.SecurityUtils;
 @RequestScoped
 public class ViewInboxBean implements Serializable {
 
+    private static final long serialVersionUID = 8941173342748853017L;
+
     @Inject
     private MessageFacade messageFacade;
     
