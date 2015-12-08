@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 @Entity
 public class StudentProfile extends Profile implements Serializable {
 
+    private static final long serialVersionUID = 8766845856123067712L;
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -1,5 +1,6 @@
 package ch.eset2.model.dao;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -8,7 +9,7 @@ import javax.persistence.EntityManager;
  * are responsible to interact with the entity manager. 
  * @author Marc Jost, 17.10.2015
  */
-public abstract class AbstractFacade<T> {
+public abstract class AbstractFacade<T> implements Serializable {
     
     private Class<T> entityClass;
 
