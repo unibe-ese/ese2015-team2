@@ -16,6 +16,8 @@ import org.apache.shiro.SecurityUtils;
 @SessionScoped
 @Named
 public class UserHelper implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     /**
      * Returns the ID of the currently logged in customer.

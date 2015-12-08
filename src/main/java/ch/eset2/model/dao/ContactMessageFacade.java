@@ -1,7 +1,6 @@
 package ch.eset2.model.dao;
 
 import ch.eset2.model.ContactMessage;
-import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +11,7 @@ import javax.persistence.PersistenceContext;
  * @version 2.0
  */
 @Stateless
-public class ContactMessageFacade extends AbstractFacade<ContactMessage> implements Serializable {
+public class ContactMessageFacade extends AbstractFacade<ContactMessage> {
 
     private static final long serialVersionUID = -6676082552827644496L;
     

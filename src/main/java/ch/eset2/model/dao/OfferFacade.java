@@ -2,7 +2,6 @@ package ch.eset2.model.dao;
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.Offer;
-import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,7 +13,7 @@ import javax.persistence.PersistenceContext;
  * @version 2.0
  */
 @Stateless
-public class OfferFacade extends AbstractFacade<Offer> implements Serializable {
+public class OfferFacade extends AbstractFacade<Offer> {
 
     private static final long serialVersionUID = -2336343714463772160L;
     

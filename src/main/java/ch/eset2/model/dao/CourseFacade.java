@@ -1,7 +1,6 @@
 package ch.eset2.model.dao;
 
 import ch.eset2.model.Course;
-import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +11,7 @@ import javax.persistence.PersistenceContext;
  * @version 1.0
  */
 @Stateless
-public class CourseFacade extends AbstractFacade<Course> implements Serializable {
+public class CourseFacade extends AbstractFacade<Course> {
 
     private static final long serialVersionUID = 7754837198994662864L;
     

@@ -1,7 +1,6 @@
 package ch.eset2.model.dao;
 
 import ch.eset2.model.Profile;
-import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,7 +11,7 @@ import javax.persistence.PersistenceContext;
  * @version 1.0
  */
 @Stateless
-public class ProfileFacade extends AbstractFacade<Profile> implements Serializable {
+public class ProfileFacade extends AbstractFacade<Profile> {
 
     private static final long serialVersionUID = 2731491651718662166L;
 

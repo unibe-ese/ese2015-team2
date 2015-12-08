@@ -1,6 +1,5 @@
 package ch.eset2.model;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 
 /**
@@ -10,9 +9,7 @@ import javax.persistence.Entity;
  * @version 1.0
  */
 @Entity
-public class StudentProfile extends Profile implements Serializable {
-
-    private static final long serialVersionUID = 8766845856123067712L;
+public class StudentProfile extends Profile {
     
     @Override
     public int hashCode() {
