@@ -8,13 +8,14 @@
                 template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
-        Nachricht erfolgreich verschickt!
+        Nachricht erfolgreich verschickt! - ESET2
     </ui:define>
 
     <ui:define name="content">
+        <br />
         <b:container>
             <b:row>
-                <b:column span="6" offset="3">
+                <b:column span="12">
                     <h1>Ihre Nachricht wurde gesendet!</h1>
                     <b:button outcome="#{navigation.INBOX}" value="Zurück zum Posteingang" look="info"/>
                 </b:column>

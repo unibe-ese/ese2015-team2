@@ -8,13 +8,14 @@
                 template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
-        Fehlgeschlagen!
+        Fehlgeschlagen! - ESET2
     </ui:define>
 
     <ui:define name="content">
         <b:container>
+            <br />
             <b:row>
-                <b:column span="6" offset="3">
+                <b:column span="12">
                     <h1>Leider konnte die Offerte aufgrund des Fehlschlagens der Bezahlung nicht angenommen werden oder wurde bereits angenommen.</h1>
                     <b:button outcome="#{navigation.INBOX}" value="Zurück zum Posteingang" look="info"/>
                 </b:column>

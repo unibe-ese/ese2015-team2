@@ -9,7 +9,7 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="title">
-        title
+        Profil editieren - ESET2
     </ui:define>
 
     <ui:define name="content">
@@ -42,7 +42,7 @@
                             <b:inputText value="#{editProfileBean.customer.zip}"/>
                             <h:outputText value="Stadt/Ort:"/>
                             <b:inputText value="#{editProfileBean.customer.city}"/>
-                            <h:outputText value="Phone:"/>
+                            <h:outputText value="Telefon:"/>
                             <b:inputText value="#{editProfileBean.customer.phone}"/>
                             <h:outputText value="Neues Passwort:"/>
                             <b:inputSecret value="#{editProfileBean.newPassword}"/>
@@ -113,14 +113,17 @@
                         </p:dataTable>
                         <br />
                         <b:row>
-                            <b:column span="4">
+                            <b:column span="3">
+                                <b:button value="Profil deaktivieren" onclick="$('.modalPseudo').modal();return false;" look="danger"/>
+                            </b:column>
+                            <b:column span="3">
                                 <b:button value="Kurse hinzufügen" outcome="#{navigation.VIEWCOURSES}" look="primary" />
                             </b:column>
-                            <b:column span="4">
-                                <b:commandButton id="save" value="Speichern" action="#{editProfileBean.saveProfile()}" look="success" ajax="false"/>
+                            <b:column span="3">
+                                <b:button value="Abbrechen" outcome="#{navigation.INDEX}" look="warning" />
                             </b:column>
-                            <b:column span="4">
-                                <b:commandButton value="Profil löschen" action="#{editProfileBean.removeProfile()}" look="danger"/>
+                            <b:column span="3">
+                                <b:commandButton id="save" value="Speichern" action="#{editProfileBean.saveProfile()}" look="success" ajax="false"/>
                             </b:column>
                         </b:row>
                     </b:column>
@@ -152,11 +155,18 @@
                     </b:column>
                 </h:form>
             </b:row>
+            <b:modal id="amodal" title="Wollen Sie Ihr Profil wirklich deaktivieren?" styleClass="modalPseudo">
+                <p>Ihr Profil kann aus rechtlichen Gründen nicht direkt gelöscht werden. Löschungen werden periodisch nach einer vorhergehenden Prüfung vom ESET2 durchgeführt.</p>
+                <p>Das Profil wird nach Ihrer Bestätigung deaktiviert, auch wenn Sie dies erst beim Betrachten Ihres Profils optisch erkennen.</p>
+                <f:facet name="footer">
+                    <b:button value="Nein" dismiss="modal" onclick="return false;"/>
+                    <b:button value="Ja" look="danger" dismiss="modal" onclick="#{editProfileBean.removeProfile()}"/>
+                </f:facet>
+            </b:modal>
             <br />
             <br />
             <br />
             <br />
         </b:container>
     </ui:define>
-
 </ui:composition>

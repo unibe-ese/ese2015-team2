@@ -4,6 +4,7 @@ import ch.eset2.model.Customer;
 import ch.eset2.model.Profile;
 import ch.eset2.web.util.InitialsGenerator;
 import ch.eset2.web.util.PrivacyHelper;
+import ch.eset2.web.util.ProfileStates;
 import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -51,9 +52,8 @@ public class ViewProfileBean implements Serializable {
         return privacyHelper.hasPermissionToViewFullProfile(loggedInCustomer, viewedCustomer);
     }
     
-    // TODO: Remove this. Adding friends directly won't be possible
-    public void addFriend(){
-        addFriendBean.addFriend(loggedInCustomer, viewedCustomer);
+    public boolean isActive(){
+        return profile.getProfileState() == ProfileStates.ACTIVE;
     }
     
     public String getInitials(){

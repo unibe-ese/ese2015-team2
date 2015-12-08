@@ -13,8 +13,9 @@
         <o:viewParam name="id" value="#{viewCourseBean.course}" converter="#{courseConverter}" converterMessage="Ungültiger Request. Unbekannte Vorlesung" required="true" requiredMessage="Unbekannte Vorlesung. Nutzen Sie einen Link aus der Website."/>
         <f:viewAction action="#{viewCourseBean.init()}"/>
     </f:metadata>
+    
     <ui:define name="title">
-        title
+        #{viewCourseBean.course.title} - ESET2
     </ui:define>
 
     <ui:define name="content">
@@ -25,7 +26,7 @@
                     <b:row>
                         <b:column span="12">
                             <h1>Vorlesung: #{viewCourseBean.course.title}</h1>
-                            <br />
+                            <hr />
                             #{viewCourseBean.course.description}
                             <hr />
                             <h2>Verfügbare Tutoren</h2>
@@ -74,12 +75,9 @@
                         <h:outputText value="#{viewCourseBean.course.semester}"/>
                         <h:outputLabel value="Stufe"/>
                         <h:outputText value="#{viewCourseBean.course.level}"/>
-                        #{''}
                     </b:panelGrid>
-                    <br />
                 </b:column>
             </b:row>
         </b:container>
     </ui:define>
-
 </ui:composition>

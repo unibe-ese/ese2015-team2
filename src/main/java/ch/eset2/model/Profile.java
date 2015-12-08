@@ -5,8 +5,8 @@
  */
 package ch.eset2.model;
 
+import ch.eset2.web.util.ProfileStates;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,7 +25,9 @@ import javax.persistence.OneToOne;
  * id: Every Profile has an unique id.
  * {@link #customer}: Every profile belongs to exactly one customer.
  * {@link #courseProfiles}: Relationship to courses the profileowner attends.
+ * 
  * @author Marc Jost, 17.10.2015
+ * @version 1.0
  */
 @Entity
 public abstract class Profile implements Serializable {
@@ -33,6 +35,8 @@ public abstract class Profile implements Serializable {
     protected static final long serialVersionUID = 1L;
     
     protected String imageLink;
+    
+    protected int profileState = ProfileStates.ACTIVE;
 
     protected String description = "Noch keine Profilbeschreibung";
     
@@ -74,7 +78,6 @@ public abstract class Profile implements Serializable {
         this.imageLink = imageLink;
     }
     
-    
     public Customer getCustomer() {
         return customer;
     }
@@ -99,8 +102,12 @@ public abstract class Profile implements Serializable {
         this.id = id;
     }
     
-    public void testInit(){
-        courseProfiles = new ArrayList<CourseProfile>(); 
+    public int getProfileState() {
+        return profileState;
+    }
+
+    public void setProfileState(int profileState) {
+        this.profileState = profileState;
     }
 
     @Override
@@ -109,7 +116,6 @@ public abstract class Profile implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
     
     /**
      * Checks identity only for same unique {@link Profile#id}.

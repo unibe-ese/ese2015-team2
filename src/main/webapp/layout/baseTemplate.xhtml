@@ -15,16 +15,16 @@
 
     <h:body style="padding-top: 50px; padding-bottom: 60px;">
         <b:messages/>
-        <b:navBar brand="ESET2"  brandHref="#{request.contextPath}/index.xhtml" inverse="true" fixed="top">
+        <b:navBar brand="ESET2"  brandHref="#{request.contextPath}/#{navigation.INDEX}" inverse="true" fixed="top">
             <b:navbarLinks>
-                <b:navLink value="Vorlesungen" href="viewcourses.xhtml"></b:navLink>
+                <b:navLink value="Vorlesungen" href="#{navigation.VIEWCOURSES}"></b:navLink>
                 <shiro:notAuthenticated>
-                    <b:navLink value="Registrieren!" href="registration.xhtml"></b:navLink>
+                    <b:navLink value="Registrieren!" href="#{navigation.REGISTRATION}"></b:navLink>
                 </shiro:notAuthenticated>
                 <shiro:authenticated>
-                    <b:navLink value="Tutoren suchen" href="searchtutors.xhtml"></b:navLink>
-                    <b:navLink value="Mein Profil" href="viewprofile.xhtml?id=#{userHelper.myProfileID}"></b:navLink>
-                    <b:navLink value="Posteingang" href="viewinbox.xhtml"></b:navLink>
+                    <b:navLink value="Tutoren suchen" href="#{navigation.SEARCHTUTOR}"></b:navLink>
+                    <b:navLink value="Mein Profil" href="#{navigation.VIEWPROFILE}?id=#{userHelper.myProfileID}"></b:navLink>
+                    <b:navLink value="Posteingang" href="#{navigation.INBOX}"></b:navLink>
                 </shiro:authenticated>
             </b:navbarLinks>
             <ezcomp:loginComponent loginAction="#{loginComponent.login}" logoutAction="#{loginComponent.logout}" usernameField="#{loginComponent.username}" passwordField="#{loginComponent.password}"/>
@@ -32,11 +32,11 @@
         <ui:insert name="content">Content</ui:insert>
         <b:navBar inverse="true" fixed="bottom">
             <b:navbarLinks>
-                <b:navLink outcome="index" value="Home"></b:navLink>
-                <b:navLink outcome="contact" value="Kontakt"></b:navLink>
-                <b:navLink outcome="about" value="Über uns"></b:navLink>
-                <b:navLink outcome="agb" value="AGB"></b:navLink>
-                <b:navLink outcome="faq" value="FAQ"></b:navLink>
+                <b:navLink outcome="#{navigation.INDEX}" value="Home"></b:navLink>
+                <b:navLink outcome="#{navigation.CONTACT}" value="Kontakt"></b:navLink>
+                <b:navLink outcome="#{navigation.ABOUT}" value="Über uns"></b:navLink>
+                <b:navLink outcome="#{navigation.AGB}" value="AGB"></b:navLink>
+                <b:navLink outcome="#{navigation.FAQ}" value="FAQ"></b:navLink>
             </b:navbarLinks>
         </b:navBar>
     </h:body>

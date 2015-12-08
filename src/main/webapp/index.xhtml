@@ -9,7 +9,7 @@
                 template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
-        Willkommen auf ESET2!
+        Startseite - ESET2
     </ui:define>
 
     <ui:define name="content">
@@ -26,7 +26,8 @@
                                     </p>
                                 </b:column>
                                 <b:column span="4">
-                                    <a href="registration.xhtml" class="btn btn-lg btn-info">Jetzt registrieren »</a>
+                                    <br/>
+                                    <a href="#{navigation.REGISTRATION}" class="btn btn-lg btn-info">Jetzt registrieren »</a>
                                 </b:column>
                             </b:row>
                         </shiro:guest>
@@ -59,13 +60,13 @@
                             </b:row>
                             <b:row>
                                 <b:column span="3">
-                                    <b:button outcome="editprofile.xhtml" value="Profil editieren"  look="info" size="lg"/>
+                                    <b:button outcome="#{navigation.EDITPROFILE}" value="Profil editieren"  look="info" size="lg"/>
                                 </b:column>
                                 <b:column span="3" offset="1">
-                                    <b:button outcome="viewcourses.xhtml" value="Vorlesungen ansehen"  look="info" size="lg"/>
+                                    <b:button outcome="#{navigation.VIEWCOURSES}" value="Vorlesungen ansehen"  look="info" size="lg"/>
                                 </b:column>
                                 <b:column span="3" offset="1">
-                                    <b:button outcome="searchtutors.xhtml" value="Tutoren suchen"  look="info" size="lg"/>
+                                    <b:button outcome="#{navigation.SEARCHTUTOR}" value="Tutoren suchen"  look="info" size="lg"/>
                                 </b:column>
                             </b:row>
                         </shiro:authenticated>

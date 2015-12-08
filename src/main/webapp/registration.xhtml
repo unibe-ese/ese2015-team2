@@ -9,16 +9,17 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="title">
-        title
+        Registration - ESET2
     </ui:define>
 
     <ui:define name="content">
         <b:container>
+            <br />
             <b:row>
-                <b:column span="6" offset="3">
+                <b:column span="12">
                     <h1>Registration für ESET2</h1>
                     <p>Bitte geben Sie Ihre Daten vollständig und korrekt ein.</p>
-                    <br />
+                    <hr />
                     <h:form>
                         <b:panelGrid colSpans="4,8">
                             <h:outputLabel value="Email:"/>
@@ -54,7 +55,7 @@
                                     <h:message id="m_confirm" for="confirm" style="color:red"/>
                                 </b:column>
                             </b:row>
-                            <h:outputText value="Kontotyp:"/>
+                            <h:outputLabel value="Kontotyp:"/>
                             <b:selectOneMenu value="#{registrationBean.newCustomer.accountType}" id="brandID" >
                                 <f:selectItem itemLabel="Student" itemValue="1"/>
                                 <f:selectItem itemLabel="Tutor" itemValue="2"/>
@@ -63,27 +64,27 @@
                         <h3>Zu Ihrer Person</h3>
                         <br/>
                         <b:panelGrid colSpans="4,8">
-                            <h:outputText value="Name:"/>
+                            <h:outputLabel value="Name:"/>
                             <b:inputText value="#{registrationBean.newCustomer.lastName}" required="true"/>
-                            <h:outputText value="Vorname"/>
+                            <h:outputLabel value="Vorname"/>
                             <b:inputText value="#{registrationBean.newCustomer.firstName}" required="true"/>
-                            <h:outputText value="Matrikelnummer:"/>
+                            <h:outputLabel value="Matrikelnummer:"/>
                             <b:inputText value="#{registrationBean.newCustomer.matnr}" required="true"/>
-                            <h:outputText value="Strasse:"/>
+                            <h:outputLabel value="Strasse:"/>
                             <b:inputText value="#{registrationBean.newCustomer.street}" required="true"/>
-                            <h:outputText value="PLZ:"/>
+                            <h:outputLabel value="PLZ:"/>
                             <b:inputText value="#{registrationBean.newCustomer.zip}" required="true"/>
-                            <h:outputText value="Stadt/Ort:"/>
+                            <h:outputLabel value="Stadt/Ort:"/>
                             <b:inputText value="#{registrationBean.newCustomer.city}" required="true"/>
-                            <h:outputText value="Phone:"/>
+                            <h:outputLabel value="Telefon:"/>
                             <b:inputText value="#{registrationBean.newCustomer.phone}"/>
                         </b:panelGrid>
                         <br />
-                        <p:captcha label="captcha" language="de"/>
                         <b:row>
-                            <b:column span="2" offset="5">
-                                <br/>
-                                
+                            <b:column span="4" offset="4">
+                                <p:captcha label="captcha" language="de"/>
+                            </b:column>
+                            <b:column span="4">
                                 <b:commandButton action="#{registrationBean.registerNewCustomer()}" value="Registrieren" look="success" size="lg"/>
                             </b:column>
                         </b:row>

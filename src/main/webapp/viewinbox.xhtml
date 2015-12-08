@@ -10,7 +10,7 @@
                 template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
-        Inbox
+        Posteingang - ESET2
     </ui:define>
 
     <ui:define name="content">
@@ -18,7 +18,7 @@
             <br />
             <b:row>
                 <b:column span="12">
-                    <h1>Ihr Posteingang:</h1>
+                    <h1>Ihr Posteingang</h1>
                     <hr />
                     <h4>Nachrichten:</h4>
                     <b:column span="12" rendered="#{!viewInboxBean.hasMessages()}">
@@ -29,14 +29,15 @@
                     <h:form id="table" rendered="#{viewInboxBean.hasMessages()}">
                         <p:dataTable var="message" value="#{viewInboxBean.messages}">
                             <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Empfangen">
-                                <a href="#{navigation.VIEWMESSAGE}?id=#{message.id}">#{message.sendDate}</a>
+                                <h:outputText value="#{message.sendDate}"/>
                             </p:column>
-                            <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Betreff">
-                                <a href="#{navigation.VIEWMESSAGE}?id=#{message.id}">#{message.subject}</a>
-                            </p:column>
-
+                            
                             <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Absender">
-                                <a href="#{navigation.VIEWPROFILE}?id=#{message.sender.profile.id}">#{message.sender.username}</a>
+                                <h:link value="#{message.sender.username}" outcome="#{navigation.VIEWPROFILE}?id=#{message.sender.profile.id}"/>
+                            </p:column>
+                            
+                            <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Betreff">
+                                <h:link outcome="#{navigation.VIEWMESSAGE}?id=#{message.id}" value="#{message.subject}"/>
                             </p:column>
 
                             <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="55%" headerText="Nachrichtenvorschau">
@@ -46,29 +47,25 @@
                     </h:form>
                     <hr />
                     <h4>Verträge:</h4>
-                    <b:column span="12" rendered="#{!viewInboxBean.hasOffers()}">
-                        <h3>Es befinden sich keine Verträge in Ihrem Posteingang.</h3>
-                        <br/>
-                        <br/>
-                    </b:column>
+                    <h:outputText value="Es befinden sich keine Verträge in Ihrem Posteingang." rendered="#{!viewInboxBean.hasOffers()}"/>
 
                     <h:form id="offerTable" rendered="#{viewInboxBean.hasOffers()}">
                         <p:dataTable var="offer" value="#{viewInboxBean.offers}">
                             <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Empfangen">
-                                <a href="#{navigation.VIEWOFFER}?id=#{offer.id}">#{offer.sendDate}</a>
+                                <h:outputText value="#{offer.sendDate}"/>
                             </p:column>
-                            <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Betreff">
-                                <a href="#{navigation.VIEWOFFER}?id=#{offer.id}">#{offer.subject}</a>
-                            </p:column>
-
+                            
                             <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Absender">
-                                <a href="#{navigation.VIEWPROFILE}?id=#{offer.sender.profile.id}">#{offer.sender.username}</a>
+                                <h:link value="#{offer.sender.username}" outcome="#{navigation.VIEWPROFILE}?id=#{offer.sender.profile.id}"/>
+                            </p:column>
+                            
+                            <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Betreff">
+                                <h:link outcome="#{navigation.VIEWOFFER}?id=#{offer.id}" value="#{offer.subject}"/>
                             </p:column>
 
                             <p:column style="#{offer.new? 'font-weight:bold' : 'font-weight:normal'}" width="55%" headerText="Nachrichtenvorschau">
                                 <a href="#{navigation.VIEWOFFER}?id=#{offer.id}">#{offer.messageTextPreview()}</a>
                             </p:column>
-
                         </p:dataTable>
                     </h:form>
                 </b:column>

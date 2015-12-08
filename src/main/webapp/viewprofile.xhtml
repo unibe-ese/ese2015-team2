@@ -14,14 +14,19 @@
         <o:viewParam name="id" value="#{viewProfileBean.profile}" converter="#{profileConverter}" converterMessage="Ungültiger Request. Unbekanntes Profil" required="true" requiredMessage="Ungültiger Request. Nutzen Sie einen Link aus der Website."/>
         <f:viewAction action="#{viewProfileBean.init()}"/>
     </f:metadata>
+    
+    <ui:define name="title">
+        Profil - ESET2
+    </ui:define>
+    
     <ui:define name="content">
-
         <h:outputStylesheet library="css" name="profile.css"  />
         <b:container>
             <br />
             <b:row>
                 <b:column span="7">
                     <h1>#{viewProfileBean.viewedCustomer.firstName} #{viewProfileBean.viewedCustomer.lastName}</h1>
+                    <b:alert severity="danger" rendered="#{not viewProfileBean.active}"><strong>Achtung: </strong>Dieses Profil ist inaktiv.</b:alert>
                     <br />
                     <b:row>
                         <b:column span="4" rendered="#{empty viewProfileBean.profile.imageLink}">
@@ -43,7 +48,6 @@
                                 <b:column span="8">
                                     <h2>Meine Studienfächer</h2>
                                 </b:column>
-
                             </b:row>
                             <b:row rendered="#{!viewProfileBean.myProfile}">
                                 <b:column span="8">
@@ -104,7 +108,7 @@
                         </b:column>
                     </b:row>
                 </b:column>
-                <b:column offset="1" span="4">
+                <b:column span="5">
                     <h3>Kontakt</h3>
                     <shiro:notAuthenticated>
                         Registrieren Sie sich, um dieses Mitglied zu kontaktieren!
@@ -120,14 +124,9 @@
                             #{''}
                             <h:outputText value="#{viewProfileBean.viewedCustomer.zip}, #{viewProfileBean.viewedCustomer.city}"/>
                         </b:panelGrid>
-                        <br />
-                        <b:row>
-                            <b:column span="12">
-                                <b:panelGrid colSpans="4,8">
-                                    <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createmessage?id=#{viewProfileBean.viewedCustomer.id}" value="Kontaktieren" look="info"/>
-                                </b:panelGrid>
-                            </b:column>
-                        </b:row>
+                        <h:outputText rendered="#{not viewProfileBean.hasPermissionToViewFullProfile()}" value="Sie können die Kontaktdaten nicht sehen, weil Sie nicht Freunde sind!"/>
+                        <br /><br/>
+                        <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createmessage?id=#{viewProfileBean.viewedCustomer.id}" value="Kontaktieren" look="info"/>
                         <b:button rendered="#{viewProfileBean.myProfile}" outcome="#{navigation.EDITPROFILE}" value="Profil editieren" look="info"/>
                     </shiro:authenticated>
                     <hr />
@@ -142,6 +141,7 @@
                     </p:dataTable>
                     <h:outputText rendered="#{empty viewProfileBean.viewedCustomer.friends}" value="Noch keine Freunde"/>
                     <hr />
+                    <b:button rendered="#{not viewProfileBean.myProfile}" outcome="#{navigation.CONTACT}?faces-redirect=true" value="Profil melden" look="danger"/>
                 </b:column>
             </b:row>
         </b:container>

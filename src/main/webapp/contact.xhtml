@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html">
+<!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -11,42 +11,37 @@
                 xmlns:o="http://omnifaces.org/ui">
 
     <ui:define name="title">
-        title
+        Kontakt - ESET2
     </ui:define>
 
     <ui:define name="content">
-        <h:form>
         <b:container>
+            <br />
             <b:row>
-                <b:column span="6" offset="3">
+                <b:column span="12">
+                    <h:form>
+                        <h1>Kontakt</h1>
+                        <p>Bei jeglichen Fragen, Beschwerden oder Rückmeldungen können Sie das unten aufgeführte Kontaktformular ausfüllen. Ein Mitarbeiter wird sich Ihr Anliegen anschauen und sich bei Ihnen melden. </p>
+                        <br/>
+                        <h:outputLabel value="Betreff:"/>
+                        <b:inputText maxlength="50" id="subject" value="#{contactFormBean.newContactMessage.subject}" required="true"/>
+                        <h:outputLabel value="Absender(Email-Adresse):"/>
+                        <b:inputText maxlength="50" id="sender" value="#{contactFormBean.newContactMessage.sender}" required="true"/>
+                        <h:outputLabel value="Nachricht:"/>
+                        <p:inputTextarea id="messageText" style="width: 100%; height: 160px;" value="#{contactFormBean.newContactMessage.messageText}" counter="displayMessageCounter" maxlength="2000" counterTemplate="{0} verbleibende Zeichen." autoResize="false" required="true" />
+                        <h:outputText id="displayMessageCounter" />
+                        <br /><br/>
                         <b:row>
-                            <h1>Kontakt</h1>
-                            <p>Bei jeglichen Fragen, Beschwerden oder Rückmeldungen können Sie das unten aufgeführte Kontaktformular ausfüllen. Ein Mitarbeiter wird sich Ihr Anliegen anschauen und sich bei Ihnen melden. </p>
-                            <h:outputLabel value="Kontaktformular"/> 
-                            <br/>
-                            <h:outputLabel value="Betreff:"/>
-                            <b:inputText maxlength="50" id="subject" value="#{contactFormBean.newContactMessage.subject}" required="true"/>
-                            <h:outputLabel value="Absender(Email-Adresse):"/>
-                            <b:inputText maxlength="50" id="sender" value="#{contactFormBean.newContactMessage.sender}" required="true"/>
-                            <h:outputLabel value="Nachricht:"/>
-                            <p:inputTextarea id="messageText" style="width: 100%; height: 160px;" value="#{contactFormBean.newContactMessage.messageText}" counter="displayMessageCounter" maxlength="999" counterTemplate="{0} verbleibende Zeichen." autoResize="false" required="true" />
-                            <h:outputText id="displayMessageCounter" />
+                            <b:column span="6">
+                                <b:button value="Abbrechen" outcome="#{navigation.INDEX}" look="danger"/>
+                            </b:column>
+                            <b:column span="6">
+                                <b:commandButton action="#{contactFormBean.createNewContactMessage()}" value="Senden" look="success"/>
+                            </b:column>
                         </b:row>
-                </b:column>
-            </b:row>
-            <b:row>
-                <b:column span="6" offset="3">
-                    <b:row>
-                        <b:column span="4">
-                            <b:button value="Abbrechen" outcome="#{navigation.INDEX}" look="danger"/>
-                        </b:column>
-                        <b:column span="6">
-                            <b:commandButton action="#{contactFormBean.createNewContactMessage()}" value="Senden" look="success"/>
-                        </b:column>
-                    </b:row>
+                    </h:form>
                 </b:column>
             </b:row>
         </b:container>
-        </h:form>
     </ui:define>
 </ui:composition>

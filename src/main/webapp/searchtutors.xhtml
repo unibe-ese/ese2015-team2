@@ -20,6 +20,7 @@
                 <b:column span="12">
                     <h1>Tutoren suchen</h1>
                     <p>Nutzen Sie die Eingabefelder in der Tabelle, um den Inhalt zu filtern.</p>
+                    <hr/>
                     <h:form id="table">
                         <p:dataTable var="courseProfile" value="#{searchTutorsBean.courseProfiles}" widgetVar="courseProfilesTable"
                                      emptyMessage="Leider keine Tutoren für diese Kriterien gefunden." filteredValue="#{searchTutorsBean.filteredCourseProfiles}">
@@ -53,5 +54,4 @@
             </b:row>
         </b:container>
     </ui:define>
-
 </ui:composition>

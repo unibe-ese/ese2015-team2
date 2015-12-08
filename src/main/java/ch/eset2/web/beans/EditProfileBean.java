@@ -15,6 +15,7 @@ import ch.eset2.model.dao.CustomerFacade;
 import ch.eset2.model.dao.ProfileFacade;
 import ch.eset2.web.util.InitialsGenerator;
 import ch.eset2.web.util.Navigation;
+import ch.eset2.web.util.ProfileStates;
 import ch.eset2.web.util.UserHelper;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -94,8 +95,7 @@ public class EditProfileBean implements Serializable {
             return Navigation.VIEWPROFILE + "?faces-redirect=true&id=" + userHelper.getMyProfileID();
         } catch (Exception e) { // TODO
             System.out.println("ch.eset2.web.beans.EditProfileBean.saveProfile()");
-            e.printStackTrace();
-            return null;
+            return Navigation.INDEX;
         }
     }
     
@@ -114,16 +114,13 @@ public class EditProfileBean implements Serializable {
     }
     
     /**
-     * Removes the profile of the logged in customer from the databas
+     * Deactivates the profile of the logged in customer
+     * 
      * @return the Index page when deleted successfully.
      */
     public String removeProfile() {
-        if (profile != null) {
-            customer.setProfile(null);
-            customerFacade.edit(customer);
-            profileFacade.remove(profile);
-            this.profile = null;
-        }
+        profile.setProfileState(ProfileStates.INACTIVE);
+        profileFacade.edit(profile);
         return Navigation.INDEX;
     }
 

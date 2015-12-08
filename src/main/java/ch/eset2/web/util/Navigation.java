@@ -13,14 +13,18 @@ import javax.inject.Named;
 @Named
 @ApplicationScoped
 public class Navigation {
+    public static final String ABOUT = "about.xhtml";
     public static final String INDEX = "index.xhtml";
     public static final String INBOX = "viewinbox.xhtml";
+    public static final String FAQ = "faq.xhtml";
+    public static final String AGB = "agb.xhtml";
     public static final String REGISTRATION = "registration.xhtml";
     public static final String REGSUCCESS = "regsuccess.xhtml";
     public static final String EDITPROFILE = "editprofile.xhtml";
     public static final String VIEWPROFILE = "viewprofile.xhtml";
     public static final String SENDSUCCESS = "sendsuccess.xhtml";
     public static final String SEARCHTUTOR = "searchtutors.xhtml";
+    public static final String CONTACT = "contact.xhtml";
     public static final String CONTACTFORMSUCCESS="contactformsuccess.xhtml";
     public static final String ACCEPTSUCCESS = "acceptsuccess.xhtml";
     public static final String OFFERFAILED = "offerfailed.xhtml";
@@ -30,9 +34,7 @@ public class Navigation {
     public static final String VIEWOFFER = "viewoffer.xhtml";
     public static final String CREATEOFFER = "createoffer.xhtml";
 
-    
-    
-    // getter for direct access from .xhtml pages
+    // Getters for direct access from .xhtml pages. Accessing public fields won't work.
     public String getINDEX() {
         return INDEX;
     }
@@ -63,6 +65,10 @@ public class Navigation {
 
     public String getSEARCHTUTOR() {
         return SEARCHTUTOR;
+    }
+    
+    public String getCONTACT() {
+        return CONTACT;
     }
 
     public String getCONTACTFORMSUCCESS() {
@@ -97,5 +103,16 @@ public class Navigation {
         return CREATEOFFER;
     }
     
+    public String getFAQ() {
+        return FAQ;
+    }
+    
+    public String getAGB() {
+        return AGB;
+    }
+    
+    public String getABOUT() {
+        return ABOUT;
+    }
 }
 
