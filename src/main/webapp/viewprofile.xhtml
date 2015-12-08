@@ -60,12 +60,12 @@
                                     Noch keine Kurse gewählt, fügen Sie doch einige hinzu.
                                 </b:column>
                                 <b:column span="12" rendered="#{viewProfileBean.hasCourses}">
-                                    <p:dataTable var="courseProfile" value="#{viewProfileBean.profile.courseProfiles}" rendered="#{viewProfileBean.viewedCustomer.accountType eq 1}"> <!-- Student -->
-                                        <p:column headerText="Titel" >
+                                    <p:dataTable var="courseProfile" value="#{viewProfileBean.profile.courseProfiles}" rendered="#{viewProfileBean.viewedCustomer.accountType eq accountType.STUDENT}"> <!-- Student -->
+                                        <p:column headerText="Titel" style="width:150px">
                                             <h:outputText value="#{courseProfile.course.title}"/>
                                         </p:column>
 
-                                        <p:column headerText="ECTS">
+                                        <p:column headerText="ECTS" style="width:50px">
                                             <h:outputText value="#{courseProfile.course.ECTS}"/>
                                         </p:column>
 
@@ -76,18 +76,14 @@
                                         <p:column headerText="Stufe">
                                             <h:outputText value="#{courseProfile.course.level}"/>
                                         </p:column>
-
-                                        <p:column headerText="Mein Tutor">
-                                            <h:outputText value=""/>
-                                        </p:column>
                                     </p:dataTable>
 
-                                    <p:dataTable var="courseProfile" value="#{viewProfileBean.profile.courseProfiles}" rendered="#{viewProfileBean.viewedCustomer.accountType eq 2}"> <!-- Tutor -->
-                                        <p:column headerText="Titel" sortBy="#{courseProfile.course.title}">
+                                    <p:dataTable var="courseProfile" value="#{viewProfileBean.profile.courseProfiles}" rendered="#{viewProfileBean.viewedCustomer.accountType eq accountType.TUTOR}"> <!-- Tutor -->
+                                        <p:column headerText="Titel" sortBy="#{courseProfile.course.title}" style="width:150px">
                                             <h:outputText value="#{courseProfile.course.title}"/>
                                         </p:column>
 
-                                        <p:column headerText="ECTS" sortBy="#{courseProfile.course.ECTS}">
+                                        <p:column headerText="ECTS" sortBy="#{courseProfile.course.ECTS}" style="width:50px">
                                             <h:outputText value="#{courseProfile.course.ECTS}"/>
                                         </p:column>
 

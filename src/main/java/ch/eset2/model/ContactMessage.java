@@ -10,7 +10,8 @@ import javax.persistence.Id;
 /**
  * Represents a contactForm filled out by a user, either signed in or not.
  * Special fields:
- id: Every ContactMessage has an unique id.
+ * id: Every ContactMessage has an unique id.
+ * 
  * @author Eve Mendoza Quiros, 1.12.2015
  * @version 2.0
  */
@@ -100,7 +101,7 @@ public class ContactMessage implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.eset2.model.ContactForm[ id=" + id + " ]";
+        return "ch.eset2.model.ContactMessage[ id=" + id + " ]";
     }
     
 }

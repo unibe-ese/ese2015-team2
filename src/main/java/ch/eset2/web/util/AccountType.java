@@ -16,8 +16,12 @@ public class AccountType {
     public static final int TUTOR = 2;
     
     
-    public int getTUTOR(){
+    public int getTUTOR() {
         return TUTOR;
+    }
+    
+    public int getSTUDENT() {
+        return STUDENT;
     }
 }
 

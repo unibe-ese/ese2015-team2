@@ -48,7 +48,7 @@
                             <b:inputSecret value="#{editProfileBean.newPassword}"/>
                         </b:panelGrid>
                         <hr />
-                        <p:dataTable id="studentCoursesTable" var="courseProfile" value="#{editProfileBean.profile.courseProfiles}" editable="true" rendered="#{editProfileBean.customer.accountType eq 1}"> <!-- Student -->
+                        <p:dataTable id="studentCoursesTable" var="courseProfile" value="#{editProfileBean.profile.courseProfiles}" editable="true" rendered="#{editProfileBean.customer.accountType eq accountType.STUDENT}">
                             
                             <p:column headerText="Titel" style="width:150px">
                                 <h:outputText value="#{courseProfile.course.title}"/>
@@ -71,7 +71,7 @@
                             </p:column>
                         </p:dataTable>
                         
-                        <p:dataTable id="tutorCoursesTable" var="courseProfile" value="#{editProfileBean.profile.courseProfiles}" editable="true" rendered="#{editProfileBean.customer.accountType eq 2}"> <!-- Tutor -->
+                        <p:dataTable id="tutorCoursesTable" var="courseProfile" value="#{editProfileBean.profile.courseProfiles}" editable="true" rendered="#{editProfileBean.customer.accountType eq accountType.TUTOR}"> <!-- Tutor -->
                             
                             <p:column headerText="Titel" style="width:150px">
                                 <h:outputText value="#{courseProfile.course.title}"/>
@@ -114,7 +114,7 @@
                         <br />
                         <b:row>
                             <b:column span="3">
-                                <b:button value="Profil deaktivieren" onclick="$('.modalPseudo').modal();return false;" look="danger"/>
+                                <b:button rendered="#{editProfileBean.profile.profileState eq 1}" value="Profil deaktivieren" onclick="$('.modalPseudo').modal();return false;" look="danger"/>
                             </b:column>
                             <b:column span="3">
                                 <b:button value="Kurse hinzufügen" outcome="#{navigation.VIEWCOURSES}" look="info" />
@@ -153,16 +153,16 @@
                             </b:column>
                         </b:row>
                     </b:column>
+                    <b:modal id="amodal" title="Wollen Sie Ihr Profil wirklich deaktivieren?" styleClass="modalPseudo">
+                    <p>Ihr Profil kann aus rechtlichen Gründen nicht direkt gelöscht werden. Löschungen werden periodisch nach einer vorhergehenden Prüfung vom ESET2 durchgeführt.</p>
+                    <p>Das Profil wird nach Ihrer Bestätigung deaktiviert, auch wenn Sie dies erst beim Betrachten Ihres Profils optisch erkennen.</p>
+                    <f:facet name="footer">
+                        <b:button value="Nein" dismiss="modal" onclick="return false;"/>
+                        <b:commandButton value="Ja" look="danger" action="#{editProfileBean.removeProfile()}"/>
+                    </f:facet>
+                    </b:modal>
                 </h:form>
             </b:row>
-            <b:modal id="amodal" title="Wollen Sie Ihr Profil wirklich deaktivieren?" styleClass="modalPseudo">
-                <p>Ihr Profil kann aus rechtlichen Gründen nicht direkt gelöscht werden. Löschungen werden periodisch nach einer vorhergehenden Prüfung vom ESET2 durchgeführt.</p>
-                <p>Das Profil wird nach Ihrer Bestätigung deaktiviert, auch wenn Sie dies erst beim Betrachten Ihres Profils optisch erkennen.</p>
-                <f:facet name="footer">
-                    <b:button value="Nein" dismiss="modal" onclick="return false;"/>
-                    <b:button value="Ja" look="danger" dismiss="modal" onclick="#{editProfileBean.removeProfile()}"/>
-                </f:facet>
-            </b:modal>
             <br />
         </b:container>
     </ui:define>
