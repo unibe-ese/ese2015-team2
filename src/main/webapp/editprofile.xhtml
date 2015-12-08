@@ -20,7 +20,7 @@
                 <h:form prependId="false">
                     <b:column span="7">
                         <h1>Profil editieren</h1>
-                        <br />
+                        <hr />
                         <h3>Profilinformationen</h3>
                         <b:panelGrid colSpans="4,8">
                             <h:outputLabel value="Profilbeschreibung:"/>
@@ -28,33 +28,33 @@
                             #{' '}
                             <h:outputText id="display" />
                         </b:panelGrid>
-                        <h3>Benutzerinfo:</h3>
+                        <h3>Benutzerinfo</h3>
                         <b:panelGrid colSpans="4,8">
-                            <h:outputText value="Name:"/>
+                            <h:outputLabel value="Name:"/>
                             <b:inputText value="#{editProfileBean.customer.lastName}"/>
-                            <h:outputText value="Vorname:"/>
+                            <h:outputLabel value="Vorname:"/>
                             <b:inputText value="#{editProfileBean.customer.firstName}"/>
-                            <h:outputText value="Matrikelnummer:"/>
+                            <h:outputLabel value="Matrikelnummer:"/>
                             <b:inputText value="#{editProfileBean.customer.matnr}"/>
-                            <h:outputText value="Strasse:"/>
+                            <h:outputLabel value="Strasse:"/>
                             <b:inputText value="#{editProfileBean.customer.street}"/>
-                            <h:outputText value="PLZ:"/>
+                            <h:outputLabel value="PLZ:"/>
                             <b:inputText value="#{editProfileBean.customer.zip}"/>
-                            <h:outputText value="Stadt/Ort:"/>
+                            <h:outputLabel value="Stadt/Ort:"/>
                             <b:inputText value="#{editProfileBean.customer.city}"/>
-                            <h:outputText value="Telefon:"/>
+                            <h:outputLabel value="Telefon:"/>
                             <b:inputText value="#{editProfileBean.customer.phone}"/>
-                            <h:outputText value="Neues Passwort:"/>
+                            <h:outputLabel value="Neues Passwort:"/>
                             <b:inputSecret value="#{editProfileBean.newPassword}"/>
                         </b:panelGrid>
                         <hr />
                         <p:dataTable id="studentCoursesTable" var="courseProfile" value="#{editProfileBean.profile.courseProfiles}" editable="true" rendered="#{editProfileBean.customer.accountType eq 1}"> <!-- Student -->
                             
-                            <p:column headerText="Titel">
+                            <p:column headerText="Titel" style="width:150px">
                                 <h:outputText value="#{courseProfile.course.title}"/>
                             </p:column>
 
-                            <p:column headerText="ECTS">
+                            <p:column headerText="ECTS" style="width:50px">
                                 <h:outputText value="#{courseProfile.course.ECTS}"/>
                             </p:column>
 
@@ -73,11 +73,11 @@
                         
                         <p:dataTable id="tutorCoursesTable" var="courseProfile" value="#{editProfileBean.profile.courseProfiles}" editable="true" rendered="#{editProfileBean.customer.accountType eq 2}"> <!-- Tutor -->
                             
-                            <p:column headerText="Titel">
+                            <p:column headerText="Titel" style="width:150px">
                                 <h:outputText value="#{courseProfile.course.title}"/>
                             </p:column>
 
-                            <p:column headerText="ECTS">
+                            <p:column headerText="ECTS" style="width:50px">
                                 <h:outputText value="#{courseProfile.course.ECTS}"/>
                             </p:column>
 
@@ -117,7 +117,7 @@
                                 <b:button value="Profil deaktivieren" onclick="$('.modalPseudo').modal();return false;" look="danger"/>
                             </b:column>
                             <b:column span="3">
-                                <b:button value="Kurse hinzufügen" outcome="#{navigation.VIEWCOURSES}" look="primary" />
+                                <b:button value="Kurse hinzufügen" outcome="#{navigation.VIEWCOURSES}" look="info" />
                             </b:column>
                             <b:column span="3">
                                 <b:button value="Abbrechen" outcome="#{navigation.INDEX}" look="warning" />
@@ -163,9 +163,6 @@
                     <b:button value="Ja" look="danger" dismiss="modal" onclick="#{editProfileBean.removeProfile()}"/>
                 </f:facet>
             </b:modal>
-            <br />
-            <br />
-            <br />
             <br />
         </b:container>
     </ui:define>
