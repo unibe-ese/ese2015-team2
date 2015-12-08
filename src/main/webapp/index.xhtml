@@ -9,36 +9,68 @@
                 template="./layout/baseTemplate.xhtml">
 
     <ui:define name="title">
-        Welcome to ESET2
+        Willkommen auf ESET2!
     </ui:define>
 
     <ui:define name="content">
-        <b:jumbotron>
             <b:container>
-                <b:row style="display: flex; align-items: center; min-height: 50%; min-height: 50vh; height: 200px;">
-                    <b:column col-md="8">
+                <br />
+                <b:row>
+                    <b:column span="12">
                         <shiro:guest>
-                            <h1>Willkommen bei ESE Team 2!</h1>
-                            <p>
-                                Das wird eine tolle Plattform, wo sich Studenten und Tutoren finden können! Jetzt kostenlos registrieren.
-                            </p>
+                            <b:row>
+                                <b:column span="8">
+                                    <h1>Willkommen bei ESE Team 2!</h1>
+                                    <p>
+                                        Das wird eine tolle Plattform, wo sich Studenten und Tutoren finden können! Jetzt kostenlos registrieren.
+                                    </p>
+                                </b:column>
+                                <b:column span="4">
+                                    <a href="registration.xhtml" class="btn btn-lg btn-info">Jetzt registrieren »</a>
+                                </b:column>
+                            </b:row>
                         </shiro:guest>
-                        <shiro:user>
-                            <h1>Erstellen Sie ein Profil!</h1>
-                            <p>
-                                Wir haben gemerkt, dass Sie noch kein Profil erstellt haben. Um die Plattform nutzen und mit Studenten und Tutoren in Verbindung zu treten, benötigen Sie ein Profil. Legen sie am Besten gleich los!
-                            </p>
-                        </shiro:user>
-                    </b:column>
-                    <b:column col-md="4" >
-                        <p>
-                            <shiro:guest><a href="#{navigation.REGISTRATION}" class="btn btn-lg btn-info">Jetzt registrieren »</a></shiro:guest>
-                            <shiro:user><a href="#{navigation.EDITPROFILE}" class="btn btn-lg btn-success">Profil erstellen »</a></shiro:user>
-                        </p>
+                        <shiro:authenticated>
+                            <b:row>
+                                <b:column span="12">
+                                    <h1>ESET2 - Tutoren suchen und finden!</h1>
+                                    <p>
+                                    Vielen Dank, dass Sie ESET2 nutzen. Folgende Übersicht soll Ihnen eine Hilfe sein, um die Plattform effizient zu nutzen und um mit Studenten und Tutoren in Verbindung zu treten.
+                                    </p>  
+                                </b:column>
+                            </b:row>
+                            <hr />
+                            <b:row>
+                                <b:column span="3">
+                                    <h3>1. Profil bearbeiten</h3>
+                                    <p>Statten Sie Ihr Profil mit einem Profilbild und einer Beschreibung zu Ihrer Person aus!</p>
+                                    <p>Dies macht Ihr Profil für Studenten und Tutoren attraktiver und kann ermutigen, Kontakt mit Ihnen aufzunehmen!</p>
+                                </b:column>
+                                <b:column span="3" offset="1">
+                                    <h3>2. Vorlesungen suchen</h3>
+                                    <p>Über "Vorlesungen" können Sie alle Vorlesungen einsehen, die auf ESET2 angeboten werden. Von dort können Sie Vorlesungen direkt in Ihr Profil aufnehmen.</p>
+                                    <p>Als Tutor signalisieren Sie damit, dass Sie für die Vorlesung Nachhilfe anbieten - als Student, dass Sie Nachhilfe suchen.</p>
+                                </b:column>
+                                <b:column span="3" offset="1">
+                                    <h3>3. Tutoren suchen</h3>
+                                    <p>Sie können Tutoren direkt über den Menupunkt "Tutoren suchen" ausfindig machen oder über eine Vorlesung.</p>
+                                    <p>Sobald Sie einen Tutoren/Tutorin gefunden haben, können Sie ihn/sie über das Profil kontaktieren.</p>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column span="3">
+                                    <b:button outcome="editprofile.xhtml" value="Profil editieren"  look="info" size="lg"/>
+                                </b:column>
+                                <b:column span="3" offset="1">
+                                    <b:button outcome="viewcourses.xhtml" value="Vorlesungen ansehen"  look="info" size="lg"/>
+                                </b:column>
+                                <b:column span="3" offset="1">
+                                    <b:button outcome="searchtutors.xhtml" value="Tutoren suchen"  look="info" size="lg"/>
+                                </b:column>
+                            </b:row>
+                        </shiro:authenticated>
                     </b:column>
                 </b:row>
             </b:container>
-        </b:jumbotron>
     </ui:define>
-
 </ui:composition>
