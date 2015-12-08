@@ -7,6 +7,7 @@ package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.dao.CustomerFacade;
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,8 +21,10 @@ import javax.inject.Named;
  */
 @RequestScoped
 @Named
-public class AddFriendBean {
+public class AddFriendBean implements Serializable {
 
+    private static final long serialVersionUID = 710525049187893141L;
+    
     @Inject
     private CustomerFacade customerFacade;
 

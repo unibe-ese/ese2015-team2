@@ -28,6 +28,8 @@ import org.omnifaces.util.Messages;
 @Named
 public class LoginComponent implements Serializable {
 
+    private static final long serialVersionUID = -2362340565515586315L;
+
     private String username;
     private String password;
 

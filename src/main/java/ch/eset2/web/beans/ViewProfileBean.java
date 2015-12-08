@@ -21,12 +21,11 @@ import org.apache.shiro.SecurityUtils;
 @Named
 @ViewScoped
 public class ViewProfileBean implements Serializable {
+
+    private static final long serialVersionUID = 5176539471938649444L;
     
     @Inject
     private PrivacyHelper privacyHelper;
-    
-    @Inject
-    private AddFriendBean addFriendBean;
     
     private Customer viewedCustomer;
     private Customer loggedInCustomer;

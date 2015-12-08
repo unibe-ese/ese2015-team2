@@ -25,6 +25,8 @@ import org.apache.shiro.SecurityUtils;
 @Named(value = "contactFormBean")
 @ViewScoped
 public class ContactFormBean implements Serializable {
+
+    private static final long serialVersionUID = 198583432165295614L;
     
     @Inject
     private ContactMessageFacade contactMessageFacade;

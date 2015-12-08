@@ -24,6 +24,8 @@ import org.apache.shiro.SecurityUtils;
 @Named
 @RequestScoped
 public class AddCourseToProfileBean implements Serializable {
+
+    private static final long serialVersionUID = -352365355798420073L;
     
     private Profile profile;
     

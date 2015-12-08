@@ -21,11 +21,8 @@
                     <h1>Ihr Posteingang</h1>
                     <hr />
                     <h4>Nachrichten:</h4>
-                    <b:column span="12" rendered="#{!viewInboxBean.hasMessages()}">
-                        <h3>Es befinden sich keine Nachrichten in Ihrem Posteingang.</h3>
-                        <br/>
-                    </b:column>
-
+                    <h:outputText value="Es befinden sich keine Nachrichten in Ihrem Posteingang." rendered="#{!viewInboxBean.hasMessages()}"/>
+                    
                     <h:form id="table" rendered="#{viewInboxBean.hasMessages()}">
                         <p:dataTable var="message" value="#{viewInboxBean.messages}">
                             <p:column style="#{message.new? 'font-weight:bold' : 'font-weight:normal'}" width="15%" headerText="Empfangen">

@@ -21,6 +21,8 @@ import org.apache.shiro.crypto.hash.Sha256Hash;
 @Named(value = "registrationBean")
 @RequestScoped
 public class RegistrationBean implements Serializable {
+
+    private static final long serialVersionUID = 1324596504093015041L;
     
     @Inject
     private CustomerFacade customerFacade;

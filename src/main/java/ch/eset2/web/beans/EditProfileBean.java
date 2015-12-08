@@ -37,7 +37,8 @@ import org.apache.shiro.crypto.hash.Sha256Hash;
 @ViewScoped
 public class EditProfileBean implements Serializable {
 
-    // TODO: make it so that a user cannot change an other users profile
+    private static final long serialVersionUID = -8552658775341071415L;
+
     @Inject
     private ProfileFacade profileFacade;
 
