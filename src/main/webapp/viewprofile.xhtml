@@ -125,13 +125,10 @@
                             <b:column span="12">
                                 <b:panelGrid colSpans="4,8">
                                     <b:button rendered="#{!viewProfileBean.myProfile}" outcome="/createmessage?id=#{viewProfileBean.viewedCustomer.id}" value="Kontaktieren" look="info"/>
-                                    <h:form>
-                                        <b:commandButton rendered="#{!viewProfileBean.myProfile}" action="#{viewProfileBean.addFriend()}" value="Freund hinzufügen" look="danger"/>
-                                    </h:form>
                                 </b:panelGrid>
                             </b:column>
                         </b:row>
-                        <b:button rendered="#{viewProfileBean.myProfile}" outcome="/editprofile.xhtml" value="Profil editieren" look="info"/>
+                        <b:button rendered="#{viewProfileBean.myProfile}" outcome="#{navigation.EDITPROFILE}" value="Profil editieren" look="info"/>
                     </shiro:authenticated>
                     <hr />
                     <h4>Freunde</h4>
@@ -140,7 +137,7 @@
                             <h:outputText value="#{friend.firstName} #{friend.lastName}"/>
                         </p:column>
                         <p:column headerText="" >
-                            <h:link value="Zum Profil" outcome="/viewprofile.xhtml?faces-redirect=true&amp;id=#{friend.profile.id}"/>
+                            <h:link value="Zum Profil" outcome="#{navigation.VIEWPROFILE}?faces-redirect=true&amp;id=#{friend.profile.id}"/>
                         </p:column>
                     </p:dataTable>
                     <h:outputText rendered="#{empty viewProfileBean.viewedCustomer.friends}" value="Noch keine Freunde"/>

@@ -3,6 +3,7 @@ package ch.eset2.testing;
 import ch.eset2.model.Course;
 import ch.eset2.model.dao.CourseFacade;
 import javax.annotation.PostConstruct;
+import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
  */
 @Singleton
 @Startup
+@DependsOn("DevelopmentDataUsers")
 public class DevelopmentDataCourses {
 
     @Inject

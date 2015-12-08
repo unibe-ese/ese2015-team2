@@ -10,12 +10,12 @@ import javax.persistence.NamedQuery;
 import javax.validation.constraints.Pattern;
 
 /**
- * Represents a message sent from a {@link Customer} to an other. Special
+ * Represents an offer sent from a {@link Customer} to an other. Special
  * fields: reciever: The {@link Customer} that can see this message in his
  * inbox. id: Every message has an unique id.
  *
- * @author Mischa Wenger, 17.10.2015
- * @version 1.0
+ * @author Mischa Wenger
+ * @version 2.0
  */
 @Entity
 @NamedQueries({
@@ -29,23 +29,41 @@ public class Offer extends Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Pattern(regexp = "\\d+.\\d{2}", message = "Ungültiges Format. Format: xx.xx")
-    private String fee;
+   
+    private double fee;
 
+    private String commission;
+    
     @Pattern(regexp = "\\d{2}.\\d{2}.\\d{4}", message = "Ungültiges Format. Format: dd.mm.yyyy")
     private String firstAppointmentDay;
 
     @Pattern(regexp = "\\d{2}:\\d{2}", message = "Ungültiges Format. Format: xx:xx")
     private String firstAppointmentTime;
 
-    public String getFee() {
-        return fee;
+    /**
+     * To access the fee in format xx.xx for smooth display of CHF.
+     * @return {@link Offer#fee} in a formatted String "xx.xx".
+     */
+    public String getFeeAsString() {
+        return String.format("%.2f", fee);
     }
 
-    public void setFee(String fee) {
+     public double getFee() {
+        return fee;
+    }
+     
+    public void setFee(double fee) {
         this.fee = fee;
     }
 
+    public String getCommission() {
+        return commission;
+    }
+
+    public void setCommission(String commission) {
+        this.commission = commission;
+    }
+    
     public String getFirstAppointmentDay() {
         return firstAppointmentDay;
     }
@@ -66,10 +84,14 @@ public class Offer extends Message {
         return (super.getMessageState() == MessageState.ACCEPTED);
     }
     
-    public String toFormatedString() {
+     /**
+      * Formats the offer in a proper way to display important fields for a reciever.
+      * @return a string of the offers important fields formated in html.
+      */
+    public String toHtmlFormatedString() {
        return ( "<br/" +
                 "Subject: " + super.getSubject() + "<br/>" + 
-                "Stundenlohn: " + fee + "<br/>" + 
+                "Stundenlohn: " + getFeeAsString() + " CHF zuzüglich einmaliger Gebühr von " + commission + " CHF<br/>" + 
                 "Erster Termin: " + firstAppointmentDay + " um " + firstAppointmentTime + " Uhr <br/> " +
                 "Nachricht: " + super.getMessageText());
     }

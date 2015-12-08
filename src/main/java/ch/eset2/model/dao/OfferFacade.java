@@ -1,19 +1,19 @@
 package ch.eset2.model.dao;
 
 import ch.eset2.model.Customer;
-import ch.eset2.model.Message;
+import ch.eset2.model.Offer;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * To access the {@link Message} from the database.
+ * To access the {@link Offer} from the database.
  * @author Mischa Wenger
- * @version 1.0
+ * @version 2.0
  */
 @Stateless
-public class MessageFacade extends AbstractFacade<Message> {
+public class OfferFacade extends AbstractFacade<Offer> {
 
     @PersistenceContext(unitName = "eset2_pu")
     private EntityManager em;
@@ -23,11 +23,11 @@ public class MessageFacade extends AbstractFacade<Message> {
         return em;
     }
 
-    public MessageFacade() {
-        super(Message.class);
+    public OfferFacade() {
+        super(Offer.class);
     }
-    
-    public List<Message> findMessageByReceiver(Customer receiver){
-        return em.createNamedQuery("Message.findByReceiver").setParameter("receiver", receiver).getResultList();
+   
+    public List<Offer> findOfferByReceiver(Customer receiver){
+        return em.createNamedQuery("Offer.findByReceiver").setParameter("receiver", receiver).getResultList();
     }
 }

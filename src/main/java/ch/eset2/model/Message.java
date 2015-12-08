@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
  * receiver: The {@link Customer} that can see this message in his inbox.
  * id: Every message has an unique id.
  * 
- * @author Mischa Wenger, 17.10.2015
+ * @author Mischa Wenger
  * @version 1.0
  */
 @Entity
@@ -49,9 +49,9 @@ public class Message implements Serializable {
     private int messageState;
       
     /**
-     * Creates a short preview of 30 chars of the messageText.
-     * @return the first 30 chars of the messageText. Whole messagetext if text
-     * is shorter than 30 chars.
+     * Creates a short preview of 50 chars of the messageText.
+     * @return the first 50 chars of the messageText. Whole messagetext if text
+     * is shorter than 50 chars.
      */
     public String messageTextPreview(){
         if (messageText.length() <= 50){

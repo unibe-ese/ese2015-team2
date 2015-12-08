@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * Helper class to have quick access to formated timestamps of current time.
- * @author Mischa
+ * @author Mischa Wenger
  */
 public class DateConverter {
 

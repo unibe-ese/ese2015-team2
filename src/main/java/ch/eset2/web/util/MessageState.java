@@ -1,7 +1,7 @@
 package ch.eset2.web.util;
 
 /**
- * Holds Messagestates Types. Could have been done as Enum. I know. 
+ * Holds Messagestates.
  * 
  * @author Mischa Wenger
  * @version 1.0

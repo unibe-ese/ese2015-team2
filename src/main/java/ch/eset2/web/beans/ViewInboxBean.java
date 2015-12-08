@@ -3,6 +3,7 @@ import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
 import ch.eset2.model.Offer;
 import ch.eset2.model.dao.MessageFacade;
+import ch.eset2.model.dao.OfferFacade;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -12,8 +13,9 @@ import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
 
 /**
- * Displays the messages of the currently logged in user by checking all the
- * messages in the database with 'receiver' equals to id of the logged in user.
+ * Displays the {@link Message}s and {@link Offer}s of the currently logged in
+ * user by checking all the messages/offers in the database with 'receiver'
+ * equals to id of the logged in user.
  *
  * @author Mischa Wenger
  * @version 1.0
@@ -24,6 +26,9 @@ public class ViewInboxBean implements Serializable {
 
     @Inject
     private MessageFacade messageFacade;
+    
+    @Inject
+    private OfferFacade offerFacade;
     
     private List<Offer> offers;
 
@@ -39,7 +44,7 @@ public class ViewInboxBean implements Serializable {
     private void init() {
         currentUser = (Customer) SecurityUtils.getSubject().getPrincipal();
         messages = messageFacade.findMessageByReceiver(currentUser);
-        offers = messageFacade.findOfferByReceiver(currentUser);
+        offers = offerFacade.findOfferByReceiver(currentUser);
     }
 
     /**
@@ -51,11 +56,6 @@ public class ViewInboxBean implements Serializable {
         if (messages == null) {
             return false;
         }
-        //System.err.println("MESSAGES of this user: ");
-        //for (Message message : messages) {
-          //  System.err.println(message.getId());
-        //}
-        //System.err.println("RETURNING: " + !messages.isEmpty());
         return !messages.isEmpty();
     }
 
@@ -66,24 +66,15 @@ public class ViewInboxBean implements Serializable {
      */
     public boolean hasOffers() {
         if (offers == null) {
-          //  System.err.println("OFFERS IS FUCKING NULL");
             return false;
         }
-        //System.err.println("OFFERS of this user: ");
-        //for (Offer offer : offers) {
-        //    System.err.println(offer.getId());
-        //}
-        //System.err.println("RETURNING: " + !offers.isEmpty());
         return !offers.isEmpty();
     }
-    
-    
     
     //getters
     public List<Message> getMessages() {
         return messages;
     }
-
     
     public List<Offer> getOffers() {
         return offers;

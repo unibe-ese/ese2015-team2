@@ -14,7 +14,7 @@ import javax.inject.Named;
 /**
  * Converts IDs provided through URL Parameters to objects.
  * 
- * @author Marc Jost
+ * @author Mischa Wenger
  * @version 1.0
  */
 @Named
@@ -42,7 +42,6 @@ public class MessageConverter implements Converter {
         if (value == null) {
             return "";
         }
-
         if (value instanceof Message) {
             Number id = ((Message) value).getId();
             return (id != null) ? id.toString() : null;

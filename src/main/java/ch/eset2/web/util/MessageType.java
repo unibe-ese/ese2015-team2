@@ -1,7 +1,7 @@
 package ch.eset2.web.util;
 
 /**
- * Holds Message types. Could have been done as Enum. I know. 
+ * Holds Message types.
  * 
  * @author Mischa Wenger
  * @version 1.0
