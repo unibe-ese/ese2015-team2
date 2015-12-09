@@ -37,9 +37,7 @@ public class CreateOfferBean implements Serializable {
     private Customer receiver;
     
     private Offer newOffer;
-    /**
-     * Creates a new instance of CreateOfferBean
-     */
+    
     public CreateOfferBean() {
     }
     

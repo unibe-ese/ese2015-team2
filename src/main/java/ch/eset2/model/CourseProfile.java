@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
  * Modelled as a seperate Entity, since this "Join Table" has value of its own.
  * Special fields:
  * id: Every courseProfile has an unique id.
+ * 
  * @author Marc Jost, 17.10.2015
  * @version 1.0
  */
@@ -109,7 +110,6 @@ public class CourseProfile implements Serializable {
      */
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof CourseProfile)) {
             return false;
         }
@@ -124,5 +124,4 @@ public class CourseProfile implements Serializable {
     public String toString() {
         return "ch.eset2.model.CourseProfile[ id=" + id + " ]";
     }
-    
 }

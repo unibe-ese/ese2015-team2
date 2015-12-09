@@ -31,16 +31,14 @@ public class DevelopementDataContactForm {
 
     private void createTestContactForm() {
         try {
-           
             ContactMessage firstContactForm = new ContactMessage();
             firstContactForm.setSubject("TestKontaktForm");
             firstContactForm.setSender("eve.mendoza");
             firstContactForm.setDate("20.11.2015 13:00:12");
             firstContactForm.setMessageText("Hier steht die Meldung von Eve Mendoza.");
             contactFormFacade.create(firstContactForm);
-
         } catch (Exception e) {
+            // do nothing
         }
     }
-
 }

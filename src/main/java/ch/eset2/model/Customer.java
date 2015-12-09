@@ -26,6 +26,7 @@ import javax.validation.constraints.Pattern;
  * id: Every customer has an unique id.
  * username: Every customer has an unique username that is used to log in.
  * accountType: Customers can either be a Student or a Tutor.
+ * 
  * @author Marc Jost, 17.10.2015
  * @version 1.0
  */
@@ -61,10 +62,6 @@ public class Customer implements Serializable {
     @JoinColumn
     protected Profile profile;
     
-//    @ManyToMany (fetch = FetchType.EAGER)
-//    @JoinTable(name = "friends", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "friendId"))
-//    private List<Customer> friends;
-    
     @ManyToMany
     @JoinTable (name = "friends",
             joinColumns = 
@@ -75,10 +72,6 @@ public class Customer implements Serializable {
     
     @ManyToMany(mappedBy = "friends")
     private List<Customer> friendOf;
-    
-//    @ManyToMany (fetch = FetchType.EAGER)
-//    @JoinTable(name = "friends", joinColumns = @JoinColumn(name = "friendId"), inverseJoinColumns = @JoinColumn(name = "id"))
-//    private List<Customer> friendOf;
     
     @OneToMany
     private List<Message> messages;
@@ -234,7 +227,6 @@ public class Customer implements Serializable {
      */
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Customer)) {
             return false;
         }
@@ -249,5 +241,4 @@ public class Customer implements Serializable {
     public String toString() {
         return "ch.eset2.model.Customer[ id=" + id + " ]";
     }
-
 }

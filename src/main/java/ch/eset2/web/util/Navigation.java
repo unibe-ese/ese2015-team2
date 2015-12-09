@@ -9,7 +9,6 @@ import javax.inject.Named;
  * @author Marc Jost
  * @version 1.0
  */
-
 @Named
 @ApplicationScoped
 public class Navigation {
@@ -115,4 +114,3 @@ public class Navigation {
         return ABOUT;
     }
 }
-

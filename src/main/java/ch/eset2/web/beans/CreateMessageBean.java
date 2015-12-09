@@ -19,6 +19,7 @@ import org.apache.shiro.SecurityUtils;
  * It allows to persist a new message to the database.
  * {@link CreateMessageBean#init() } should be called from the server before
  * using any service of this class.
+ * 
  * @author Mischa Wenger
  * @author Eve Mendoza
  * @version 1.0
@@ -35,9 +36,7 @@ public class CreateMessageBean implements Serializable {
     private Customer receiver;
     
     private Message newMessage;
-    /**
-     * Creates a new instance of CreateMessageBean
-     */
+    
     public CreateMessageBean() {
     }
     
@@ -63,7 +62,6 @@ public class CreateMessageBean implements Serializable {
         return Navigation.SENDSUCCESS;
     }
     
-    //getters and setters
     public Message getNewMessage() {
         return newMessage;
     }

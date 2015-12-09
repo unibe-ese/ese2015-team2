@@ -15,7 +15,7 @@ public class AccountType {
     public static final int STUDENT = 1;
     public static final int TUTOR = 2;
     
-    
+    // Getters for EL in sites, since accessing public fields is not possible
     public int getTUTOR() {
         return TUTOR;
     }
@@ -24,5 +24,3 @@ public class AccountType {
         return STUDENT;
     }
 }
-
-

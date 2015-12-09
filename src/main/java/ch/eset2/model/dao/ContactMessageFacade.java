@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
+ * Responsible for handling the Entity Manager interactions in regards of the
+ * {@link ContactMessage} Entity.
  * 
  * @author Eve Mendoza
  * @version 2.0
@@ -26,13 +28,4 @@ public class ContactMessageFacade extends AbstractFacade<ContactMessage> {
     public ContactMessageFacade() {
         super(ContactMessage.class);
     }
-    
-   /* public List<Message> findMessageByReciever(String reciever){
-        return em.createNamedQuery("Message.findByReciever").setParameter("reciever", reciever).getResultList();
-    }
-    
-    public List<Offer> findOfferByReciever(String reciever){
-        return em.createNamedQuery("Offer.findByReciever").setParameter("reciever", reciever).getResultList();
-    }
-*/
 }

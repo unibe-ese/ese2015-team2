@@ -61,5 +61,4 @@ public class ViewOfferBean implements Serializable {
     public void setInReplyState(boolean inReplyState) {
         this.inReplyState = inReplyState;
     }
-
 }

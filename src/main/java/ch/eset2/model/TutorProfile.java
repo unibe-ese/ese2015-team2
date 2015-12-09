@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 /**
  * Extends the abstract class {@link Profile}. 
  * In the current implementation there are no additional fields for TutorProfiles.
+ * 
  * @author Marc Jost, 17.10.2015
  * @version 1.0
  */
 @Entity
 public class TutorProfile extends Profile {
+
+    private static final long serialVersionUID = 1L;
 
     @Override
     public int hashCode() {
@@ -26,7 +29,6 @@ public class TutorProfile extends Profile {
      */
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof TutorProfile)) {
             return false;
         }
@@ -41,5 +43,4 @@ public class TutorProfile extends Profile {
     public String toString() {
         return "ch.eset2.model.TutorProfile[ id=" + id + " ]";
     }
-    
 }

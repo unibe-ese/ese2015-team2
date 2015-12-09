@@ -21,6 +21,7 @@ import org.omnifaces.util.Messages;
  * LoginComponent establishes a session with {@link LoginComponent#login()}.
  * The caller must ensure that session is destroyed with the
  * {@link LoginComponent#logout()} method.
+ * 
  * @author Marc Jost, 17.10.2015
  * @version 1.0
  */

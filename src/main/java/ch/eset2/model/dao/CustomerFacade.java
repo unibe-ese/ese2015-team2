@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
+ * Responsible for handling the Entity Manager interactions in regards of the
+ * {@link Customer} Entity.
  * 
  * @author Marc Jost
  * @version 1.0
@@ -31,5 +33,4 @@ public class CustomerFacade extends AbstractFacade<Customer> {
     public List<Customer> findCustomerByUsername(String username){
         return em.createNamedQuery("Customer.findByUsername").setParameter("username", username).getResultList();
     }
-
 }

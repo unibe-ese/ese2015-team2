@@ -31,5 +31,4 @@ public class UniqueUsernameValidator implements Validator {
         List<Customer> foundCustomers = customerFacade.findCustomerByUsername((String) value);
         if(!foundCustomers.isEmpty()) throw new ValidatorException(new FacesMessage("Diese Email ist bereits in Verwendung. Bitte wählen Sie eine andere."));
     }
-    
 }

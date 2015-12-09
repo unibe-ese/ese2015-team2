@@ -11,14 +11,14 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.apache.shiro.SecurityUtils;
-//import javax.enterprise.context.RequestScoped;
 
 
 /**
  * ContactFormBean provides a form for users to get in contact with staff.
  * It allows to persist a new ContactMessage to the database.
- {@link ContactFormBean#init() } should be called from the server before
+ * {@link ContactFormBean#init() } should be called from the server before
  * using any service of this class.
+ * 
  * @author Eve Mendoza Quiros
  * @version 2.0
  */
@@ -57,11 +57,6 @@ public class ContactFormBean implements Serializable {
         return Navigation.CONTACTFORMSUCCESS;
     }
     
-    
-    private void setGivenParameters(String reciever){
-        newContactMessage.setDate(DateConverter.currentTimeAsString());
-    }
-          
     //getters and setters
     public ContactMessage getNewContactMessage() {
         return newContactMessage;

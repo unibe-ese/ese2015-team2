@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
+ * Responsible for handling the Entity Manager interactions in regards of the
+ * {@link CourseProfile} Entity.
  * 
  * @author Marc Jost
  * @version 1.0

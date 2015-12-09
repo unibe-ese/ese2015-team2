@@ -57,5 +57,4 @@ public class RegistrationBean implements Serializable {
     public void setNewCustomer(Customer newCustomer) {
         this.newCustomer = newCustomer;
     }
-    
 }

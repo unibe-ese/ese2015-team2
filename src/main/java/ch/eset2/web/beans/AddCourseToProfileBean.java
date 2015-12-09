@@ -44,7 +44,6 @@ public class AddCourseToProfileBean implements Serializable {
         profile = customer.getProfile();
     }
     
-    
     /**
      * adds a course to the profile of the current customer.
      * The course should not be null

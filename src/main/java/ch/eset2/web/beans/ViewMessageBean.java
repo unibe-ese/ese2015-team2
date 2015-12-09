@@ -60,7 +60,4 @@ public class ViewMessageBean implements Serializable {
     public void setInReplyState(boolean inReplyState) {
         this.inReplyState = inReplyState;
     }
-    
-    
-    
 }

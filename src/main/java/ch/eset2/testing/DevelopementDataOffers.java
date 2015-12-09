@@ -40,7 +40,6 @@ public class DevelopementDataOffers {
 
     private void createTestOffers() {
         try {
-
             Customer mischa = customerFacade.findCustomerByUsername("mischa.wenger").get(0);
             Customer eve = customerFacade.findCustomerByUsername("eve.mendoza").get(0);
             Customer ese = customerFacade.findCustomerByUsername("ese").get(0);
@@ -74,10 +73,8 @@ public class DevelopementDataOffers {
             secondOffer.setFirstAppointmentDay("30.11.2015");
             secondOffer.setFirstAppointmentTime("18:00");
             offerFacade.create(secondOffer);
-
         } catch (Exception e) {
-            // TBD
+            // do nothing
         }
     }
-
 }

@@ -57,6 +57,4 @@ public class ViewCourseBean implements Serializable {
     public void setCourse(Course course) {
         this.course = course;
     }
-    
-    
 }

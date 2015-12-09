@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  * To access the {@link Offer} from the database.
+ * 
  * @author Mischa Wenger
  * @version 2.0
  */

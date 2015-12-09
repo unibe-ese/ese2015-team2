@@ -49,5 +49,4 @@ public class MessageConverter implements Converter {
             throw new ConverterException(new FacesMessage(String.format("%s is not a valid Message", value)));
         }
     }
-    
 }

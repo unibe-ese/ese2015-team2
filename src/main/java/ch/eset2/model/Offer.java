@@ -100,5 +100,4 @@ public class Offer extends Message {
     public String toString() {
         return "ch.eset2.model.Offer[ id=" + id + " ]";
     }
-
 }

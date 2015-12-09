@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.beans;
 
 import ch.eset2.model.Course;
@@ -30,6 +25,7 @@ import org.apache.shiro.crypto.hash.Sha256Hash;
  * It allows to persist edited profile variables to the database.
  * {@link EditProfileBean#retrieveCustomer() } should be called from the server before
  * using any service of this class.
+ * 
  * @author Marc Jost
  * @version 1.0
  */

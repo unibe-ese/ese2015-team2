@@ -48,7 +48,6 @@ public class DevelopementDataCourseToProfile {
 
     private void addTestCoursesToProfiles() {
         try {
-
             Course course = courseFacade.findAll().get(0);
             Course course2 = courseFacade.findAll().get(1);
             
@@ -77,10 +76,8 @@ public class DevelopementDataCourseToProfile {
             course.addCourseProfile(courseProfile2);
             courseFacade.edit(course);
             
-            
         } catch (Exception e) {
-            // TBD
+            // do nothing
         }
     }
-
 }

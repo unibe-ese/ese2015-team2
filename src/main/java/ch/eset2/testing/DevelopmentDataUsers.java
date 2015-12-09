@@ -37,8 +37,6 @@ public class DevelopmentDataUsers {
     }
 
     private void createTestUsers() {
-        
-        
         Customer customer = new Customer();
         customer.setAccountType(AccountType.TUTOR);
         customer.setCity("Bern");
@@ -57,7 +55,6 @@ public class DevelopmentDataUsers {
         customer.setProfile(profile);
         customerFacade.create(customer);
         profileFacade.create(profile);
-        
         
         Customer customer2 = new Customer();
         customer2.setAccountType(AccountType.TUTOR);
@@ -95,7 +92,6 @@ public class DevelopmentDataUsers {
         customerFacade.create(customer3);
         profileFacade.create(profile3);
         
-        
         Customer ese = new Customer();
         ese.setAccountType(AccountType.TUTOR);
         ese.setCity("Bern");
@@ -115,7 +111,6 @@ public class DevelopmentDataUsers {
         customerFacade.create(ese);
         profileFacade.create(eseProfile);
         
-        
         Customer ese2 = new Customer();
         ese2.setAccountType(AccountType.STUDENT);
         ese2.setCity("Bern");
@@ -134,6 +129,5 @@ public class DevelopmentDataUsers {
         ese2.setProfile(ese2Profile);
         customerFacade.create(ese2);
         profileFacade.create(ese2Profile);
-        
     }
 }

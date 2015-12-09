@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
+ * Responsible for handling the Entity Manager interactions in regards of the
+ * {@link Course} Entity.
  * 
  * @author Marc Jost
  * @version 1.0
@@ -26,5 +28,4 @@ public class CourseFacade extends AbstractFacade<Course> {
     public CourseFacade() {
         super(Course.class);
     }
-    
 }

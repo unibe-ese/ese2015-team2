@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  * To access the {@link Message} from the database.
+ * 
  * @author Mischa Wenger
  * @version 1.0
  */

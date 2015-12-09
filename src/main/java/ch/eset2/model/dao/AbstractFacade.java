@@ -6,8 +6,10 @@ import javax.persistence.EntityManager;
 
 /**
  * Provides an abstract base class for all other facades, which 
- * are responsible to interact with the entity manager. 
+ * are responsible to interact with the entity manager.
+ * 
  * @author Marc Jost, 17.10.2015
+ * @version 1.0
  */
 public abstract class AbstractFacade<T> implements Serializable {
     
@@ -57,5 +59,4 @@ public abstract class AbstractFacade<T> implements Serializable {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-
 }

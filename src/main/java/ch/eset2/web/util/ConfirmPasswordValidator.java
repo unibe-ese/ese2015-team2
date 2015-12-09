@@ -29,5 +29,4 @@ public class ConfirmPasswordValidator implements Validator {
             throw new ValidatorException(new FacesMessage("Passwörter sind nicht identisch."));
         }
     }
-
 }

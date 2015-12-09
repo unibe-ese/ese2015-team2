@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.eset2.web.beans;
 
 import ch.eset2.model.Customer;
@@ -51,7 +46,5 @@ public class ConfirmOfferBean implements Serializable {
         confirmation.setReceiver(offer.getSender());
         confirmation.setSendDate(DateConverter.currentTimeAsString());
         messageFacade.create(confirmation);
-        
     }
-    
 }

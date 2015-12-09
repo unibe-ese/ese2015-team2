@@ -2,10 +2,8 @@ package ch.eset2.testing;
 
 import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
-import ch.eset2.model.Offer;
 import ch.eset2.model.dao.CustomerFacade;
 import ch.eset2.model.dao.MessageFacade;
-import ch.eset2.model.dao.OfferFacade;
 import ch.eset2.web.util.MessageState;
 import ch.eset2.web.util.MessageType;
 import javax.annotation.PostConstruct;
@@ -31,9 +29,6 @@ public class DevelopementDataMessages {
     @Inject
     private CustomerFacade customerFacade;
 
-    @Inject
-    private OfferFacade offerFacade;
-
     public DevelopementDataMessages() {
 
     }
@@ -45,7 +40,6 @@ public class DevelopementDataMessages {
 
     private void createTestMessages() {
         try {
-
             Customer marc = customerFacade.findCustomerByUsername("marc.jost").get(0);
             Customer mischa = customerFacade.findCustomerByUsername("mischa.wenger").get(0);
             Customer eve = customerFacade.findCustomerByUsername("eve.mendoza").get(0);
@@ -101,8 +95,7 @@ public class DevelopementDataMessages {
             messageFacade.create(fifthMessage);
             
         } catch (Exception e) {
-            // TBD
+            // do nothing
         }
     }
-
 }

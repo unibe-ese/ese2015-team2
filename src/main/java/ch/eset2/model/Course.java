@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
  * Represents a real course of the univerity and holds all its information.
  * Special fields:
  * id: Every course has an unique id.
+ * 
  * @author Marc Jost, 17.10.2015
  * @version 1.0
  */
@@ -104,10 +105,6 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    public void testInit() {
-        courseProfiles = new ArrayList<CourseProfile>();
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -123,7 +120,6 @@ public class Course implements Serializable {
      */
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Course)) {
             return false;
         }
@@ -138,5 +134,4 @@ public class Course implements Serializable {
     public String toString() {
         return "ch.eset2.model.Course[ id=" + id + " ]";
     }
-
 }
