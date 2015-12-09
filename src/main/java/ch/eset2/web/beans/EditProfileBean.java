@@ -90,8 +90,10 @@ public class EditProfileBean implements Serializable {
             if(!newPassword.isEmpty()) customer.setPassword(new Sha256Hash(newPassword).toHex());
             customerFacade.edit(customer);
             return Navigation.VIEWPROFILE + "?faces-redirect=true&id=" + userHelper.getMyProfileID();
+        } catch (RuntimeException e){
+            throw e; // Jenkins suggestion
         } catch (Exception e) { // TODO
-            System.out.println("ch.eset2.web.beans.EditProfileBean.saveProfile()");
+            // do nothing
             return Navigation.INDEX;
         }
     }
@@ -121,7 +123,7 @@ public class EditProfileBean implements Serializable {
         return Navigation.INDEX;
     }
 
-    //getters and setters
+    // GETTERS AND SETTER
     public Customer getCustomer() {
         return customer;
     }

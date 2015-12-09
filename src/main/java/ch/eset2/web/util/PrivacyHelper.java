@@ -1,6 +1,7 @@
 package ch.eset2.web.util;
 
 import ch.eset2.model.Customer;
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 
 /**
@@ -10,8 +11,10 @@ import javax.enterprise.context.RequestScoped;
  * @version 2.0
  */
 @RequestScoped
-public class PrivacyHelper {
+public class PrivacyHelper implements Serializable {
 
+    private static final long serialVersionUID = -1123881837821798218L;
+    
     /**
      * Determines if a customer can view the full profile of another customer.
      *

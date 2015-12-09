@@ -34,10 +34,6 @@ public class ViewCoursesBean implements Serializable {
         courses = courseFacade.findAll();
     }
     
-    public List<Course> getCourses(){
-        return courses;
-    }
-    
     /**
      * Returns true if the currently logged in Customer has this course registered
      * in his profile.
@@ -52,5 +48,9 @@ public class ViewCoursesBean implements Serializable {
             if(cp.getCourse().equals(c)) return true;
         }
         return false;
+    }
+    
+     public List<Course> getCourses(){
+        return courses;
     }
 }

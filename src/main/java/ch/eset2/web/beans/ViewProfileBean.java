@@ -56,9 +56,14 @@ public class ViewProfileBean implements Serializable {
     }
     
     public String getInitials(){
-        return InitialsGenerator.generateInitials(profile.getCustomer());
+        if(profile != null){
+            return InitialsGenerator.generateInitials(profile.getCustomer());
+        } else {
+            return ":(";
+        }
     }
 
+    // GETTERS AND SETTER
     public boolean isHasCourses() {
         return hasCourses;
     }

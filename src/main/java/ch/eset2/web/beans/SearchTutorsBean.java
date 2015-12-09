@@ -24,7 +24,6 @@ public class SearchTutorsBean implements Serializable {
     
     private List<CourseProfile> courseProfiles;
     private List<CourseProfile> filteredCourseProfiles;
-    private List<Course> availableCourses;
     
     @Inject
     private CourseProfileFacade courseProfileFacade;
@@ -44,9 +43,5 @@ public class SearchTutorsBean implements Serializable {
     
     public void setFilteredCourseProfiles(List<CourseProfile> filteredCourseProfiles){
         this.filteredCourseProfiles = filteredCourseProfiles;
-    }
-    
-    public List<Course> getAvailableCourses(){
-        return availableCourses;
     }
 }

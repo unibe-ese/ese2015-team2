@@ -62,6 +62,7 @@ public class CreateMessageBean implements Serializable {
         return Navigation.SENDSUCCESS;
     }
     
+    // GETTERS AND SETTER
     public Message getNewMessage() {
         return newMessage;
     }

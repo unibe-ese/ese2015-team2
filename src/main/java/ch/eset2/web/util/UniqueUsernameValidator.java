@@ -25,7 +25,6 @@ public class UniqueUsernameValidator implements Validator {
     @Inject
     private CustomerFacade customerFacade;
     
-    
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         List<Customer> foundCustomers = customerFacade.findCustomerByUsername((String) value);

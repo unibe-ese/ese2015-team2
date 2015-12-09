@@ -1,4 +1,5 @@
 package ch.eset2.web.beans;
+
 import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
 import ch.eset2.model.Offer;
@@ -73,7 +74,7 @@ public class ViewInboxBean implements Serializable {
         return !offers.isEmpty();
     }
     
-    //getters
+    // GETTERS AND SETTER
     public List<Message> getMessages() {
         return messages;
     }

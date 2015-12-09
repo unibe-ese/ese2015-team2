@@ -1,0 +1,42 @@
+Package: ch.eset2.web.beans
+=====
+Class: ViewMessageBean
+Error: UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR
+Solution: The field is initialized through the website (viewParam). 
+-----
+Class: ViewProfileBean
+Error: UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR
+Solution: The field is initialized through the website (viewParam). 
+-----
+Class: ViewCourseBean
+Error: UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR
+Solution: The field is initialized through the website (viewParam). 
+-----
+Class:
+Error:
+Solution:
+-----
+Class:
+Error:
+Solution:
+-----
+Class:
+Error:
+Solution:
+-----
+Class:
+Error:
+Solution:
+-----
+Class:
+Error:
+Solution:
+-----
+Class:
+Error:
+Solution:
+-----
+Class:
+Error:
+Solution:
+-----

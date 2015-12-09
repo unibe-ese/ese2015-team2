@@ -33,7 +33,7 @@ public class ContactFormBean implements Serializable {
     
     private ContactMessage newContactMessage;
     
-    private final String emailaddon = "@students.unibern.ch";
+    private final static String emailaddon = "@students.unibern.ch";
     
     public ContactFormBean() {
     }
@@ -42,8 +42,8 @@ public class ContactFormBean implements Serializable {
     private void init(){
         newContactMessage = new ContactMessage();
         if(SecurityUtils.getSubject().isAuthenticated()){
-        Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
-        newContactMessage.setSender(loggedInCustomer.getUsername()+ emailaddon);  
+            Customer loggedInCustomer = (Customer) SecurityUtils.getSubject().getPrincipal();
+            newContactMessage.setSender(loggedInCustomer.getUsername()+ emailaddon);  
         }
     }
     

@@ -1,6 +1,5 @@
 package ch.eset2.web.beans;
 
-
 import ch.eset2.model.Customer;
 import ch.eset2.model.Message;
 import ch.eset2.model.dao.MessageFacade;
@@ -29,7 +28,6 @@ public class ViewMessageBean implements Serializable {
     private Customer customer;
     private Message message;
     private boolean inReplyState = false;
-    
     private boolean myMessage = false;
     
     public void init(){
@@ -40,7 +38,7 @@ public class ViewMessageBean implements Serializable {
         messageFacade.edit(message);
     }
     
-    //getter and setter
+    // GETTERS AND SETTER
     public boolean isMyMessage(){
         return myMessage;
     }

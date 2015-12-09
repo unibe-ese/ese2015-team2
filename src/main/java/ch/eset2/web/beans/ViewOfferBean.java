@@ -29,7 +29,6 @@ public class ViewOfferBean implements Serializable {
 
     private Offer offer;
     private boolean inReplyState = false;
-
     private boolean myOffer = false;
 
     public void init() {
@@ -42,6 +41,7 @@ public class ViewOfferBean implements Serializable {
         messageFacade.edit(offer);
     }
 
+    // GETTERS AND SETTER
     public boolean isMyOffer() {
         return myOffer;
     }

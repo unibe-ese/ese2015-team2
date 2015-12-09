@@ -47,9 +47,8 @@ public class RegistrationBean implements Serializable {
         
         return Navigation.REGSUCCESS;
     }
-
     
-    //getters and setters
+    // GETTERS AND SETTER
     public Customer getNewCustomer() {
         return newCustomer;
     }
