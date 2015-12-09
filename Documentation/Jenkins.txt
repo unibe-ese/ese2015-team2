@@ -12,31 +12,28 @@ Class: ViewCourseBean
 Error: UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR
 Solution: The field is initialized through the website (viewParam). 
 -----
-Class:
-Error:
-Solution:
+Class: ViewOfferBean
+Error: UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR
+Solution: The field is initialized through the website (viewParam). 
 -----
-Class:
-Error:
-Solution:
+
+Package: ch.eset2.model.dao
+======
+Classes: All Facades 
+Error:  SE_BAD_FIELD
+Solution: The field em is the EntityManager and is handled by the framework. Not interfering with this.
 -----
-Class:
-Error:
-Solution:
+
+Package: ch.eset2.web.converter
+======
+Class: All Converters
+Error: DLS_DEAD_LOCAL_STORE
+Solution: All false-positives, as stated by Jenkins.
 -----
-Class:
-Error:
-Solution:
------
-Class:
-Error:
-Solution:
------
-Class:
-Error:
-Solution:
------
-Class:
-Error:
-Solution:
+
+Package: ch.eset2.testing
+=====
+Class: All Testing Classes
+Error:  DE_MIGHT_IGNORE & REC_CATCH_EXCEPTION
+Solution: These Classes will be removed for productive release.
 -----

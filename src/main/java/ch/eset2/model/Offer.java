@@ -100,4 +100,28 @@ public class Offer extends Message {
     public String toString() {
         return "ch.eset2.model.Offer[ id=" + id + " ]";
     }
+
+       @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+    
+    /**
+     * Checks identity only for same unique {@link Offer#id}.
+     * @param object the object to be compare with.
+     * @return true when instance of this class and id's are identical.
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Offer)) {
+            return false;
+        }
+        Offer other = (Offer) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
 }
