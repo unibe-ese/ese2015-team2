@@ -1,4 +1,4 @@
-### Development Status (v1.0 released!):
+### Development Status (v2.0 released!):
 http://digital-front.ch:8880/ESET2/
 
 For testing purposes, please use following account//password:
@@ -9,6 +9,8 @@ Tutors:
  
 Student:
 * eve.mendoza//123
+* ese//123
+* ese2//123
 
 Ofcourse you can always register your own account on the page. Happy testing!
 
